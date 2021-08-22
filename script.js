@@ -14,6 +14,7 @@ function createTable(number_pokemons) {
     for (var c = 0; c < Math.ceil(number_pokemons / 100)-1; c++) {
         var th = document.createElement('th');
         th.innerHTML = (c * 100 + 1) + "〜" + ((c + 1) * 100);
+        th.setAttribute("colspan", 2);
         tr.appendChild(th);
     }
     var th = document.createElement('th');
@@ -27,6 +28,11 @@ function createTable(number_pokemons) {
         var tr = document.createElement('tr');
         for (var c = 0; c < Math.ceil(number_pokemons / 100); c++) {
             var td = document.createElement('td');
+            td.innerHTML = (c*100 + r+1);
+            tr.appendChild(td);
+
+            var td = document.createElement('td');
+            td.innerHTML = " ";
             td.setAttribute("id", "pokemon_" + (c*100 + r+1));
             tr.appendChild(td);
         }
@@ -66,6 +72,7 @@ function convertCSVtoArray(str){ // 読み込んだCSVデータが文字列と�
 // ページロード時に自動実行する関数
 window.onload = function () {
     var number_pokemons = 900;
+    window.answered_list = Array(number_pokemons+1).fill(false)
     setNumberOfPokemons(number_pokemons);
     createTable(number_pokemons);
     getCSV();
@@ -81,11 +88,13 @@ document.getElementById("form_answer").onsubmit = function() {
 
 // 正解判定をする関数
 function checkAnswer(answer){
+    
     for(pokemon of all_pokemon_list){
-        if(answer == pokemon[1]){
+        if(answer == pokemon[1] && !answered_list[pokemon[0]]){
             var td = document.getElementById('pokemon_'+pokemon[0]);
             td.innerHTML = pokemon[1];
             document.form_answer.reset();
+            answered_list[pokemon[0]] = true;
         }
     }
 }
