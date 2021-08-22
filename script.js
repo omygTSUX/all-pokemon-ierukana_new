@@ -48,21 +48,19 @@ function getCSV(){
 	
     // レスポンスが返ってきたらconvertCSVtoArray()を呼ぶ	
     req.onload = function(){
-	convertCSVtoArray(req.responseText); // 渡されるのは読み込んだCSVデータ
+	    convertCSVtoArray(req.responseText); // 渡されるのは読み込んだCSVデータ
     }
 }
 
-// 読み込んだCSVデータを二次元配列に変換する関数convertCSVtoArray()の定義
+// 読み込んだCSVデータを二次元配列に変換する関数
 function convertCSVtoArray(str){ // 読み込んだCSVデータが文字列として渡される
-    var result = []; // 最終的な二次元配列を入れるための配列
+     window.all_pokemon_list = []; // 最終的な二次元配列を入れるための配列
     var tmp = str.split("\n"); // 改行を区切り文字として行を要素とした配列を生成
  
     // 各行ごとにカンマで区切った文字列を要素とした二次元配列を生成
     for(var i=0;i<tmp.length;++i){
-        result[i] = tmp[i].split(',');
+        all_pokemon_list[i] = tmp[i].split(',');
     }
- 
-    alert(result[1][1]);
 }
 
 // ページロード時に自動実行する関数
@@ -76,7 +74,17 @@ window.onload = function () {
 // 回答ボタンを押した時に実行される関数
 document.getElementById("form_answer").onsubmit = function() {
     var value = document.getElementById("input_answer").value;
-    var td = document.getElementById('pokemon_1');
-    td.innerHTML = value;
+    checkAnswer(value);
     return false;
   };
+
+
+// 正解判定をする関数
+function checkAnswer(answer){
+    for(pokemon of all_pokemon_list){
+        if(answer == pokemon[1]){
+            var td = document.getElementById('pokemon_'+pokemon[0]);
+            td.innerHTML = pokemon[1];
+        }
+    }
+}
