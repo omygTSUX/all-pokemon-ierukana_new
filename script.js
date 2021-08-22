@@ -1,6 +1,6 @@
 function createTable (number_pokemons) {
     // ヘッダー行を追加する
-    var thead = document.getElementsByClassName('thead_pokedex_number');
+    var thead = document.getElementById('thead_pokedex_number');
     var tr = document.createElement('tr');
     for (var c = 0; c < Math.ceil(number_pokemons / 100); c++) {
         var th = document.createElement('th');
@@ -9,7 +9,7 @@ function createTable (number_pokemons) {
     thead.appendChild(tr);
 
     // ボディを追加する
-    var tbody = document.getElementsByClassName('tbody_pokemons');
+    var tbody = document.getElementById('tbody_pokemons');
     for (var r = 0; r < 100; r++) {
         var tr = document.createElement('tr');
         for (var c = 0; c < Math.ceil(number_pokemons / 100); c++) {
@@ -20,7 +20,7 @@ function createTable (number_pokemons) {
     }
 }
 
-window.onload = (function () {
+window.onload = function () {
     var number_pokemons = 900;
     createTable(number_pokemons);
-})
+}
