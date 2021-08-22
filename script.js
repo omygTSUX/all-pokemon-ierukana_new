@@ -1,6 +1,4 @@
-var number_pokemons = 900;
-
-var createTable = (function (number_pokemons){
+function createTable (number_pokemons) {
     // ヘッダー行を追加する
     var thead = document.getElementsByClassName('thead_pokedex_number');
     var tr = document.createElement('tr');
@@ -20,4 +18,8 @@ var createTable = (function (number_pokemons){
         }
         tbody.appendChild(tr);
     }
-})(number_pokemons);
+}
+window.onload = function () {
+    var number_pokemons = 900;
+    createTable(number_pokemons);
+}
