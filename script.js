@@ -6,7 +6,7 @@ function createTable (number_pokemons) {
         var th = document.createElement('th');
         th.innerHTML = (c*100 + 1) + "〜" + ((c+1)*100);
     }
-    thead.appendChild(tr)
+    thead.appendChild(tr);
 
     // ボディを追加する
     var tbody = document.getElementsByClassName('tbody_pokemons');
@@ -20,8 +20,7 @@ function createTable (number_pokemons) {
     }
 }
 
-window.addEventListener("load", onLoadFunction);
-function onLoadFunction() {
+window.onload = (function () {
     var number_pokemons = 900;
     createTable(number_pokemons);
-}
+})
