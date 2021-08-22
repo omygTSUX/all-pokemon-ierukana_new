@@ -80,15 +80,56 @@ function convertCSVtoArray(str){ // 読み込んだCSVデータが文字列と�
     }
 }
 
+// 数字を時間に変換する関数
+function toHms(t) {
+	var hms = "";
+	var h = t / 3600 | 0;
+	var m = t % 3600 / 60 | 0;
+	var s = t % 60;
+
+	if (h != 0) {
+		hms = h + "時間" + padZero(m) + "分" + padZero(s) + "秒";
+	} else if (m != 0) {
+		hms = m + "分" + padZero(s) + "秒";
+	} else {
+		hms = s + "秒";
+	}
+
+	return hms;
+
+	function padZero(v) {
+		if (v < 10) {
+			return "0" + v;
+		} else {
+			return v;
+		}
+	}
+}
+
+// タイマーを動かす関数
+function setTIme(){
+    var shown_time = toHms(time);
+    time++;
+    var timer = document.getElementById('timer');
+    timer.innerHTML = shown_time;
+}
+
+// タイマーをスタートする関数
+function startTimer(){
+    setInterval(setTIme(), 1000);
+}
+
 // ページロード時に自動実行する関数
 window.onload = function () {
-    var number_pokemons = 900;
+    window.time = 0;
+    window.number_pokemons = 900;
     window.answered_list = Array(number_pokemons+1).fill(false)
     window.remaining_number = number_pokemons;
     setNumberOfPokemons(number_pokemons);
     setRemainingNumber(number_pokemons);
     createTable(number_pokemons);
     getCSV();
+    startTimer();
 }
 
 // 回答ボタンを押した時に実行される関数
