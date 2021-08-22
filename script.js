@@ -1,8 +1,16 @@
-// ポケモンの数を動的に表示する関数
+// 全ポケモンの数を動的に表示する関数
 function setNumberOfPokemons(number_pokemons){
     var elements = document.getElementsByClassName('number_pokemons');
     for (const e of elements){
         e.innerHTML = number_pokemons;
+    }
+}
+
+// 残りポケモンの数を動的に表示する関数
+function setRemainingNumber(remaining_number){
+    var elements = document.getElementsByClassName('remaining_number');
+    for (const e of elements){
+        e.innerHTML = remaining_number;
     }
 }
 
@@ -76,7 +84,9 @@ function convertCSVtoArray(str){ // 読み込んだCSVデータが文字列と�
 window.onload = function () {
     var number_pokemons = 900;
     window.answered_list = Array(number_pokemons+1).fill(false)
+    window.remaining_number = number_pokemons;
     setNumberOfPokemons(number_pokemons);
+    setRemainingNumber(number_pokemons);
     createTable(number_pokemons);
     getCSV();
 }
@@ -98,6 +108,8 @@ function checkAnswer(answer){
             td.innerHTML = pokemon[1];
             document.form_answer.reset();
             answered_list[pokemon[0]] = true;
+            remaining_number--;
+            setRemainingNumber(remaining_number);
         }
     }
 }
