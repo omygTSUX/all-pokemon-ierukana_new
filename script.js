@@ -19,7 +19,9 @@ function createTable (number_pokemons) {
         tbody.appendChild(tr);
     }
 }
-window.onload = function () {
+
+window.addEventListener("load", onLoadFunction);
+function onLoadFunction() {
     var number_pokemons = 900;
     createTable(number_pokemons);
 }
