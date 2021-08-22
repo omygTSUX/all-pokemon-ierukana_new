@@ -107,21 +107,20 @@ function toHms(t) {
 }
 
 // タイマーを動かす関数
-function setTIme(){
-    var shown_time = toHms(time);
-    time++;
+function setTime(){
+    var shown_time = new Date().getTime() - start_time;
     var timer = document.getElementById('timer');
-    timer.innerHTML = shown_time;
+    timer.innerHTML = toHms(Math.floor(shown_time/1000));
 }
 
 // タイマーをスタートする関数
 function startTimer(){
-    setInterval(setTIme(), 1000);
+    setInterval("setTime()", 1000);
 }
 
 // ページロード時に自動実行する関数
 window.onload = function () {
-    window.time = 0;
+    window.start_time = new Date().getTime();
     window.number_pokemons = 900;
     window.answered_list = Array(number_pokemons+1).fill(false)
     window.remaining_number = number_pokemons;
