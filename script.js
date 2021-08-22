@@ -34,7 +34,7 @@ function createTable(number_pokemons) {
             tr.appendChild(td);
 
             var td = document.createElement('td');
-            td.innerHTML = " ";
+            td.innerHTML = "　　　　　　";
             td.setAttribute("id", "pokemon_" + (c*100 + r+1));
             td.classList.add("td_name_pokemon")
             tr.appendChild(td);
