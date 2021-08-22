@@ -85,6 +85,7 @@ function checkAnswer(answer){
         if(answer == pokemon[1]){
             var td = document.getElementById('pokemon_'+pokemon[0]);
             td.innerHTML = pokemon[1];
+            document.form_answer.reset();
         }
     }
 }
