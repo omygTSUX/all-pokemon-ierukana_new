@@ -1,7 +1,11 @@
+tr{
+    height: 1em;
+}
+
 .td_pokedex_number{
-    width: 2em;
+    width: 1em;
 }
 
 .td_name_pokemon{
-    width: 7em;
+    width: 4em;
 }
