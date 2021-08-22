@@ -1,15 +1,18 @@
-.small{
+
+.table-sticky-wrap{
+    height: 500px;
+    overflow: scroll;
+}
+
+.xx-small{
  font-size: xx-small;
 }
 
-tr{
-    height: 1em;
+#thead_pokedex_number tr{
+    border: 1px #dee2e6; 
 }
 
-.td_pokedex_number{
-    width: 1em;
-}
-
-.td_name_pokemon{
-    width: 4em;
+th{
+    position: sticky;
+    top: 0;
 }
