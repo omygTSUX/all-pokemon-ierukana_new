@@ -19,6 +19,7 @@ function createTable(number_pokemons) {
     }
     var th = document.createElement('th');
     th.innerHTML = (c * 100 + 1) + "〜" + number_pokemons;
+    th.setAttribute("colspan", 2);
     tr.appendChild(th);
     thead.appendChild(tr);
 
@@ -29,11 +30,13 @@ function createTable(number_pokemons) {
         for (var c = 0; c < Math.ceil(number_pokemons / 100); c++) {
             var td = document.createElement('td');
             td.innerHTML = (c*100 + r+1);
+            td.classList.add("td_pokedex_number")
             tr.appendChild(td);
 
             var td = document.createElement('td');
             td.innerHTML = " ";
             td.setAttribute("id", "pokemon_" + (c*100 + r+1));
+            td.classList.add("td_name_pokemon")
             tr.appendChild(td);
         }
         tbody.appendChild(tr);
