@@ -96,7 +96,7 @@ function toHms(t) {
 	var m = t % 3600 / 60 | 0;
 	var s = t % 60;
 
-	hms = padZero(h, 2) + ":" + padZero(m, 2) + ":" + padZero(s, 2);
+	hms = padZero(h, 3) + ":" + padZero(m, 2) + ":" + padZero(s, 2);
 
 	return hms;
 }
@@ -136,12 +136,16 @@ document.getElementById("button_start").onclick = function() {
     if (button.classList.contains("stopped")){
         window.start_time = new Date().getTime();
         startTimer();
+        document.getElementById("input_answer").removeAttribute("disabled");
+        document.getElementById("button_answer").removeAttribute("disabled");
         button.innerHTML="降参";
         button.classList.replace('btn-success', 'btn-danger');
         button.classList.remove("stopped");
     }
     else{
         stopTimer();
+        document.getElementById("input_answer").setAttribute("disabled", true);
+        document.getElementById("button_answer").setAttribute("disabled", true);
         button.innerHTML="開始";
         button.classList.replace('btn-danger', 'btn-success');
         button.classList.add('stopped');
@@ -174,8 +178,10 @@ function checkAnswer(answer){
 }
 
 // ツイートボタンの文言を設定する関数
-document.getElementById("form_answer").onsubmit = function() {
-    var value = document.getElementById("input_answer").value;
-    checkAnswer(value);
+document.getElementById("button_tweet").onclick = function() {
+    var time = document.getElementById("timer").innerHTML;
+    var number_answered = number_pokemons - remaining_number;
+    var href="https://twitter.com/share?text=" + time +"でポケモン"+ number_answered +"/" +number_pokemons+ "匹言えた！ - ポケモン全部言えるかな？&url=https://all-pokemon-ierukana.herokuapp.com/&hashtags=ポケモン全部言えるかな";
+    window.open(encodeURI(decodeURI(href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); 
     return false;
-  };
+  }

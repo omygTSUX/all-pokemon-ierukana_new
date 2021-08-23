@@ -12,13 +12,13 @@
 </head>
 
 <body class="p-5">
-    <h1>
+    <h1 class="mb-3">
         ポケモン<span class="number_pokemons"></span>匹言えるかな？
     </h1>
-    <div class="container">
+    <div class="container mb-3">
         <div class="row">
-            <div class="col-auto border rounded">
-                <p id="timer" class="h2">00:00:00</p>
+            <div class="col-2 border rounded text-center">
+                <p id="timer" class="h2">000:00:00</p>
             </div>
             <div class="col-md-auto border rounded">
                 <p class="h2">残り<span class="remaining_number"></span>匹</p>
@@ -27,10 +27,10 @@
                 <form name="form_answer" id="form_answer">
                     <div class="row">
                         <div class="col-md-auto">
-                            <input type="text" id="input_answer" placeholder="ポケモン名" class="form-control">
+                            <input type="text" id="input_answer" placeholder="ポケモン名" class="form-control" disabled>
                         </div>
                         <div class="col-md-auto">
-                            <input type="submit" value="回答" class="btn btn-primary">
+                            <input type="submit" id="button_answer" value="回答" class="btn btn-primary" disabled>
                         </div>
                     </div>
                 </form>
@@ -39,8 +39,7 @@
                 <button id="button_start" class="btn btn-success stopped">開始</button>
             </div>
             <div class="col-md-auto">
-                <a href="http://twitter.com/share?text=【ツイート文】&url=【共有するURL】&hashtags=【ハッシュタグ】"
-                    onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;"
+                <a id="button_tweet" href=""
                     rel="nofollow" role="button" class="btn btn-info">結果ツイート</a>
             </div>
         </div>
