@@ -10,7 +10,7 @@ function setNumberOfPokemons(number_pokemons){
 function setRemainingNumber(remaining_number){
     var elements = document.getElementsByClassName('remaining_number');
     for (const e of elements){
-        e.innerHTML = remaining_number;
+        e.innerHTML = padZero(remaining_number, 3);
     }
 }
 
@@ -83,6 +83,12 @@ function convertCSVtoArray(str){ // 読み込んだCSVデータが文字列と�
     }
 }
 
+// 数字を0埋めする関数
+function padZero(v, digit) {
+    var result =("00000" + v).slice(-digit);
+    return result;
+}
+
 // 数字を時間に変換する関数
 function toHms(t) {
 	var hms = "";
@@ -90,23 +96,9 @@ function toHms(t) {
 	var m = t % 3600 / 60 | 0;
 	var s = t % 60;
 
-	if (h != 0) {
-		hms = h + "時間" + padZero(m) + "分" + padZero(s) + "秒";
-	} else if (m != 0) {
-		hms = m + "分" + padZero(s) + "秒";
-	} else {
-		hms = s + "秒";
-	}
+	hms = padZero(h, 2) + ":" + padZero(m, 2) + ":" + padZero(s, 2);
 
 	return hms;
-
-	function padZero(v) {
-		if (v < 10) {
-			return "0" + v;
-		} else {
-			return v;
-		}
-	}
 }
 
 // タイマーを動かす関数
@@ -118,33 +110,57 @@ function setTime(){
 
 // タイマーをスタートする関数
 function startTimer(){
-    setInterval("setTime()", 1000);
+    window.timer_count = setInterval("setTime()", 1000);
+}
+
+// タイマーをストップする関数
+function stopTimer(){
+    clearInterval(timer_count);
 }
 
 // ページロード時に自動実行する関数
 window.onload = function () {
-    window.start_time = new Date().getTime();
+    getCSV();
     window.number_pokemons = 900;
     window.answered_list = Array(number_pokemons+1).fill(false)
     window.remaining_number = number_pokemons;
     setNumberOfPokemons(number_pokemons);
     setRemainingNumber(number_pokemons);
     createTable(number_pokemons);
-    getCSV();
-    startTimer();
+
 }
+
+// 開始ボタンを押した時に実行される関数
+document.getElementById("button_start").onclick = function() {
+    var button = document.getElementById("button_start");
+    if (button.classList.contains("stopped")){
+        window.start_time = new Date().getTime();
+        startTimer();
+        button.innerHTML="降参";
+        button.classList.replace('btn-success', 'btn-danger');
+        button.classList.remove("stopped");
+    }
+    else{
+        stopTimer();
+        button.innerHTML="開始";
+        button.classList.replace('btn-danger', 'btn-success');
+        button.classList.add('stopped');
+    }
+
+    return false;
+  }
+
 
 // 回答ボタンを押した時に実行される関数
 document.getElementById("form_answer").onsubmit = function() {
     var value = document.getElementById("input_answer").value;
     checkAnswer(value);
     return false;
-  };
+  }
 
 
 // 正解判定をする関数
 function checkAnswer(answer){
-    
     for(pokemon of all_pokemon_list){
         if(answer == pokemon[1] && !answered_list[pokemon[0]]){
             var td = document.getElementById('pokemon_'+pokemon[0]);
@@ -156,3 +172,10 @@ function checkAnswer(answer){
         }
     }
 }
+
+// ツイートボタンの文言を設定する関数
+document.getElementById("form_answer").onsubmit = function() {
+    var value = document.getElementById("input_answer").value;
+    checkAnswer(value);
+    return false;
+  };

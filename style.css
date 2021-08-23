@@ -1,4 +1,7 @@
 
+.btn-info{
+    color: #ffffff;
+}
 .table-sticky-wrap{
     height: 500px;
     overflow: scroll;
