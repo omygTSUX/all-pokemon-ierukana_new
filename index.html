@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <title>ポケモン900匹言えるかな？</title>
     <meta name="description" content="">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -17,30 +17,30 @@
     </h1>
     <div class="container mb-3">
         <div class="row">
-            <div class="col-2 border rounded text-center">
-                <p id="timer" class="h2">000:00:00</p>
+            <div class="col-md-auto col-6 border rounded text-center">
+                <p id="timer" class="h3">000:00:00</p>
             </div>
-            <div class="col-md-auto border rounded">
-                <p class="h2">残り<span class="remaining_number"></span>匹</p>
+            <div class="col-md-auto col-6 border rounded text-center">
+                <p class="h3">残り<span class="remaining_number"></span>匹</p>
             </div>
-            <div class="col-md-auto">
+            <div class="col-md-auto col-auto">
                 <form name="form_answer" id="form_answer">
                     <div class="row">
-                        <div class="col-md-auto">
-                            <input type="text" id="input_answer" placeholder="ポケモン名" class="form-control" disabled>
+                        <div class="col-md-auto col-auto">
+                            <input type="text" id="input_answer" placeholder="ポケモン名" class="form-control-sm" disabled>
                         </div>
-                        <div class="col-md-auto">
-                            <input type="submit" id="button_answer" value="回答" class="btn btn-primary" disabled>
+                        <div class="col-md-auto  col-auto">
+                            <input type="submit" id="button_answer" value="回答" class="btn btn-primary btn-sm" disabled> 
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="col-md-auto">
-                <button id="button_start" class="btn btn-success stopped">開始</button>
+            <div class="col-xl-auto  col-auto">
+                <button id="button_start" class="btn btn-success  btn-sm stopped">開始</button>
             </div>
-            <div class="col-md-auto">
+            <div class="col-xl-auto  col-auto">
                 <a id="button_tweet" href=""
-                    rel="nofollow" role="button" class="btn btn-info">結果ツイート</a>
+                    rel="nofollow" role="button" class="btn btn-info btn-sm">Tweet</a>
             </div>
         </div>
     </div>
