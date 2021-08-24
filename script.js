@@ -153,7 +153,10 @@ document.getElementById("button_start").onclick = function() {
         button.classList.replace('btn-success', 'btn-danger');
         button.classList.remove("stopped");
 
+        remaining_number = number_pokemons;
+        setRemainingNumber(remaining_number);
         answered_list.fill(false);
+
         var cells = document.getElementsByClassName("td_name_pokemon");
         for (c of cells){
             c.innerHTML="";
@@ -166,7 +169,6 @@ document.getElementById("button_start").onclick = function() {
         button.innerHTML="開始";
         button.classList.replace('btn-danger', 'btn-success');
         button.classList.add('stopped');
-
         for(pokemon of all_pokemon_list){
             if(!answered_list[pokemon[0]]){
                 var td = document.getElementById('pokemon_'+pokemon[0]);
