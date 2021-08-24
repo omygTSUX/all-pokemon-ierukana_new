@@ -167,6 +167,14 @@ document.getElementById("button_start").onclick = function() {
         button.innerHTML="開始";
         button.classList.replace('btn-danger', 'btn-success');
         button.classList.add('stopped');
+
+        for(pokemon of all_pokemon_list){
+            if(!answered_list[pokemon[0]]){
+                var td = document.getElementById('pokemon_'+pokemon[0]);
+                var img = "./img/"+ padZero(pokemon[0], 3)+".png";
+                td.innerHTML = "<span class='name_pokemon text-danger'>"+pokemon[1]+"</span>"+"<img src="+img+" class='image_pokemon'>";
+            }
+        }
     }
 
     return false;
