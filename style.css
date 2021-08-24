@@ -15,9 +15,11 @@ h1, h1 > span, .container, .row{
 #input_answer{
     width: 7em;
 }
+
 .btn-info{
     color: #ffffff;
 }
+
 .table-sticky-wrap{
     height: 500px;
     overflow: scroll;
@@ -35,9 +37,6 @@ th{
     position: sticky;
     top: 0;
     z-index: 1;
-}
-
-.td_pokedex_number{
 }
 
 .td_name_pokemon{

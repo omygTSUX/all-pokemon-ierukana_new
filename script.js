@@ -41,7 +41,6 @@ function createTable(number_pokemons) {
         for (var c = 0; c < Math.ceil(number_pokemons / 100); c++) {
             var td = document.createElement('td');
             td.innerHTML = padZero(c*100 + r+1, 3);
-            td.classList.add("td_pokedex_number");
             tr.appendChild(td);
 
             var td = document.createElement('td');
