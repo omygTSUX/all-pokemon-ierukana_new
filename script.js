@@ -189,6 +189,47 @@ document.getElementById("form_answer").onsubmit = function() {
   }
 
 
+// ひらがなをカタカナに直す関数
+function hiraToKata(str) {
+    return str.replace(/[\u3041-\u3096]/g, ch =>
+      String.fromCharCode(ch.charCodeAt(0) + 0x60)
+    );
+  }
+
+// 入力の表記揺れを直す関数
+function eratta(answer){
+    var eratta_result = answer;
+    eratta_result = hiraToKata(answer);
+    var eratta_list = [
+        ["ニドランオス", "ニドラン♂"],
+        ["ニドランメス", "ニドラン♀"],
+        ["ポリゴンツー", "ポリゴン2"],
+        ["ポリゴン２", "ポリゴン2"],
+        ["ポリゴンゼット", "ポリゴンZ"],
+        ["ポリゴンｚ", "ポリゴンZ"],
+        ["ポリゴンＺ", "ポリゴンZ"],
+        ["ポリゴンz", "ポリゴンZ"],
+        ["タイプヌル", "タイプ:ヌル"],
+        ["タイプ：ヌル", "タイプ:ヌル"],
+        ["カプ･コケコ", "カプ・コケコ"],
+        ["カプコケコ", "カプ・コケコ"],
+        ["カプ･テテフ", "カプ・テテフ"],
+        ["カプテテフ", "カプ・テテフ"],
+        ["カプ･ブルル", "カプ・ブルル"],
+        ["カプブルル", "カプ・ブルル"],
+        ["カプ･レヒレ", "カプ・レヒレ"],
+        ["カプレヒレ", "カプ・レヒレ"]
+    ];
+    for (p of eratta_list){
+        if (eratta_result == p[0]){
+            eratta_result = p[1];
+            break;
+        }
+    }
+    return eratta_result;
+}
+
+
 // 正解判定をする関数
 function checkAnswer(answer){
     // if(answer=="クリア"){
@@ -202,9 +243,9 @@ function checkAnswer(answer){
     //             setRemainingNumber(remaining_number);
     //     }
     // }
-
+    var eratta_result = eratta(answer);
     for(pokemon of all_pokemon_list){
-        if(answer == pokemon[1] && !answered_list[pokemon[0]]){
+        if(eratta_result == pokemon[1] && !answered_list[pokemon[0]]){
             var td = document.getElementById('pokemon_'+pokemon[0]);
             var img = "./img/"+ padZero(pokemon[0], 3)+".png";
             td.innerHTML = "<span class='name_pokemon'>"+pokemon[1]+"</span>"+"<img src="+img+" class='image_pokemon'>";
