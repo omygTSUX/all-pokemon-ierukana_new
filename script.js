@@ -133,7 +133,7 @@ function stopTimer(){
 // ページロード時に自動実行する関数
 window.onload = function () {
     getCSV();
-    window.number_pokemons = all_pokemon_list.length;
+    window.number_pokemons = 900;
     window.answered_list = Array(number_pokemons+1).fill(false)
     window.remaining_number = number_pokemons;
     setNumberOfPokemons(number_pokemons);
