@@ -21,4 +21,24 @@
 th{
     position: sticky;
     top: 0;
+    z-index: 1;
+}
+
+.td_pokedex_number{
+}
+
+.td_name_pokemon{
+    white-space:nowrap;
+    position: relative;
+}
+
+.name_pokemon{
+    position: absolute;
+    left: 3%;
+}
+
+.image_pokemon{
+    position: absolute;
+    right: 3%;
+    width: 2em;
 }
