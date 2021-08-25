@@ -255,6 +255,16 @@ function checkAnswer(answer){
             setRemainingNumber(remaining_number);
         }
     }
+    if(remaining_number == 0){
+        stopTimer();
+        var button = document.getElementById("button_start");
+        document.getElementById("input_answer").setAttribute("disabled", true);
+        document.getElementById("button_answer").setAttribute("disabled", true);
+        button.innerHTML="開始";
+        button.classList.replace('btn-danger', 'btn-success');
+        button.classList.add('stopped');
+        window.alert("クリアおめでとう！ぜひ結果をツイートしてください！");
+    }
 }
 
 // ツイートボタンの文言を設定する関数
