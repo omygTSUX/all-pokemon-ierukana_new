@@ -1,5 +1,6 @@
 * {
     background-color: #ffffff;
+    position: relative;
 }
 
 body {
@@ -10,6 +11,12 @@ body {
 
 h1, h1 > span, .container, .row{
     background-color: transparent;
+}
+
+#author{
+    position: fixed;
+    top: 5%;
+    left: 1100px;
 }
 
 #input_answer{
