@@ -9,8 +9,10 @@ body {
     background-blend-mode:lighten;
 }
 
-a:visited{
-    color: inherit;
+
+
+a, a:visited{
+    color: #000000;
 }
 
 header .col{
