@@ -239,17 +239,17 @@ function eratta(answer){
 
 // 正解判定をする関数
 function checkAnswer(answer){
-    if(answer=="クリア"){
-        for(pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)){
-                var td = document.getElementById('pokemon_'+pokemon[0]);
-                var img = "./img/"+ padZero(pokemon[0], 3)+".png";
-                td.innerHTML = "<span class='name_pokemon'>"+pokemon[1]+"</span>"+"<img src="+img+" class='image_pokemon'>";
-                document.form_answer.reset();
-                answered_list[pokemon[0] - number_start + 1] = true;
-                remaining_number--;
-                setRemainingNumber(remaining_number);
-        }
-    }
+    // if(answer=="クリア"){
+    //     for(pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)){
+    //             var td = document.getElementById('pokemon_'+pokemon[0]);
+    //             var img = "./img/"+ padZero(pokemon[0], 3)+".png";
+    //             td.innerHTML = "<span class='name_pokemon'>"+pokemon[1]+"</span>"+"<img src="+img+" class='image_pokemon'>";
+    //             document.form_answer.reset();
+    //             answered_list[pokemon[0] - number_start + 1] = true;
+    //             remaining_number--;
+    //             setRemainingNumber(remaining_number);
+    //     }
+    // }
     var eratta_result = eratta(answer);
     for(pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)){
         if(eratta_result == pokemon[1] && !answered_list[pokemon[0]]){
