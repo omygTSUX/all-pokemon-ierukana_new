@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.5">
-    <title>ポケモン全部言えるかな？</title>
-    <meta name="description" content="ポケモン全部言えるかな？">
+    <title>シンオウポケモン言えるかな？</title>
+    <meta name="description" content="シンオウポケモン言えるかな？">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link href="style.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="icon" href="./favicon.ico">
 </head>
 
 <body class="p-5">
     <h1 class="mb-3 text-center rounded">
-        全ポケモン<span class="number_pokemons"></span>匹言えるかな？
+        シンオウポケモン<span class="number_pokemons"></span>匹言えるかな？
     </h1>
     <div id="author" class="xx-small">
         <a href="https://twitter.com/omygTSUX" target="blank">バグ報告はこちら：@omygTSUX</a>
     </div>
-    <div class="container mb-3 rounded">
+    <div class="container mx-auto mb-3 rounded">
         <div class="row rounded">
             <div class="col-md-3 col-6 border rounded text-center">
                 <p id="timer" class="h2">000:00:00</p>
@@ -37,7 +36,7 @@
                             <input type="text" id="input_answer" placeholder="ポケモン名" class="form-control-sm" disabled>
                         </div>
                         <div class="col-auto">
-                            <input type="submit" id="button_answer" value="回答" class="btn btn-primary btn-sm" disabled>
+                            <input type="submit" id="button_answer" value="回答" class="btn btn-primary btn-sm" disabled> 
                         </div>
                     </div>
                 </form>
@@ -46,12 +45,13 @@
                 <button id="button_start" class="btn btn-success  btn-sm stopped">開始</button>
             </div>
             <div class="col-auto rounded">
-                <a id="button_tweet" href="" rel="nofollow" role="button" class="btn btn-info btn-sm">Tweet</a>
+                <a id="button_tweet" href=""
+                    rel="nofollow" role="button" class="btn btn-info btn-sm">Tweet</a>
             </div>
         </div>
     </div>
 
-    <div class="table-sticky-wrap border border-2 border-secondary">
+    <div class="table-sticky-wrap border border-2 border-secondary mx-auto">
         <table class="table table-bordered xx-small">
             <thead id="thead_pokedex_number">
             </thead>
@@ -61,15 +61,14 @@
     </div>
 
     <script type="text/javascript">
-        var number_start = 1;
-        var number_pokemons = 900;
-        var number_rows = 100;
-    </script>
+        var number_start = 387;
+        var number_pokemons = 107;
+        var number_rows = 12;
+      </script>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
-
 </html>

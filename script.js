@@ -15,20 +15,21 @@ function setRemainingNumber(remaining_number){
 }
 
 // 表を動的に生成する関数
-function createTable(number_pokemons) {
+function createTable(number_pokemons, number_rows, number_start) {
     // ヘッダー行を追加する
     var thead = document.getElementById('thead_pokedex_number');
     var tr = document.createElement('tr');
     tr.classList.add("table-secondary");
-    for (var c = 0; c < Math.ceil(number_pokemons / 100)-1; c++) {
+    for (var c = 0; c < Math.ceil(number_pokemons / number_rows)-1; c++) {
         var th = document.createElement('th');
-        th.innerHTML = padZero((c * 100 + 1), 3) + "〜" + ((c + 1) * 100);
+        th.innerHTML = padZero((c * number_rows + number_start), 3) + "〜" + padZero((c + 1) * number_rows + number_start - 1, 3);
         th.classList.add("text-center");
         th.setAttribute("colspan", 2);
         tr.appendChild(th);
     }
+    // 端数の行を追加する
     var th = document.createElement('th');
-    th.innerHTML = (c * 100 + 1) + "〜" + number_pokemons;
+    th.innerHTML = padZero(c * number_rows + number_start, 3) + "〜" + padZero(number_start + number_pokemons - 1 , 3);
     th.classList.add("text-center");
     th.setAttribute("colspan", 2);
     tr.appendChild(th);
@@ -36,23 +37,26 @@ function createTable(number_pokemons) {
 
     // ボディを追加する
     var tbody = document.getElementById('tbody_pokemons');
-    for (var r = 0; r < 100; r++) {
+    for (var r = 0; r < number_rows; r++) {
         var tr = document.createElement('tr');
-        for (var c = 0; c < Math.ceil(number_pokemons / 100); c++) {
+        for (var c = 0; c < Math.ceil(number_pokemons / number_rows); c++) {
             var td = document.createElement('td');
-            td.innerHTML = padZero(c*100 + r+1, 3);
+            td.id =  "pokedex_" + (c*number_rows + r + number_start);
+            td.innerHTML = padZero(c*number_rows + r + number_start, 3);
             tr.appendChild(td);
 
             var td = document.createElement('td');
-            td.setAttribute("id", "pokemon_" + (c*100 + r+1));
+            td.id =  "pokemon_" + (c*number_rows + r + number_start);
             td.classList.add("td_name_pokemon");
             tr.appendChild(td);
         }
         tbody.appendChild(tr);
     }
+
+    // 末尾の空白行を追加する
     var tr = document.createElement('tr');
-    tr.classList.add("boder-0");
-    for (var c = 0; c < Math.ceil(number_pokemons / 100); c++) {
+    tr.classList.add("border-0");
+    for (var c = 0; c < Math.ceil(number_pokemons / number_rows); c++) {
         var td = document.createElement('td');
         td.classList.add("border-0");
         tr.appendChild(td);
@@ -65,7 +69,11 @@ function createTable(number_pokemons) {
     tbody.appendChild(tr);
 
     // 端数のセルをグレーアウトする
-    for (var p = number_pokemons+1; p < Math.ceil(number_pokemons/100)*100 + 1; p++){
+    for (var p = number_pokemons + number_start; p < Math.ceil(number_pokemons/number_rows)*number_rows + number_start; p++){
+        var td = document.getElementById('pokedex_' + p);
+        td.innerHTML = "";
+        td.classList.add("table-secondary");
+
         var td = document.getElementById('pokemon_' + p);
         td.classList.add("table-secondary");
     }
@@ -132,12 +140,11 @@ function stopTimer(){
 // ページロード時に自動実行する関数
 window.onload = function () {
     getCSV();
-    window.number_pokemons = 900;
     window.answered_list = Array(number_pokemons+1).fill(false)
     window.remaining_number = number_pokemons;
     setNumberOfPokemons(number_pokemons);
     setRemainingNumber(number_pokemons);
-    createTable(number_pokemons);
+    createTable(number_pokemons, number_rows, number_start);
 }
 
 // 開始ボタンを押した時に実行される関数
@@ -168,7 +175,7 @@ document.getElementById("button_start").onclick = function() {
         button.innerHTML="開始";
         button.classList.replace('btn-danger', 'btn-success');
         button.classList.add('stopped');
-        for(pokemon of all_pokemon_list){
+        for(pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)){
             if(!answered_list[pokemon[0]]){
                 var td = document.getElementById('pokemon_'+pokemon[0]);
                 var img = "./img/"+ padZero(pokemon[0], 3)+".png";
@@ -232,25 +239,25 @@ function eratta(answer){
 
 // 正解判定をする関数
 function checkAnswer(answer){
-    // if(answer=="クリア"){
-    //     for(pokemon of all_pokemon_list){
-    //             var td = document.getElementById('pokemon_'+pokemon[0]);
-    //             var img = "./img/"+ padZero(pokemon[0], 3)+".png";
-    //             td.innerHTML = "<span class='name_pokemon'>"+pokemon[1]+"</span>"+"<img src="+img+" class='image_pokemon'>";
-    //             document.form_answer.reset();
-    //             answered_list[pokemon[0]] = true;
-    //             remaining_number--;
-    //             setRemainingNumber(remaining_number);
-    //     }
-    // }
+    if(answer=="クリア"){
+        for(pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)){
+                var td = document.getElementById('pokemon_'+pokemon[0]);
+                var img = "./img/"+ padZero(pokemon[0], 3)+".png";
+                td.innerHTML = "<span class='name_pokemon'>"+pokemon[1]+"</span>"+"<img src="+img+" class='image_pokemon'>";
+                document.form_answer.reset();
+                answered_list[pokemon[0] - number_start + 1] = true;
+                remaining_number--;
+                setRemainingNumber(remaining_number);
+        }
+    }
     var eratta_result = eratta(answer);
-    for(pokemon of all_pokemon_list){
+    for(pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)){
         if(eratta_result == pokemon[1] && !answered_list[pokemon[0]]){
             var td = document.getElementById('pokemon_'+pokemon[0]);
             var img = "./img/"+ padZero(pokemon[0], 3)+".png";
             td.innerHTML = "<span class='name_pokemon'>"+pokemon[1]+"</span>"+"<img src="+img+" class='image_pokemon'>";
             document.form_answer.reset();
-            answered_list[pokemon[0]] = true;
+            answered_list[pokemon[0] - number_start + 1] = true;
             remaining_number--;
             setRemainingNumber(remaining_number);
         }
@@ -263,7 +270,7 @@ function checkAnswer(answer){
         button.innerHTML="開始";
         button.classList.replace('btn-danger', 'btn-success');
         button.classList.add('stopped');
-        window.alert("クリアおめでとう！ぜひ結果をツイートしてください！");
+        window.alert("クリアおめでとう！Tweetボタンでぜひ結果を共有してください！");
     }
 }
 
@@ -271,7 +278,9 @@ function checkAnswer(answer){
 document.getElementById("button_tweet").onclick = function() {
     var time = document.getElementById("timer").innerHTML;
     var number_answered = number_pokemons - remaining_number;
-    var href="https://twitter.com/share?text=" + time +"でポケモン"+ number_answered +"/" +number_pokemons+ "匹言えた！ - ポケモン全部言えるかな？&url=https://all-pokemon-ierukana.herokuapp.com/&hashtags=ポケモン全部言えるかな";
+    var title = document.title;
+    var url = location.href;
+    var href = "https://twitter.com/share?text=" + time + "でポケモン" + number_answered + "/" + number_pokemons + "匹言えた！ - " +  title + "&url=" + url + "&hashtags=ポケモン全部言えるかな";
     window.open(encodeURI(decodeURI(href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); 
     return false;
   }
