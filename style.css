@@ -9,13 +9,25 @@ body {
     background-blend-mode:lighten;
 }
 
-h1, h1 > span, .container, .row{
+a:visited{
+    color: inherit;
+}
+
+header .col{
+    height: 2.5em;
+}
+
+.navi{
+    vertical-align: middle;
+}
+
+header, #author, #author > a, h1, h1 > span, .container, .row{
     background-color: transparent;
 }
 
 #author{
-    position: fixed;
-    top: 5%;
+    position: absolute;
+    top: 10%;
     left: 1100px;
 }
 
