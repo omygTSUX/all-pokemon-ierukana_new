@@ -23,7 +23,7 @@ header .col{
     vertical-align: middle;
 }
 
-header, #author, #author > a, h1, h1 > span, .container, .row{
+header, .note, #author, #author > a, h1, h1 > span, .container, .row{
     background-color: transparent;
 }
 
