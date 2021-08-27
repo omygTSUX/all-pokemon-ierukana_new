@@ -21,6 +21,7 @@ header .col{
 
 .navi{
     vertical-align: middle;
+    font-size: small;
 }
 
 header, .note, #author, #author > a, h1, h1 > span, .container, .row{
@@ -30,7 +31,7 @@ header, .note, #author, #author > a, h1, h1 > span, .container, .row{
 #author{
     position: absolute;
     top: 10%;
-    left: 1100px;
+    left: 80%;
 }
 
 .number_pokemons, #timer, .remaining_number{
@@ -44,6 +45,10 @@ header, .note, #author, #author > a, h1, h1 > span, .container, .row{
 
 #button_tweet{
     color: #ffffff;
+}
+
+.col-auto{
+    padding-right: 6px;
 }
 
 .table-sticky-wrap{

@@ -176,7 +176,7 @@ document.getElementById("button_start").onclick = function() {
         button.classList.replace('btn-danger', 'btn-success');
         button.classList.add('stopped');
         for(pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)){
-            if(!answered_list[pokemon[0]]){
+            if(!answered_list[pokemon[0] - number_start + 1]){
                 var td = document.getElementById('pokemon_'+pokemon[0]);
                 var img = "./img/"+ padZero(pokemon[0], 3)+".png";
                 td.innerHTML = "<span class='name_pokemon text-danger'>"+pokemon[1]+"</span>"+"<img src="+img+" class='image_pokemon'>";
