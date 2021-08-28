@@ -63,7 +63,7 @@ function createTable(number_pokemons, number_rows, number_start) {
 
         var td = document.createElement('td');
         td.classList.add("border-0");
-        td.innerHTML = "　　　　　　　";
+        td.innerHTML = "　　　　　　　　";
         tr.appendChild(td);
     }
     tbody.appendChild(tr);
