@@ -120,6 +120,16 @@ function toHms(t) {
 	return hms;
 }
 
+// 時間を日本語に変換する関数
+function toJapaneseHms(hms) {
+    var japaneseHms = hms.split(":");
+    var ji = Number(japaneseHms[0]);
+    var hun = Number(japaneseHms[1]);
+    var byou = Number(japaneseHms[2]);
+
+    return ji + "時間" + hun + "分" + byou + "秒";
+}
+
 // タイマーを動かす関数
 function setTime(){
     var shown_time = new Date().getTime() - start_time;
@@ -278,7 +288,7 @@ function checkAnswer(answer){
 
 // ツイートボタンの文言を設定する関数
 document.getElementById("button_tweet").onclick = function() {
-    var time = document.getElementById("timer").innerHTML;
+    var time = toJapaneseHms(document.getElementById("timer").innerHTML);
     var number_answered = number_pokemons - remaining_number;
     var title = document.title;
     var url = location.href;
