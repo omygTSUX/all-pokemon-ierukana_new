@@ -43,6 +43,10 @@ header, .note, #author, #author > a, h1, h1 > span, .container, .row{
     width: 7em;
 }
 
+#input_answer:focus::placeholder {
+    color: transparent;
+  }
+
 #button_tweet{
     color: #ffffff;
 }
