@@ -84,8 +84,18 @@ th{
     left: 3%;
 }
 
+.li_pokemon{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background-image: url("unknown.png");
+    background-size: cover;
+}
+
+.found{
+    background-image: none;
+}
+
 .image_pokemon{
-    position: absolute;
-    right: 3%;
-    height: 2em;
+    height: 100%;
 }

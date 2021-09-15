@@ -14,26 +14,39 @@ function setRemainingNumber(remaining_number){
     }
 }
 
+// ポケモンリストを動的に生成する関数
+function createPokemonList(number_pokemons, number_start){
+    var ul = document.getElementById('pokemon_list');
+    for (var p = 0; p < number_pokemons; p++){
+        var li = document.createElement('li');
+        li.innerHTML = padZero(number_start + p, 3);
+        // li.innerHTML = "<img src='unknown.png'>"
+        li.id = "pokemon_" + (number_start + p);
+        li.classList.add("li_pokemon", "rounded-circle", "xx-small", "m-1");
+        ul.appendChild(li);
+    }
+}
+
 // 表を動的に生成する関数
 function createTable(number_pokemons, number_rows, number_start) {
-    // ヘッダー行を追加する
-    var thead = document.getElementById('thead_pokedex_number');
-    var tr = document.createElement('tr');
-    tr.classList.add("table-secondary");
-    for (var c = 0; c < Math.ceil(number_pokemons / number_rows)-1; c++) {
-        var th = document.createElement('th');
-        th.innerHTML = padZero((c * number_rows + number_start), 3) + "〜" + padZero((c + 1) * number_rows + number_start - 1, 3);
-        th.classList.add("text-center");
-        th.setAttribute("colspan", 2);
-        tr.appendChild(th);
-    }
-    // 端数の行を追加する
-    var th = document.createElement('th');
-    th.innerHTML = padZero(c * number_rows + number_start, 3) + "〜" + padZero(number_start + number_pokemons - 1 , 3);
-    th.classList.add("text-center");
-    th.setAttribute("colspan", 2);
-    tr.appendChild(th);
-    thead.appendChild(tr);
+    // // ヘッダー行を追加する
+    // var thead = document.getElementById('thead_pokedex_number');
+    // var tr = document.createElement('tr');
+    // tr.classList.add("table-secondary");
+    // for (var c = 0; c < Math.ceil(number_pokemons / number_rows)-1; c++) {
+    //     var th = document.createElement('th');
+    //     th.innerHTML = padZero((c * number_rows + number_start), 3) + "〜" + padZero((c + 1) * number_rows + number_start - 1, 3);
+    //     th.classList.add("text-center");
+    //     // th.setAttribute("colspan", 2);
+    //     tr.appendChild(th);
+    // }
+    // // 端数の行を追加する
+    // var th = document.createElement('th');
+    // th.innerHTML = padZero(c * number_rows + number_start, 3) + "〜" + padZero(number_start + number_pokemons - 1 , 3);
+    // th.classList.add("text-center");
+    // th.setAttribute("colspan", 2);
+    // tr.appendChild(th);
+    // thead.appendChild(tr);
 
     // ボディを追加する
     var tbody = document.getElementById('tbody_pokemons');
@@ -45,10 +58,10 @@ function createTable(number_pokemons, number_rows, number_start) {
             td.innerHTML = padZero(c*number_rows + r + number_start, 3);
             tr.appendChild(td);
 
-            var td = document.createElement('td');
-            td.id =  "pokemon_" + (c*number_rows + r + number_start);
-            td.classList.add("td_name_pokemon");
-            tr.appendChild(td);
+            // var td = document.createElement('td');
+            // td.id =  "pokemon_" + (c*number_rows + r + number_start);
+            // td.classList.add("td_name_pokemon");
+            // tr.appendChild(td);
         }
         tbody.appendChild(tr);
     }
@@ -61,10 +74,10 @@ function createTable(number_pokemons, number_rows, number_start) {
         td.classList.add("border-0");
         tr.appendChild(td);
 
-        var td = document.createElement('td');
-        td.classList.add("border-0");
-        td.innerHTML = "　　　　　　　　";
-        tr.appendChild(td);
+        // var td = document.createElement('td');
+        // td.classList.add("border-0");
+        // td.innerHTML = "";
+        // tr.appendChild(td);
     }
     tbody.appendChild(tr);
 
@@ -154,7 +167,8 @@ window.onload = function () {
     window.remaining_number = number_pokemons;
     setNumberOfPokemons(number_pokemons);
     setRemainingNumber(number_pokemons);
-    createTable(number_pokemons, number_rows, number_start);
+    // createTable(number_pokemons, number_rows, number_start);
+    createPokemonList(number_pokemons, number_start);
 }
 
 // 開始ボタンを押した時に実行される関数
@@ -187,9 +201,10 @@ document.getElementById("button_start").onclick = function() {
         button.classList.add('stopped');
         for(pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)){
             if(!answered_list[pokemon[0] - number_start + 1]){
-                var td = document.getElementById('pokemon_'+pokemon[0]);
+                var li = document.getElementById('pokemon_'+pokemon[0]);
                 var img = "./img/"+ padZero(pokemon[0], 3)+".png";
-                td.innerHTML = "<span class='name_pokemon text-danger'>"+pokemon[1]+"</span>"+"<img src="+img+" class='image_pokemon'>";
+                li.innerHTML = "<img src="+img+" class='image_pokemon'>";
+                li.classList.add("found");
             }
         }
     }
@@ -263,9 +278,10 @@ function checkAnswer(answer){
     var eratta_result = eratta(answer);
     for(pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)){
         if(eratta_result == pokemon[1] && !answered_list[pokemon[0] - number_start + 1]){
-            var td = document.getElementById('pokemon_'+pokemon[0]);
+            var li = document.getElementById('pokemon_'+pokemon[0]);
             var img = "./img/"+ padZero(pokemon[0], 3)+".png";
-            td.innerHTML = "<span class='name_pokemon'>"+pokemon[1]+"</span>"+"<img src="+img+" class='image_pokemon'>";
+            li.innerHTML = "<img src="+img+" class='image_pokemon'>";
+            li.classList.add("found");
             document.form_answer.reset();
             answered_list[pokemon[0] - number_start + 1] = true;
             remaining_number--;
