@@ -204,7 +204,7 @@ document.getElementById("button_start").onclick = function() {
                 var li = document.getElementById('pokemon_'+pokemon[0]);
                 var img = "./img/"+ padZero(pokemon[0], 3)+".png";
                 li.innerHTML = "<img src="+img+" class='image_pokemon'>";
-                li.classList.add("found");
+                li.classList.add("found", "not_answered");
             }
         }
     }

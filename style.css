@@ -1,8 +1,3 @@
-* {
-    background-color: #ffffff;
-    position: relative;
-}
-
 body {
     background-image: url("./nc68656.png");
     background-color:rgba(255,255,255,0.8);
@@ -21,8 +16,16 @@ header .col{
 
 .navi{
     vertical-align: middle;
-    font-size: small;
 }
+
+.dropdown-wrapper {
+    width: 6em;
+  }
+  
+  .dropdown-wrapper > * {
+    width: inherit;
+    min-width: inherit;
+  }
 
 header, .note, #author, #author > a, h1, h1 > span, .container, .row{
     background-color: transparent;
@@ -30,8 +33,8 @@ header, .note, #author, #author > a, h1, h1 > span, .container, .row{
 
 #author{
     position: absolute;
-    top: 10%;
-    left: 85%;
+    top: 1%;
+    left: 5%;
 }
 
 .number_pokemons, #timer, .remaining_number{
@@ -84,12 +87,18 @@ th{
     left: 3%;
 }
 
+.bgcolor_white{
+    background-color: white;
+}
+
 .li_pokemon{
     width: 30px;
     height: 30px;
     text-align: center;
     background-image: url("unknown.png");
     background-size: cover;
+    background-color:rgba(255,255,255,0.5);
+    background-blend-mode:lighten;
 }
 
 .found{
@@ -98,4 +107,43 @@ th{
 
 .image_pokemon{
     height: 100%;
+}
+
+.not_answered{
+    opacity: 0.3;
+}
+
+.sp_only{
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .navi{
+        font-size: small;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .navi{
+        font-size: x-small;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .pc_only {
+        display: none;
+    }
+
+    .sp_only {
+        display: block;
+    }
+
+    .li_pokemon{
+        width: 25px;
+        height: 25px;
+    }
+
+    h1{
+        font-size: x-large;
+    }
 }
