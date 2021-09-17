@@ -13,6 +13,7 @@ function setRemainingNumber(remaining_number) {
 // ポケモンリストを動的に生成する関数
 function createPokemonList(number_pokemons, number_start) {
     var ul = document.getElementById('pokemon_list');
+    var fragment = document.createDocumentFragment();
     for (var p = 0; p < number_pokemons; p++) {
         var li = document.createElement('li');
         li.classList.add("li_wrapper");
@@ -21,8 +22,9 @@ function createPokemonList(number_pokemons, number_start) {
         div.id = "pokemon_" + (number_start + p);
         div.classList.add("li_pokemon", "xx-small", "m-1");
         li.appendChild(div);
-        ul.appendChild(li);
+        fragment.appendChild(li);
     }
+    ul.appendChild(fragment);
 }
 
 // 表を動的に生成する関数
