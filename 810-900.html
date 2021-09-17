@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ガラルポケモン言えるかな？ゲーム</title>
     <meta name="description" content="キミはガラルポケモン91匹言えるかな？第8世代ポケモン91匹を答えるタイムアタッククイズゲームにチャレンジしよう！">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -25,89 +25,105 @@
     </script>
 </head>
 
-<body class="ps-5 pe-5 pb-5">
+<body class="px-2 pb-2 px-sm-4 px-lg-5">
     <header>
-        <div class="container mb-3 border rounded">
+        <div class="container mb-3 border rounded pc_only bgcolor_white">
             <div class="row rounded">
-                <div class="col text-center">
+                <div class="col text-center p-0">
                     <a class="navi" href="./1-151.html">カントー</a>
                 </div>
-                <div class="col text-center">
+                <div class="col text-center p-0">
                     <a class="navi" href="./152-251.html">ジョウト</a>
                 </div>
-                <div class="col text-center">
+                <div class="col text-center p-0">
                     <a class="navi" href="./252-386.html">ホウエン</a>
                 </div>
-                <div class="col text-center">
+                <div class="col text-center p-0">
                     <a class="navi" href="./387-493.html">シンオウ</a>
                 </div>
-                <div class="col text-center">
+                <div class="col text-center p-0">
                     <a class="navi" href="./494-649.html">イッシュ</a>
                 </div>
-                <div class="col text-center">
+                <div class="col text-center p-0">
                     <a class="navi" href="./650-721.html">カロス</a>
                 </div>
-                <div class="col text-center">
+                <div class="col text-center p-0">
                     <a class="navi" href="./722-809.html">アローラ</a>
                 </div>
-                <div class="col text-center">
+                <div class="col text-center p-0">
                     <a class="navi" href="./810-900.html">ガラル</a>
                 </div>
-                <div class="col text-center">
+                <div class="col text-center p-0">
                     <a class="navi" href="./">全部</a>
                 </div>
             </div>
         </div>
-    </header>
-    <h1 class="mb-3 text-center rounded">
-        ガラルポケモン<span class="number_pokemons"></span>匹言えるかな？
-    </h1>
-    <p class="text-center note">※ヒスイポケモンを含みます</p>
-    <div id="author" class="xx-small text-center">
-        <a href="https://twitter.com/omygTSUX" target="blank">バグ報告はこちら<br>@omygTSUX</a>
-    </div>
-    <div class="container mx-auto mb-3 rounded">
-        <div class="row rounded">
-            <div class="col-md-3 col-6 border rounded text-center">
-                <p id="timer" class="h2">000:00:00</p>
-            </div>
-            <div class="col-md-3 col-6 border rounded text-center">
-                <p class="h2">残り<span class="remaining_number"></span>匹</p>
-            </div>
-            <div class="col-auto">
-                <form name="form_answer" id="form_answer" autocomplete="off">
-                    <div class="row">
-                        <div class="col-auto">
-                            <input type="text" id="input_answer" placeholder="ポケモン名" class="form-control-sm" disabled>
-                        </div>
-                        <div class="col-auto">
-                            <input type="submit" id="button_answer" value="回答" class="btn btn-primary btn-sm" disabled>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="col-auto">
-                <button id="button_start" class="btn btn-success  btn-sm stopped">開始</button>
-            </div>
-            <div class="col-auto rounded">
-                <a id="button_tweet" href="" rel="nofollow" role="button" class="btn btn-info btn-sm">結果Tweet</a>
+        <div class="dropdown sp_only">
+            <div class="dropdown-wrapper bgcolor_white me-0 ms-auto">
+                <button class="btn dropdown-toggle btn-sm border rounded" type="button" id="dropdownMenuButton"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    他の地方
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item navi" href="./1-151.html">カントー</a></li>
+                    <li><a class="dropdown-item navi" href="./152-251.html">ジョウト</a></li>
+                    <li><a class="dropdown-item navi" href="./252-386.html">ホウエン</a></li>
+                    <li><a class="dropdown-item navi" href="./387-493.html">シンオウ</a></li>
+                    <li><a class="dropdown-item navi" href="./494-649.html">イッシュ</a></li>
+                    <li><a class="dropdown-item navi" href="./650-721.html">カロス</a></li>
+                    <li><a class="dropdown-item navi" href="./722-809.html">アローラ</a></li>
+                    <li><a class="dropdown-item navi" href="./810-900.html">ガラル</a></li>
+                    <li><a class="dropdown-item navi" href="./">全部</a></li>
+                </ul>
             </div>
         </div>
-    </div>
-
-    <div class="table-sticky-wrap border border-2 border-secondary mx-auto">
-        <table class="table table-bordered xx-small">
-            <thead id="thead_pokedex_number">
-            </thead>
-            <tbody id="tbody_pokemons">
-            </tbody>
-        </table>
-    </div>
-
+    </header>
+    <main>
+        <h1 id="h1" class="mb-2 text-center h2">
+            ガラルポケモン<span id="number_pokemons">???</span>匹言えるかな？
+        </h1>
+        <p class="text-center note">※ヒスイポケモンを含みます</p>
+        <div class="container mb-2 rounded">
+            <div class="row rounded">
+                <div class="col-md-3 col-6 border rounded text-center bgcolor_white fit-content">
+                    <p id="timer" class="h4 mb-0">000:00:00</p>
+                </div>
+                <div class="col-md-3 col-6 border rounded text-center bgcolor_white fit-content">
+                    <p id="remaining_number" class="h4 mb-0">残り???匹</p>
+                </div>
+                <div class="col-auto">
+                    <form name="form_answer" id="form_answer" autocomplete="off">
+                        <div class="row">
+                            <div class="col-auto">
+                                <input type="text" id="input_answer" placeholder="ポケモン名"
+                                    class="form-control-sm bgcolor_white" disabled>
+                            </div>
+                            <div class="col-auto bgcolor_white">
+                                <input type="submit" id="button_answer" value="回答"
+                                    class="btn btn-primary btn-sm" disabled>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-auto">
+                    <button id="button_start" class="btn btn-success btn-sm stopped">開始</button>
+                </div>
+                <div class="col-auto rounded">
+                    <a id="button_tweet" href="" rel="nofollow" role="button" class="btn btn-info btn-sm">結果Tweet</a>
+                </div>
+            </div>
+        </div>
+        <ul id="pokemon_list" class="list-unstyled d-flex flex-wrap border p-0 bgcolor_white all_pokemon">
+        </ul>
+    </main>
+    <footer>
+        <div id="author" class="text-end xx-small">
+            <a href="https://twitter.com/omygTSUX" target="blank">バグ報告はこちら：@omygTSUX</a>
+        </div>
+    </footer>
     <script type="text/javascript">
         var number_start = 810;
         var number_pokemons = 91;
-        var number_rows = 13;
     </script>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
