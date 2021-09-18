@@ -127,7 +127,9 @@ document.getElementById("button_start").onclick = function () {
     var button = document.getElementById("button_start");
     // 開始する時
     if (button.classList.contains("stopped")) {
-        getJson();
+        if (typeof all_pokemon_list === 'undefined'){
+            getJson();
+        }
         window.start_time = new Date().getTime();
         startTimer();
         document.getElementById("input_answer").removeAttribute("disabled");
