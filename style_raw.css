@@ -1,0 +1,182 @@
+body {
+    background-image: url("./nc68656.png");
+    background-color:rgba(255,255,255,0.8);
+    background-blend-mode:lighten;
+}
+
+a, a:visited{
+    color: #000000;
+}
+
+header .col{
+    height: 2.5em;
+}
+
+.navi{
+    vertical-align: middle;
+}
+
+.dropdown-wrapper {
+    width: 6em;
+}
+  
+.dropdown-wrapper > * {
+    width: inherit;
+    min-width: inherit;
+}
+
+#h1, #timer, #remaining_number{
+    font-family: monospace, sans-serif;
+}
+
+#input_answer{
+    width: 7em;
+}
+
+#input_answer:focus::placeholder {
+    color: transparent;
+  }
+
+#button_tweet{
+    color: #ffffff;
+}
+
+.col-auto{
+    padding-right: 6px;
+}
+
+.xx-small{
+ font-size: xx-small;
+}
+
+.bgcolor_white{
+    background-color: white;
+}
+
+input[disabled]{
+    opacity: 1;
+}
+
+#pokemon_list{
+    position: relative;
+    max-height: 75vh;
+    overflow: scroll;
+}
+
+.li_wrapper {
+    position: relative;
+    width: calc(100%/20);
+}
+
+.li_wrapper:before {
+    content:"";
+    display: block;
+    padding-top: 100%;
+}
+
+.li_pokemon{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    vertical-align: middle;
+    background-image: url("unknown.png");
+    background-size: cover;
+    background-color:rgba(255,255,255,0.5);
+    background-blend-mode:lighten;
+}
+
+.li_pokemon > img{
+    display: none;
+}
+
+.found{
+    background-image: none;
+}
+
+.found > span{
+    display: none;
+}
+
+.found > img{
+    display: unset;
+}
+
+.image_pokemon{
+    width:auto;
+    height:auto;
+    max-width:100%;
+    max-height:100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    }
+
+.not_answered{
+    opacity: 0.3;
+}
+
+.sp_only{
+    display: none;
+}
+
+.fit-content{
+    height: fit-content;
+}
+
+@media screen and (max-width: 1024px) {
+    .li_wrapper{
+        width: calc(100% / 18);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .navi{
+        font-size: small;
+    }
+
+    .li_wrapper{
+        width: calc(100% / 15);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .navi{
+        font-size: x-small;
+    }
+
+    .li_wrapper{
+        width: calc(100% / 13);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .pc_only {
+        display: none;
+    }
+
+    .sp_only {
+        display: block;
+    }
+
+    .li_wrapper{
+        width: calc(100%/11);
+    }
+
+    #h1{
+        font-size: large;
+    }
+
+    #timer{
+        font-size: medium;
+    }
+
+    #remaining_number{
+        font-size: medium;
+    }
+}
