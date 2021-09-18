@@ -13,21 +13,25 @@ function setRemainingNumber(remaining_number) {
 // ポケモンリストを動的に生成する関数
 function createPokemonList(number_pokemons, number_start) {
     var ul = document.getElementById('pokemon_list');
-    var fragment = document.createDocumentFragment();
-    for (var p = 0; p < number_pokemons; p++) {
-        var li = document.createElement('li');
-        li.classList.add("li_wrapper");
-        var div = document.createElement('div');
-        div.textContent = padZero(number_start + p, 3);
-        // var img = "./img/" + padZero(number_start + p, 3) + ".png";
-        // div.innerHTML = "<span>" + padZero(number_start + p, 3) + "</span>" +
-        //     "<img src=" + img + " class='image_pokemon' loading='lazy'>";
-        div.id = "pokemon_" + (number_start + p);
-        div.classList.add("li_pokemon", "xx-small", "m-1");
-        li.appendChild(div);
-        fragment.appendChild(li);
+    var dom = "";
+    for(var p = 0; p < number_pokemons; p++){
+        var div = "<div id='pokemon_" + (number_start + p) + "' class='li_pokemon xx-small m-1'>" + padZero(number_start + p, 3) + "</div>";
+        var li = "<li class='li_wrapper'>" + div + "</li>"; 
+        dom += li;
     }
-    ul.appendChild(fragment);
+    ul.innerHTML = dom;
+    // var fragment = document.createDocumentFragment();
+    // for (var p = 0; p < number_pokemons; p++) {
+    //     var li = document.createElement('li');
+    //     li.classList.add("li_wrapper");
+    //     var div = document.createElement('div');
+    //     div.textContent = padZero(number_start + p, 3);
+    //     div.id = "pokemon_" + (number_start + p);
+    //     div.classList.add("li_pokemon", "xx-small", "m-1");
+    //     li.appendChild(div);
+    //     fragment.appendChild(li);
+    // }
+    // ul.appendChild(fragment);
 }
 
 // 全ポケモンリストを読み込む関数
