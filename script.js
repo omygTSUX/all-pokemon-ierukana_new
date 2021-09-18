@@ -187,9 +187,10 @@ document.getElementById("button_start").onclick = function () {
         setRemainingNumber(remaining_number);
         answered_list.fill(false);
 
-        for (pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)) {
-            var li = document.getElementById('pokemon_' + pokemon[0]);
-            li.innerHTML = padZero(pokemon[0], 3);
+        var li_pokemons = document.getElementsByClassName('li_pokemon');
+        for (li of li_pokemons){
+            var id = li.id.slice(8);
+            li.innerHTML = padZero(id, 3);
             li.classList.remove("found", "not_answered");
         }
     }
