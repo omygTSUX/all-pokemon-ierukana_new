@@ -57,6 +57,15 @@ function convertCSVtoArray(str) { // 読み込んだCSVデータが文字列と�
     }
 }
 
+function getJson() {
+    var req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
+    req.open("get", "all_pokemon.json", true); // アクセスするファイルを指定
+    req.send(null); // HTTPリクエストの発行
+    req.onload = function(){
+        window.all_pokemon_list = JSON.parse(req.responseText);
+    }
+}
+
 // 数字を0埋めする関数
 function padZero(v, digit) {
     var result = ("00000" + v).slice(-digit);
@@ -104,6 +113,7 @@ function stopTimer() {
 
 // HTML読み込み時に自動実行する関数
 window.addEventListener("DOMContentLoaded", function () {
+    getJson();
     // getCSV();
     window.answered_list = Array(number_pokemons + 1).fill(false)
     window.remaining_number = number_pokemons;
@@ -216,19 +226,30 @@ function checkAnswer(answer) {
     //     }
     // }
     var eratta_result = eratta(answer);
-    for (pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)) {
-        if (eratta_result == pokemon[1] && !answered_list[pokemon[0] - number_start + 1]) {
-            var li = document.getElementById('pokemon_' + pokemon[0]);
+    var pokemon = all_pokemon_list.find((v) => v.name === eratta_result);
+    if (pokemon != undefined && !answered_list[pokemon.number - number_start + 1]){
+        var li = document.getElementById('pokemon_' + pokemon.number);
             li.classList.add("found");
-            li.innerHTML = "<img src='./img/" + padZero(pokemon[0], 3) + ".png' class='image_pokemon' loading='lazy'>";
-            answered_list[pokemon[0] - number_start + 1] = true;
+            li.innerHTML = "<img src='./img/" + padZero(pokemon.number, 3) + ".png' class='image_pokemon'>";
+            answered_list[pokemon.number - number_start + 1] = true;
             remaining_number--;
             setRemainingNumber(remaining_number);
-            window.last_pokemon = pokemon[1];
+            window.last_pokemon = pokemon.name;
             document.form_answer.reset();
-            break;
-        }
     }
+    // for (pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)) {
+    //     if (eratta_result == pokemon[1] && !answered_list[pokemon[0] - number_start + 1]) {
+    //         var li = document.getElementById('pokemon_' + pokemon[0]);
+    //         li.classList.add("found");
+    //         li.innerHTML = "<img src='./img/" + padZero(pokemon[0], 3) + ".png' class='image_pokemon' loading='lazy'>";
+    //         answered_list[pokemon[0] - number_start + 1] = true;
+    //         remaining_number--;
+    //         setRemainingNumber(remaining_number);
+    //         window.last_pokemon = pokemon[1];
+    //         document.form_answer.reset();
+    //         break;
+    //     }
+    // }
 }
 
 // クリア判定をする関数
