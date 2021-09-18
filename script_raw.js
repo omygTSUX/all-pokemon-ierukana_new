@@ -104,7 +104,7 @@ function stopTimer() {
 
 // HTML読み込み時に自動実行する関数
 window.addEventListener("DOMContentLoaded", function () {
-    getCSV();
+    // getCSV();
     window.answered_list = Array(number_pokemons + 1).fill(false)
     window.remaining_number = number_pokemons;
     setNumberOfPokemons(number_pokemons);
