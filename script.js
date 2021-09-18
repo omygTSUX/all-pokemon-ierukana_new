@@ -202,10 +202,12 @@ document.getElementById("button_start").onclick = function () {
         button.innerHTML = "開始";
         button.classList.replace('btn-danger', 'btn-success');
         button.classList.add('stopped');
-        for (pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)) {
-            if (!answered_list[pokemon[0] - number_start + 1]) {
-                var li = document.getElementById('pokemon_' + pokemon[0]);
-                var img = "./img/" + padZero(pokemon[0], 3) + ".png";
+
+        var li_pokemons = document.getElementsByClassName('li_pokemon');
+        for (li of li_pokemons){
+            var id = li.id.slice(8);
+            if (!answered_list[id - number_start + 1]){
+                var img = "./img/" + padZero(id, 3) + ".png";
                 li.innerHTML = "<img src=" + img + " class='image_pokemon'>";
                 li.classList.add("found", "not_answered");
             }
