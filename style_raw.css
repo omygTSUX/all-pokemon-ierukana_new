@@ -29,6 +29,10 @@ header .col{
     font-family: monospace, sans-serif;
 }
 
+#favicon{
+    height: 1em;
+}
+
 #input_answer{
     width: 7em;
 }
