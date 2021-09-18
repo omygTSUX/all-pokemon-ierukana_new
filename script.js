@@ -196,6 +196,7 @@ document.getElementById("button_start").onclick = function () {
     }
     // 降参する時
     else {
+        var answered_list_local = answered_list;
         stopTimer();
         document.getElementById("input_answer").setAttribute("disabled", true);
         document.getElementById("button_answer").setAttribute("disabled", true);
@@ -206,7 +207,7 @@ document.getElementById("button_start").onclick = function () {
         var li_pokemons = document.getElementsByClassName('li_pokemon');
         for (li of li_pokemons){
             var id = li.id.slice(8);
-            if (!answered_list[id - number_start + 1]){
+            if (!answered_list_local[id - number_start + 1]){
                 var img = "./img/" + padZero(id, 3) + ".png";
                 li.innerHTML = "<img src=" + img + " class='image_pokemon'>";
                 li.classList.add("found", "not_answered");
