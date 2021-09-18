@@ -113,7 +113,7 @@ function stopTimer() {
 
 // HTML読み込み時に自動実行する関数
 window.addEventListener("DOMContentLoaded", function () {
-    getJson();
+    // getJson();
     // getCSV();
     window.answered_list = Array(number_pokemons + 1).fill(false)
     window.remaining_number = number_pokemons;
@@ -127,6 +127,7 @@ document.getElementById("button_start").onclick = function () {
     var button = document.getElementById("button_start");
     // 開始する時
     if (button.classList.contains("stopped")) {
+        getJson();
         window.start_time = new Date().getTime();
         startTimer();
         document.getElementById("input_answer").removeAttribute("disabled");
