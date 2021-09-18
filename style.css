@@ -25,13 +25,8 @@ header .col{
     min-width: inherit;
 }
 
-/* header, .note, #author, #author > a, h1, h1 > span, .container, .row{
-    background-color: transparent;
-} */
-
 #h1, #timer, #remaining_number{
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
+    font-family: monospace, sans-serif;
 }
 
 #input_answer{
