@@ -287,13 +287,11 @@ document.getElementById("button_tweet").onclick = function () {
         href = "https://twitter.com/share?text=" + time + "でポケモン" + number_answered + "/" + number_pokemons + "匹言えた！ - " + title + "&url=" + url + "&hashtags=ポケモン全部言えるかな";
     }
     window.open(encodeURI(decodeURI(href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1');
+    ga('send', 'event', 'button_tweet', 'click', 'button_tweet', '1');
     return false;
 }
 
-document.getElementById("button_tweet").onclick = function(){
-    ga('send', 'event', 'button_tweet', 'click', 'button_tweet', '1');
-}
-
+// GAのコンバージョントラッキング関数
 document.getElementById("author_link").onclick = function(){
     ga('send', 'event', 'author', 'click', 'author', '1');
 }
