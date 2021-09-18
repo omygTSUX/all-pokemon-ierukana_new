@@ -1,13 +1,13 @@
 // 全ポケモンの数を動的に表示する関数
 function setNumberOfPokemons(number_pokemons) {
     var element = document.getElementById('number_pokemons');
-    element.innerHTML = number_pokemons;
+    element.textContent = number_pokemons;
 }
 
 // 残りポケモンの数を動的に表示する関数
 function setRemainingNumber(remaining_number) {
     var element = document.getElementById('remaining_number');
-    element.innerHTML = "残り" + padZero(remaining_number, 3) + "匹";
+    element.textContent = "残り" + padZero(remaining_number, 3) + "匹";
 }
 
 // ポケモンリストを動的に生成する関数
@@ -18,7 +18,7 @@ function createPokemonList(number_pokemons, number_start) {
         var li = document.createElement('li');
         li.classList.add("li_wrapper");
         var div = document.createElement('div');
-        div.innerHTML = padZero(number_start + p, 3);
+        div.textContent = padZero(number_start + p, 3);
         div.id = "pokemon_" + (number_start + p);
         div.classList.add("li_pokemon", "xx-small", "m-1");
         li.appendChild(div);
@@ -147,7 +147,7 @@ function toJapaneseHms(hms) {
 function setTime() {
     var shown_time = new Date().getTime() - start_time;
     var timer = document.getElementById('timer');
-    timer.innerHTML = toHms(Math.floor(shown_time / 1000));
+    timer.textContent = toHms(Math.floor(shown_time / 1000));
 }
 
 // タイマーをスタートする関数
@@ -179,7 +179,7 @@ document.getElementById("button_start").onclick = function () {
         startTimer();
         document.getElementById("input_answer").removeAttribute("disabled");
         document.getElementById("button_answer").removeAttribute("disabled");
-        button.innerHTML = "降参";
+        button.textContent = "降参";
         button.classList.replace('btn-success', 'btn-danger');
         button.classList.remove("stopped");
 
@@ -190,7 +190,7 @@ document.getElementById("button_start").onclick = function () {
         var li_pokemons = document.getElementsByClassName('li_pokemon');
         for (li of li_pokemons){
             var id = li.id.slice(8);
-            li.innerHTML = padZero(id, 3);
+            li.textContent = padZero(id, 3);
             li.classList.remove("found", "not_answered");
         }
     }
@@ -199,7 +199,7 @@ document.getElementById("button_start").onclick = function () {
         stopTimer();
         document.getElementById("input_answer").setAttribute("disabled", true);
         document.getElementById("button_answer").setAttribute("disabled", true);
-        button.innerHTML = "開始";
+        button.textContent = "開始";
         button.classList.replace('btn-danger', 'btn-success');
         button.classList.add('stopped');
 
@@ -297,7 +297,7 @@ function checkAnswer(answer) {
         var button = document.getElementById("button_start");
         document.getElementById("input_answer").setAttribute("disabled", true);
         document.getElementById("button_answer").setAttribute("disabled", true);
-        button.innerHTML = "開始";
+        button.textContent = "開始";
         button.classList.replace('btn-danger', 'btn-success');
         button.classList.add('stopped');
         window.alert("クリアおめでとう！Tweetボタンでぜひ結果を共有してください！");
@@ -306,7 +306,7 @@ function checkAnswer(answer) {
 
 // ツイートボタンの文言を設定する関数
 document.getElementById("button_tweet").onclick = function () {
-    var time = toJapaneseHms(document.getElementById("timer").innerHTML);
+    var time = toJapaneseHms(document.getElementById("timer").textContent);
     var number_answered = number_pokemons - remaining_number;
     var title = document.title;
     var url = location.href;
