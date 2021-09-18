@@ -19,8 +19,8 @@ function createPokemonList(number_pokemons, number_start) {
         li.classList.add("li_wrapper");
         var div = document.createElement('div');
         var img = "./img/" + padZero(number_start + p, 3) + ".png";
-        div.innerHTML = "<span>" + padZero(number_start + p, 3) + "</span>" + 
-        "<img src=" + img + " class='image_pokemon' loading='lazy'>";
+        div.innerHTML = "<span>" + padZero(number_start + p, 3) + "</span>" +
+            "<img src=" + img + " class='image_pokemon' loading='lazy'>";
         div.id = "pokemon_" + (number_start + p);
         div.classList.add("li_pokemon", "xx-small", "m-1");
         li.appendChild(div);
@@ -97,15 +97,15 @@ function stopTimer() {
     clearInterval(timer_count);
 }
 
-// ページロード時に自動実行する関数
-window.onload = function () {
+// HTML読み込み時に自動実行する関数
+window.addEventListener("DOMContentLoaded", function () {
     getCSV();
     window.answered_list = Array(number_pokemons + 1).fill(false)
     window.remaining_number = number_pokemons;
     setNumberOfPokemons(number_pokemons);
     setRemainingNumber(number_pokemons);
     createPokemonList(number_pokemons, number_start);
-}
+}, false);
 
 // 開始ボタンを押した時に実行される関数
 document.getElementById("button_start").onclick = function () {
@@ -125,7 +125,7 @@ document.getElementById("button_start").onclick = function () {
         answered_list.fill(false);
 
         var li_pokemons = document.getElementsByClassName('li_pokemon');
-        for (li of li_pokemons){
+        for (li of li_pokemons) {
             li.classList.remove("found", "not_answered");
         }
     }
@@ -140,9 +140,9 @@ document.getElementById("button_start").onclick = function () {
         button.classList.add('stopped');
 
         var li_pokemons = document.getElementsByClassName('li_pokemon');
-        for (li of li_pokemons){
+        for (li of li_pokemons) {
             var id = li.id.slice(8);
-            if (!answered_list_local[id - number_start + 1]){
+            if (!answered_list_local[id - number_start + 1]) {
                 li.classList.add("found", "not_answered");
             }
         }
@@ -223,7 +223,7 @@ function checkAnswer(answer) {
 }
 
 // クリア判定をする関数
-document.form_answer.onreset = function(){
+document.form_answer.onreset = function () {
     if (remaining_number == 0) {
         stopTimer();
         var button = document.getElementById("button_start");
@@ -236,7 +236,7 @@ document.form_answer.onreset = function(){
     }
 }
 
-function alertClearMessage(){
+function alertClearMessage() {
     window.alert("クリアおめでとう！結果Tweetボタンでぜひ共有してください！");
     clearInterval(clear_message);
 }
