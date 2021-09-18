@@ -237,13 +237,12 @@ document.form_answer.onreset = function () {
         button.textContent = "開始";
         button.classList.replace('btn-danger', 'btn-success');
         button.classList.add('stopped');
-        window.clear_message = setInterval("alertClearMessage()", 500);
+        setTimeout("alertClearMessage()", 500);
     }
 }
 
 function alertClearMessage() {
     window.alert("クリアおめでとう！結果Tweetボタンでぜひ共有してください！");
-    clearInterval(clear_message);
 }
 
 // ツイートボタンの文言を設定する関数
