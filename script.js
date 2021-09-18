@@ -18,9 +18,10 @@ function createPokemonList(number_pokemons, number_start) {
         var li = document.createElement('li');
         li.classList.add("li_wrapper");
         var div = document.createElement('div');
-        var img = "./img/" + padZero(number_start + p, 3) + ".png";
-        div.innerHTML = "<span>" + padZero(number_start + p, 3) + "</span>" +
-            "<img src=" + img + " class='image_pokemon' loading='lazy'>";
+        div.textContent = padZero(number_start + p, 3);
+        // var img = "./img/" + padZero(number_start + p, 3) + ".png";
+        // div.innerHTML = "<span>" + padZero(number_start + p, 3) + "</span>" +
+        //     "<img src=" + img + " class='image_pokemon' loading='lazy'>";
         div.id = "pokemon_" + (number_start + p);
         div.classList.add("li_pokemon", "xx-small", "m-1");
         li.appendChild(div);
@@ -127,6 +128,8 @@ document.getElementById("button_start").onclick = function () {
         var li_pokemons = document.getElementsByClassName('li_pokemon');
         for (li of li_pokemons) {
             li.classList.remove("found", "not_answered");
+            var id = li.id.slice(8);
+            li.textContent = padZero(id, 3);
         }
     }
     // 降参する時
@@ -144,6 +147,7 @@ document.getElementById("button_start").onclick = function () {
             var id = li.id.slice(8);
             if (!answered_list_local[id - number_start + 1]) {
                 li.classList.add("found", "not_answered");
+                li.innerHTML = "<img src='./img/" + padZero(id, 3) + ".png' class='image_pokemon' loading='lazy'>";
             }
         }
     }
@@ -212,6 +216,7 @@ function checkAnswer(answer) {
         if (eratta_result == pokemon[1] && !answered_list[pokemon[0] - number_start + 1]) {
             var li = document.getElementById('pokemon_' + pokemon[0]);
             li.classList.add("found");
+            li.innerHTML = "<img src='./img/" + padZero(pokemon[0], 3) + ".png' class='image_pokemon' loading='lazy'>";
             answered_list[pokemon[0] - number_start + 1] = true;
             remaining_number--;
             setRemainingNumber(remaining_number);
