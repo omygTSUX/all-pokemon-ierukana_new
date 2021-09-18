@@ -29,71 +29,6 @@ function createPokemonList(number_pokemons, number_start) {
     ul.appendChild(fragment);
 }
 
-// 表を動的に生成する関数
-function createTable(number_pokemons, number_rows, number_start) {
-    // ヘッダー行を追加する
-    var thead = document.getElementById('thead_pokedex_number');
-    var tr = document.createElement('tr');
-    tr.classList.add("table-secondary");
-    for (var c = 0; c < Math.ceil(number_pokemons / number_rows) - 1; c++) {
-        var th = document.createElement('th');
-        th.innerHTML = padZero((c * number_rows + number_start), 3) + "〜" + padZero((c + 1) * number_rows + number_start - 1, 3);
-        th.classList.add("text-center");
-        // th.setAttribute("colspan", 2);
-        tr.appendChild(th);
-    }
-    // 端数の行を追加する
-    var th = document.createElement('th');
-    th.innerHTML = padZero(c * number_rows + number_start, 3) + "〜" + padZero(number_start + number_pokemons - 1, 3);
-    th.classList.add("text-center");
-    th.setAttribute("colspan", 2);
-    tr.appendChild(th);
-    thead.appendChild(tr);
-
-    // ボディを追加する
-    var tbody = document.getElementById('tbody_pokemons');
-    for (var r = 0; r < number_rows; r++) {
-        var tr = document.createElement('tr');
-        for (var c = 0; c < Math.ceil(number_pokemons / number_rows); c++) {
-            var td = document.createElement('td');
-            td.id = "pokedex_" + (c * number_rows + r + number_start);
-            td.innerHTML = padZero(c * number_rows + r + number_start, 3);
-            tr.appendChild(td);
-
-            var td = document.createElement('td');
-            td.id = "pokemon_" + (c * number_rows + r + number_start);
-            td.classList.add("td_name_pokemon");
-            tr.appendChild(td);
-        }
-        tbody.appendChild(tr);
-    }
-
-    // 末尾の空白行を追加する
-    var tr = document.createElement('tr');
-    tr.classList.add("border-0");
-    for (var c = 0; c < Math.ceil(number_pokemons / number_rows); c++) {
-        var td = document.createElement('td');
-        td.classList.add("border-0");
-        tr.appendChild(td);
-
-        var td = document.createElement('td');
-        td.classList.add("border-0");
-        td.innerHTML = "";
-        tr.appendChild(td);
-    }
-    tbody.appendChild(tr);
-
-    // 端数のセルをグレーアウトする
-    for (var p = number_pokemons + number_start; p < Math.ceil(number_pokemons / number_rows) * number_rows + number_start; p++) {
-        var td = document.getElementById('pokedex_' + p);
-        td.innerHTML = "";
-        td.classList.add("table-secondary");
-
-        var td = document.getElementById('pokemon_' + p);
-        td.classList.add("table-secondary");
-    }
-}
-
 // 全ポケモンリストを読み込む関数
 function getCSV() {
     var req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
@@ -265,19 +200,17 @@ function eratta(answer) {
 
 // 正解判定をする関数
 function checkAnswer(answer) {
-    if(answer=="クリア"){
-        for(pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)){
-                remaining_number--;
-                setRemainingNumber(remaining_number);
-                document.form_answer.reset();
-        }
-    }
+    // if(answer=="クリア"){
+    //     for(pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)){
+    //             remaining_number--;
+    //             setRemainingNumber(remaining_number);
+    //             document.form_answer.reset();
+    //     }
+    // }
     var eratta_result = eratta(answer);
     for (pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)) {
         if (eratta_result == pokemon[1] && !answered_list[pokemon[0] - number_start + 1]) {
             var li = document.getElementById('pokemon_' + pokemon[0]);
-            // var img = "./img/" + padZero(pokemon[0], 3) + ".png";
-            // li.innerHTML = "<img src=" + img + " class='image_pokemon'>";
             li.classList.add("found");
             answered_list[pokemon[0] - number_start + 1] = true;
             remaining_number--;
