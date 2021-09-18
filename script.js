@@ -20,7 +20,7 @@ function createPokemonList(number_pokemons, number_start) {
         var div = document.createElement('div');
         var img = "./img/" + padZero(number_start + p, 3) + ".png";
         div.innerHTML = "<span>" + padZero(number_start + p, 3) + "</span>" + 
-        "<img src=" + img + " class='image_pokemon'>";
+        "<img src=" + img + " class='image_pokemon' loading='lazy'>";
         div.id = "pokemon_" + (number_start + p);
         div.classList.add("li_pokemon", "xx-small", "m-1");
         li.appendChild(div);
