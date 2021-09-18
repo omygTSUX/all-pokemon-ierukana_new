@@ -18,7 +18,9 @@ function createPokemonList(number_pokemons, number_start) {
         var li = document.createElement('li');
         li.classList.add("li_wrapper");
         var div = document.createElement('div');
-        div.textContent = padZero(number_start + p, 3);
+        var img = "./img/" + padZero(number_start + p, 3) + ".png";
+        div.innerHTML = "<span>" + padZero(number_start + p, 3) + "</span>" + 
+        "<img src=" + img + " class='image_pokemon'>";
         div.id = "pokemon_" + (number_start + p);
         div.classList.add("li_pokemon", "xx-small", "m-1");
         li.appendChild(div);
@@ -189,8 +191,6 @@ document.getElementById("button_start").onclick = function () {
 
         var li_pokemons = document.getElementsByClassName('li_pokemon');
         for (li of li_pokemons){
-            var id = li.id.slice(8);
-            li.textContent = padZero(id, 3);
             li.classList.remove("found", "not_answered");
         }
     }
@@ -208,8 +208,6 @@ document.getElementById("button_start").onclick = function () {
         for (li of li_pokemons){
             var id = li.id.slice(8);
             if (!answered_list_local[id - number_start + 1]){
-                var img = "./img/" + padZero(id, 3) + ".png";
-                li.innerHTML = "<img src=" + img + " class='image_pokemon'>";
                 li.classList.add("found", "not_answered");
             }
         }
@@ -267,32 +265,32 @@ function eratta(answer) {
 
 // 正解判定をする関数
 function checkAnswer(answer) {
-    // if(answer=="クリア"){
-    //     for(pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)){
-    //             var td = document.getElementById('pokemon_'+pokemon[0]);
-    //             var img = "./img/"+ padZero(pokemon[0], 3)+".png";
-    //             td.innerHTML = "<span class='name_pokemon'>"+pokemon[1]+"</span>"+"<img src="+img+" class='image_pokemon'>";
-    //             document.form_answer.reset();
-    //             answered_list[pokemon[0] - number_start + 1] = true;
-    //             remaining_number--;
-    //             setRemainingNumber(remaining_number);
-    //     }
-    // }
+    if(answer=="クリア"){
+        for(pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)){
+                remaining_number--;
+                setRemainingNumber(remaining_number);
+                document.form_answer.reset();
+        }
+    }
     var eratta_result = eratta(answer);
     for (pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)) {
         if (eratta_result == pokemon[1] && !answered_list[pokemon[0] - number_start + 1]) {
             var li = document.getElementById('pokemon_' + pokemon[0]);
-            var img = "./img/" + padZero(pokemon[0], 3) + ".png";
-            li.innerHTML = "<img src=" + img + " class='image_pokemon'>";
+            // var img = "./img/" + padZero(pokemon[0], 3) + ".png";
+            // li.innerHTML = "<img src=" + img + " class='image_pokemon'>";
             li.classList.add("found");
-            document.form_answer.reset();
             answered_list[pokemon[0] - number_start + 1] = true;
             remaining_number--;
             setRemainingNumber(remaining_number);
             window.last_pokemon = pokemon[1];
+            document.form_answer.reset();
             break;
         }
     }
+}
+
+// クリア判定をする関数
+document.form_answer.onreset = function(){
     if (remaining_number == 0) {
         stopTimer();
         var button = document.getElementById("button_start");
@@ -301,8 +299,13 @@ function checkAnswer(answer) {
         button.textContent = "開始";
         button.classList.replace('btn-danger', 'btn-success');
         button.classList.add('stopped');
-        window.alert("クリアおめでとう！Tweetボタンでぜひ結果を共有してください！");
+        window.clear_message = setInterval("alertClearMessage()", 500);
     }
+}
+
+function alertClearMessage(){
+    window.alert("クリアおめでとう！結果Tweetボタンでぜひ共有してください！");
+    clearInterval(clear_message);
 }
 
 // ツイートボタンの文言を設定する関数

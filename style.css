@@ -93,8 +93,20 @@ input[disabled]{
     background-blend-mode:lighten;
 }
 
+.li_pokemon > img{
+    display: none;
+}
+
 .found{
     background-image: none;
+}
+
+.found > span{
+    display: none;
+}
+
+.found > img{
+    display: unset;
 }
 
 .image_pokemon{
