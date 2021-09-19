@@ -112,16 +112,16 @@
                     <button id="button_start" class="btn btn-success btn-sm stopped">開始</button>
                 </div>
                 <div class="col-auto rounded">
-                    <a id="button_tweet" href="" rel="nofollow" role="button" class="btn btn-info btn-sm">結果Tweet</a>
+                    <a id="button_tweet" href="" rel="nofollow" role="button" class="btn btn-info btn-sm" onclick="ga('send', 'event', 'button_tweet', 'click', 'button_tweet', '1');">結果Tweet</a>
                 </div>
             </div>
         </div>
-        <ul id="pokemon_list" class="list-unstyled d-flex flex-wrap border border-secondary p-0 bgcolor_white">
+        <ul id="pokemon_list" class="list-unstyled d-flex flex-wrap border border-secondary p-0 bgcolor_white all_pokemon">
         </ul>
     </main>
     <footer>
         <div id="author" class="text-end xx-small">
-            <a id="author_link" href="https://twitter.com/omygTSUX" target="blank">バグ報告はこちら：@omygTSUX</a>
+            <a href="https://twitter.com/omygTSUX" target="blank" onclick="ga('send', 'event', 'author', 'click', 'author', '1');">バグ報告はこちら：@omygTSUX</a>
         </div>
     </footer>
 </body>
