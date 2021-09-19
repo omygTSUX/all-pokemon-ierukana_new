@@ -179,4 +179,9 @@ input[disabled]{
     #remaining_number{
         font-size: medium;
     }
+
+    .col-auto{
+        padding-left: 6px;
+        padding-right: 4px;
+    }
 }
