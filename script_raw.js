@@ -229,7 +229,7 @@ function checkAnswer(answer) {
     //     }
     // }
     var eratta_result = eratta(answer);
-    var pokemon = all_pokemon_list.find((v) => v.name === eratta_result);
+    var pokemon = all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1).find((v) => v.name === eratta_result);
     if (pokemon != undefined && !answered_list[pokemon.number - number_start + 1]){
         var li = document.getElementById('pokemon_' + pokemon.number);
             li.classList.add("found");
