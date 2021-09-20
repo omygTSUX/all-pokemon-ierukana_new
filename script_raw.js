@@ -1,8 +1,8 @@
 // 全ポケモンの数を動的に表示する関数
-function setNumberOfPokemons(number_pokemons) {
-    var element = document.getElementById('number_pokemons');
-    element.textContent = number_pokemons;
-}
+// function setNumberOfPokemons(number_pokemons) {
+//     var element = document.getElementById('number_pokemons');
+//     element.textContent = number_pokemons;
+// }
 
 // 残りポケモンの数を動的に表示する関数
 function setRemainingNumber(remaining_number) {
@@ -117,7 +117,7 @@ window.addEventListener("DOMContentLoaded", function () {
     // getCSV();
     window.answered_list = Array(number_pokemons + 1).fill(false)
     window.remaining_number = number_pokemons;
-    setNumberOfPokemons(number_pokemons);
+    // setNumberOfPokemons(number_pokemons);
     setRemainingNumber(number_pokemons);
     createPokemonList(number_pokemons, number_start);
 }, false);
