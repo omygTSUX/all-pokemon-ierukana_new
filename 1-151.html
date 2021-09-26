@@ -116,7 +116,7 @@
                     <button id="button_start" class="btn btn-success btn-sm stopped">開始</button>
                 </div>
                 <div class="col-auto rounded">
-                    <a id="button_tweet" href="" rel="nofollow" role="button" class="btn btn-info btn-sm" onClick="ga('send', 'event', 'button_tweet', 'click', 'button_tweet', 1);">結果Tweet</a>
+                    <a id="button_tweet" href="" rel="nofollow" role="button" class="btn btn-info btn-sm" onClick="gtag('event', 'click', {'event_category': 'button_tweet', 'event_label': 'button_tweet'});">結果Tweet</a>
                 </div>
             </div>
         </div>
@@ -125,7 +125,7 @@
     </main>
     <footer>
         <div id="author" class="text-end xx-small">
-            <a href="https://twitter.com/omygTSUX" target="blank" onClick="ga('send', 'event', 'author', 'click', 'author', 1);">バグ報告はこちら：@omygTSUX</a>
+            <a href="https://twitter.com/omygTSUX" target="blank" onClick="gtag('event', 'click', {'event_category': 'author', 'event_label': 'author'});">バグ報告はこちら：@omygTSUX</a>
         </div>
     </footer>
 </body>
