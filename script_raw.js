@@ -177,7 +177,7 @@ document.getElementById("button_confirm").onclick = function () {
         }
     }
 
-	setTimeout("highlight_button()", 500);
+	setTimeout("highlight_button()", 1000);
 
     return false;
 }
