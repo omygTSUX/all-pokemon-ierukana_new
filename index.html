@@ -87,6 +87,23 @@
         </div>
     </header>
     <main>
+        <div class="modal" id="confirm_modal" tabindex="-1" aria-labelledby="confirm_modal_label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>勝負を　あきらめて<br>降参しますか？</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">いいえ</button>
+                        <button type="button" id="button_confirm" class="btn btn-primary btn-sm"
+                            data-bs-dismiss="modal">はい</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <h1 id="h1" class="mb-2 text-center h2">
             全ポケモン901匹言えるかな？
         </h1>
@@ -102,12 +119,12 @@
                     <form name="form_answer" id="form_answer" autocomplete="off">
                         <div class="row">
                             <div class="col-auto">
-                                <input type="text" id="input_answer" placeholder="ポケモン名"
-                                    class="form-control-sm" disabled>
+                                <input type="text" id="input_answer" placeholder="ポケモン名" class="form-control-sm"
+                                    disabled>
                             </div>
                             <div class="col-auto">
-                                <input type="submit" id="button_answer" value="回答"
-                                    class="btn btn-primary btn-sm" disabled>
+                                <input type="submit" id="button_answer" value="回答" class="btn btn-primary btn-sm"
+                                    disabled>
                             </div>
                         </div>
                     </form>
@@ -116,16 +133,19 @@
                     <button id="button_start" class="btn btn-success btn-sm stopped">開始</button>
                 </div>
                 <div class="col-auto rounded">
-                    <a id="button_tweet" href="" rel="nofollow" role="button" class="btn btn-info btn-sm" onClick="gtag('event', 'click', {'event_category': 'button_tweet', 'event_label': 'button_tweet'});">結果Tweet</a>
+                    <a id="button_tweet" href="" rel="nofollow" role="button" class="btn btn-info btn-sm"
+                        onClick="gtag('event', 'click', {'event_category': 'button_tweet', 'event_label': 'button_tweet'});">結果Tweet</a>
                 </div>
             </div>
         </div>
-        <ul id="pokemon_list" class="list-unstyled d-flex flex-wrap border border-secondary p-0 bgcolor_white all_pokemon">
+        <ul id="pokemon_list"
+            class="list-unstyled d-flex flex-wrap border border-secondary p-0 bgcolor_white all_pokemon">
         </ul>
     </main>
     <footer>
         <div id="author" class="text-end xx-small">
-            <a href="https://twitter.com/omygTSUX" target="blank" onClick="gtag('event', 'click', {'event_category': 'author', 'event_label': 'author'});">バグ報告はこちら：@omygTSUX</a>
+            <a href="https://twitter.com/omygTSUX" target="blank"
+                onClick="gtag('event', 'click', {'event_category': 'author', 'event_label': 'author'});">バグ報告はこちら：@omygTSUX</a>
         </div>
     </footer>
 </body>

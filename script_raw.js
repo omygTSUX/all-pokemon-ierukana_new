@@ -137,6 +137,8 @@ document.getElementById("button_start").onclick = function () {
         button.textContent = "降参";
         button.classList.replace('btn-success', 'btn-danger');
         button.classList.remove("stopped");
+        button.setAttribute("data-bs-toggle", "modal");
+        button.setAttribute("data-bs-target", "#confirm_modal");
 
         remaining_number = number_pokemons;
         setRemainingNumber(remaining_number);
@@ -149,23 +151,29 @@ document.getElementById("button_start").onclick = function () {
             li.textContent = padZero(id, 3);
         }
     }
-    // 降参する時
-    else {
-        var answered_list_local = answered_list;
-        stopTimer();
-        document.getElementById("input_answer").setAttribute("disabled", true);
-        document.getElementById("button_answer").setAttribute("disabled", true);
-        button.textContent = "開始";
-        button.classList.replace('btn-danger', 'btn-success');
-        button.classList.add('stopped');
 
-        var li_pokemons = document.getElementsByClassName('li_pokemon');
-        for (li of li_pokemons) {
-            var id = li.id.slice(8);
-            if (!answered_list_local[id - number_start + 1]) {
-                li.classList.add("found", "not_answered");
-                li.innerHTML = "<img src='./img/" + padZero(id, 3) + ".png' class='image_pokemon' loading='lazy'>";
-            }
+    return false;
+}
+
+//降参確認ボタンを押した時に実行される関数
+document.getElementById("button_confirm").onclick = function () {
+    var button = document.getElementById("button_start");
+    var answered_list_local = answered_list;
+    stopTimer();
+    document.getElementById("input_answer").setAttribute("disabled", true);
+    document.getElementById("button_answer").setAttribute("disabled", true);
+    button.textContent = "開始";
+    button.classList.replace('btn-danger', 'btn-success');
+    button.classList.add('stopped');
+    button.removeAttribute("data-bs-toggle");
+    button.removeAttribute("data-bs-target");
+
+    var li_pokemons = document.getElementsByClassName('li_pokemon');
+    for (li of li_pokemons) {
+        var id = li.id.slice(8);
+        if (!answered_list_local[id - number_start + 1]) {
+            li.classList.add("found", "not_answered");
+            li.innerHTML = "<img src='./img/" + padZero(id, 3) + ".png' class='image_pokemon' loading='lazy'>";
         }
     }
 

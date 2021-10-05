@@ -87,6 +87,23 @@
         </div>
     </header>
     <main>
+        <div class="modal" id="confirm_modal" tabindex="-1" aria-labelledby="confirm_modal_label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>勝負を　あきらめて<br>降参しますか？</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">いいえ</button>
+                        <button type="button" id="button_confirm" class="btn btn-primary btn-sm"
+                            data-bs-dismiss="modal">はい</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <h1 id="h1" class="mb-2 text-center h2">
             カントーポケモン151匹言えるかな？
         </h1>
