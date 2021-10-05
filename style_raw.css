@@ -39,6 +39,13 @@ header .col{
 
 #button_tweet{
     color: #ffffff;
+    box-shadow: none;
+    transition: box-shadow 2s; 
+}
+
+#button_tweet.highlight {
+	box-shadow: 0px 0px 5px 7px #81e7fc; 
+	transition-duration: 0s;
 }
 
 .col-auto{

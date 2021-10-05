@@ -177,7 +177,19 @@ document.getElementById("button_confirm").onclick = function () {
         }
     }
 
+	setTimeout("highlight_button()", 500);
+
     return false;
+}
+
+// ツイートボタンを強調する関数
+function highlight_button(){
+    var button_tweet = document.getElementById("button_tweet");
+	button_tweet.classList.add('highlight');
+
+	setTimeout(function() {
+		button_tweet.classList.remove('highlight');
+	}, 100);
 }
 
 // 回答ボタンを押した時に実行される関数
