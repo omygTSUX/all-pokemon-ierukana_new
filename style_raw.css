@@ -40,7 +40,7 @@ header .col{
 #button_tweet{
     color: #ffffff;
     box-shadow: none;
-    transition: box-shadow 3s; 
+    transition: box-shadow 4s; 
 }
 
 #button_tweet.highlight {

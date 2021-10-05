@@ -189,7 +189,7 @@ function highlight_button(){
 
 	setTimeout(function() {
 		button_tweet.classList.remove('highlight');
-	}, 100);
+	}, 5000);
 }
 
 // 回答ボタンを押した時に実行される関数
