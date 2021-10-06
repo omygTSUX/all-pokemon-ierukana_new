@@ -177,7 +177,7 @@ document.getElementById("button_confirm").onclick = function () {
         }
     }
 
-	setTimeout("highlight_button()", 1000);
+	setTimeout("highlight_button()", 0);
 
     return false;
 }
@@ -189,7 +189,7 @@ function highlight_button(){
 
 	setTimeout(function() {
 		button_tweet.classList.remove('highlight');
-	}, 5000);
+	}, 10000);
 }
 
 // 回答ボタンを押した時に実行される関数
