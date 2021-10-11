@@ -48,6 +48,22 @@ header .col{
 	transition-duration: 0s;
 }
 
+.initial {
+    animation:1.5s ease-in-out infinite running expansion;
+}
+
+@keyframes expansion{
+    0%{
+        box-shadow: none;
+    }
+    50%{
+        box-shadow: 0px 0px 5px 7px #c7f0dd; 
+    }
+    100%{
+        box-shadow: none;
+    }
+  }
+
 .col-auto{
     padding-right: 6px;
 }

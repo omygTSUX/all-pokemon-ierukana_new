@@ -137,6 +137,7 @@ document.getElementById("button_start").onclick = function () {
         button.textContent = "降参";
         button.classList.replace('btn-success', 'btn-danger');
         button.classList.remove("stopped");
+        button.classList.remove("initial");
         button.setAttribute("data-bs-toggle", "modal");
         button.setAttribute("data-bs-target", "#confirm_modal");
 
