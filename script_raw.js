@@ -132,7 +132,9 @@ document.getElementById("button_start").onclick = function () {
         }
         window.start_time = new Date().getTime();
         startTimer();
-        document.getElementById("input_answer").removeAttribute("disabled");
+        var input_answer = document.getElementById("input_answer");
+        input_answer.removeAttribute("disabled");
+        input_answer.setAttribute("placeholder", "ポケモン名");
         document.getElementById("button_answer").removeAttribute("disabled");
         button.textContent = "降参";
         button.classList.replace('btn-success', 'btn-danger');
@@ -161,6 +163,9 @@ document.getElementById("button_confirm").onclick = function () {
     var button = document.getElementById("button_start");
     var answered_list_local = answered_list;
     stopTimer();
+    var input_answer = document.getElementById("input_answer");
+    input_answer.setAttribute("disabled", true);
+    input_answer.setAttribute("placeholder", "開始してね");
     document.getElementById("input_answer").setAttribute("disabled", true);
     document.getElementById("button_answer").setAttribute("disabled", true);
     button.textContent = "開始";
