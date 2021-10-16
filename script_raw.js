@@ -120,6 +120,7 @@ window.addEventListener("DOMContentLoaded", function () {
     // setNumberOfPokemons(number_pokemons);
     setRemainingNumber(number_pokemons);
     createPokemonList(number_pokemons, number_start);
+    window.audio = new Audio('nc162468.wav');
 }, false);
 
 // 開始ボタンを押した時に実行される関数
@@ -252,7 +253,7 @@ function checkAnswer(answer) {
     var eratta_result = eratta(answer);
     var pokemon = all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1).find((v) => v.name === eratta_result);
     if (pokemon != undefined && !answered_list[pokemon.number - number_start + 1]){
-        var audio = document.getElementById("audio");
+        // var audio = document.getElementById("audio");
         audio.play();
         var li = document.getElementById('pokemon_' + pokemon.number);
             li.classList.add("found");
