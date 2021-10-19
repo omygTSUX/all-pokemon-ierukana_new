@@ -72,6 +72,10 @@ header .col{
  font-size: xx-small;
 }
 
+.note {
+    transform: scale(0.8);
+}
+
 .bgcolor_white{
     background-color: white;
 }
@@ -82,7 +86,7 @@ input[disabled]{
 
 #pokemon_list{
     position: relative;
-    max-height: 75vh;
+    max-height: 70vh;
     overflow: scroll;
 }
 
