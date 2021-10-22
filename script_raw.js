@@ -143,6 +143,9 @@ document.getElementById("button_start").onclick = function () {
         button.setAttribute("data-bs-toggle", "modal");
         button.setAttribute("data-bs-target", "#confirm_modal");
 
+        var button_tweet = document.getElementById("button_tweet");
+        button_tweet.classList.remove('highlight');
+
         remaining_number = number_pokemons;
         setRemainingNumber(remaining_number);
         answered_list.fill(false);
@@ -174,6 +177,9 @@ document.getElementById("button_confirm").onclick = function () {
     button.removeAttribute("data-bs-toggle");
     button.removeAttribute("data-bs-target");
 
+    var button_tweet = document.getElementById("button_tweet");
+	button_tweet.classList.add('highlight');
+
     var li_pokemons = document.getElementsByClassName('li_pokemon');
     for (li of li_pokemons) {
         var id = li.id.slice(8);
@@ -183,20 +189,18 @@ document.getElementById("button_confirm").onclick = function () {
         }
     }
 
-	setTimeout("highlight_button()", 0);
-
     return false;
 }
 
 // ツイートボタンを強調する関数
-function highlight_button(){
-    var button_tweet = document.getElementById("button_tweet");
-	button_tweet.classList.add('highlight');
+// function highlight_button(){
+//     var button_tweet = document.getElementById("button_tweet");
+// 	button_tweet.classList.add('highlight');
 
-	setTimeout(function() {
-		button_tweet.classList.remove('highlight');
-	}, 10000);
-}
+// 	setTimeout(function() {
+// 		button_tweet.classList.remove('highlight');
+// 	}, 10000);
+// }
 
 // 回答ボタンを押した時に実行される関数
 document.getElementById("form_answer").onsubmit = function () {
@@ -292,6 +296,8 @@ document.form_answer.onreset = function () {
         button.textContent = "開始";
         button.classList.replace('btn-danger', 'btn-success');
         button.classList.add('stopped');
+        var button_tweet = document.getElementById("button_tweet");
+        button_tweet.classList.add('highlight');
         setTimeout("alertClearMessage()", 500);
     }
 }

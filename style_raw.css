@@ -40,19 +40,29 @@ header .col{
 #button_tweet{
     color: #ffffff;
     box-shadow: none;
-    transition: box-shadow 4s; 
 }
 
 #button_tweet.highlight {
-	box-shadow: 0px 0px 5px 7px #81e7fc; 
-	transition-duration: 0s;
+    animation:1.5s ease-in-out infinite running expansion_tweet;
 }
+
+@keyframes expansion_tweet{
+    0%{
+        box-shadow: none;
+    }
+    50%{
+        box-shadow: 0px 0px 5px 7px #cdf1f8; 
+    }
+    100%{
+        box-shadow: none;
+    }
+  }
 
 .initial {
-    animation:1.5s ease-in-out infinite running expansion;
+    animation:1.5s ease-in-out infinite running expansion_start;
 }
 
-@keyframes expansion{
+@keyframes expansion_start{
     0%{
         box-shadow: none;
     }
