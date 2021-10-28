@@ -298,7 +298,7 @@ document.form_answer.onreset = function () {
         button.classList.add('stopped');
         var button_tweet = document.getElementById("button_tweet");
         button_tweet.classList.add('highlight');
-        setTimeout("alertClearMessage()", 500);
+        setTimeout("alertClearMessage()", 1000);
     }
 }
 
