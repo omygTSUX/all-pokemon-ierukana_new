@@ -185,7 +185,7 @@ document.getElementById("button_confirm").onclick = function () {
         var id = li.id.slice(8);
         if (!answered_list_local[id - number_start + 1]) {
             li.classList.add("found", "not_answered");
-            li.innerHTML = "<img src='./img/" + padZero(id, 3) + ".png' class='image_pokemon' loading='lazy'>";
+            li.innerHTML = "<img src='./img/pokemon/" + padZero(id, 3) + ".png' class='image_pokemon' loading='lazy'>";
         }
     }
 
@@ -263,7 +263,7 @@ function checkAnswer(answer) {
     if (pokemon != undefined && !answered_list[pokemon.number - number_start + 1]){
         var li = document.getElementById('pokemon_' + pokemon.number);
             li.classList.add("found");
-            li.innerHTML = "<img src='./img/" + padZero(pokemon.number, 3) + ".png' class='image_pokemon'>";
+            li.innerHTML = "<img src='./img/pokemon/" + padZero(pokemon.number, 3) + ".png' class='image_pokemon'>";
             // li.scrollIntoView({behavior: "smooth", block: "nearest"});
             answered_list[pokemon.number - number_start + 1] = true;
             remaining_number--;
@@ -275,7 +275,7 @@ function checkAnswer(answer) {
     //     if (eratta_result == pokemon[1] && !answered_list[pokemon[0] - number_start + 1]) {
     //         var li = document.getElementById('pokemon_' + pokemon[0]);
     //         li.classList.add("found");
-    //         li.innerHTML = "<img src='./img/" + padZero(pokemon[0], 3) + ".png' class='image_pokemon' loading='lazy'>";
+    //         li.innerHTML = "<img src='./img/pokemon" + padZero(pokemon[0], 3) + ".png' class='image_pokemon' loading='lazy'>";
     //         answered_list[pokemon[0] - number_start + 1] = true;
     //         remaining_number--;
     //         setRemainingNumber(remaining_number);
