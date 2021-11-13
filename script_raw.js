@@ -14,9 +14,9 @@ function setRemainingNumber(remaining_number) {
 function createPokemonList(number_pokemons, number_start) {
     var ul = document.getElementById('pokemon_list');
     var dom = "";
-    for(var p = 0; p < number_pokemons; p++){
+    for (var p = 0; p < number_pokemons; p++) {
         var div = "<div id='pokemon_" + (number_start + p) + "' class='li_pokemon xx-small m-1'>" + padZero(number_start + p, 3) + "</div>";
-        var li = "<li class='li_wrapper'>" + div + "</li>"; 
+        var li = "<li class='li_wrapper'>" + div + "</li>";
         dom += li;
     }
     ul.innerHTML = dom;
@@ -61,7 +61,7 @@ function getJson() {
     var req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
     req.open("get", "all_pokemon.json", true); // アクセスするファイルを指定
     req.send(null); // HTTPリクエストの発行
-    req.onload = function(){
+    req.onload = function () {
         window.all_pokemon_list = JSON.parse(req.responseText);
     }
 }
@@ -127,8 +127,9 @@ document.getElementById("button_start").onclick = function () {
     var button = document.getElementById("button_start");
     // 開始する時
     if (button.classList.contains("stopped")) {
-        if (typeof all_pokemon_list === 'undefined'){
+        if (typeof all_pokemon_list === 'undefined') {
             getJson();
+            window.audio = new Audio("./sound/nc162468.wav");
         }
         window.start_time = new Date().getTime();
         startTimer();
@@ -178,7 +179,7 @@ document.getElementById("button_confirm").onclick = function () {
     button.removeAttribute("data-bs-target");
 
     var button_tweet = document.getElementById("button_tweet");
-	button_tweet.classList.add('highlight');
+    button_tweet.classList.add('highlight');
 
     var li_pokemons = document.getElementsByClassName('li_pokemon');
     for (li of li_pokemons) {
@@ -260,16 +261,17 @@ function checkAnswer(answer) {
     // }
     var eratta_result = eratta(answer);
     var pokemon = all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1).find((v) => v.name === eratta_result);
-    if (pokemon != undefined && !answered_list[pokemon.number - number_start + 1]){
+    if (pokemon != undefined && !answered_list[pokemon.number - number_start + 1]) {
         var li = document.getElementById('pokemon_' + pokemon.number);
-            li.classList.add("found");
-            li.innerHTML = "<img src='./img/pokemon/" + padZero(pokemon.number, 3) + ".png' class='image_pokemon'>";
-            // li.scrollIntoView({behavior: "smooth", block: "nearest"});
-            answered_list[pokemon.number - number_start + 1] = true;
-            remaining_number--;
-            setRemainingNumber(remaining_number);
-            window.last_pokemon = pokemon.name;
-            document.form_answer.reset();
+        li.classList.add("found");
+        li.innerHTML = "<img src='./img/pokemon/" + padZero(pokemon.number, 3) + ".png' class='image_pokemon'>";
+        // li.scrollIntoView({behavior: "smooth", block: "nearest"});
+        answered_list[pokemon.number - number_start + 1] = true;
+        remaining_number--;
+        setRemainingNumber(remaining_number);
+        window.last_pokemon = pokemon.name;
+        document.form_answer.reset();
+        audio.play();
     }
     // for (pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)) {
     //     if (eratta_result == pokemon[1] && !answered_list[pokemon[0] - number_start + 1]) {
