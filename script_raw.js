@@ -129,12 +129,13 @@ document.getElementById("button_start").onclick = function () {
     if (button.classList.contains("stopped")) {
         if (typeof all_pokemon_list === 'undefined') {
             getJson();
-            // window.audio = new Audio("./sound/nc162468.wav");
+            window.audio = new Audio("./sound/nc162468.wav");
             window.audioContext = new AudioContext();
             // get the audio element
-            window.audioElement = document.querySelector('audio');
+            // window.audioElement = document.querySelector('audio');
             // pass it into the audio context
-            window.track = audioContext.createMediaElementSource(audioElement);
+            // window.track = audioContext.createMediaElementSource(audioElement);
+            window.track = audioContext.createMediaElementSource(audio);
             track.connect(audioContext.destination);
 
         }
@@ -279,8 +280,8 @@ function checkAnswer(answer) {
         window.last_pokemon = pokemon.name;
         document.form_answer.reset();
         if(document.getElementById("checkbox_audio").checked){
-            // audio.play();
-            audioElement.play();
+            audio.play();
+            // audioElement.play();
         }
     }
     // for (pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)) {
