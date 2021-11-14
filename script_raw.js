@@ -129,15 +129,15 @@ document.getElementById("button_start").onclick = function () {
     if (button.classList.contains("stopped")) {
         if (typeof all_pokemon_list === 'undefined') {
             getJson();
-            window.audio = new Audio("./sound/nc162468.wav");
-            window.audioContext = new AudioContext();
-            // get the audio element
-            // window.audioElement = document.querySelector('audio');
-            // pass it into the audio context
-            // window.track = audioContext.createMediaElementSource(audioElement);
-            window.track = audioContext.createMediaElementSource(audio);
-            track.connect(audioContext.destination);
-
+            getAudio();
+            // window.audio = new Audio("./sound/nc162468.wav");
+            // window.audioContext = new AudioContext();
+            // // get the audio element
+            // // window.audioElement = document.querySelector('audio');
+            // // pass it into the audio context
+            // // window.track = audioContext.createMediaElementSource(audioElement);
+            // window.track = audioContext.createMediaElementSource(audio);
+            // track.connect(audioContext.destination);
         }
         window.start_time = new Date().getTime();
         startTimer();
@@ -169,6 +169,65 @@ document.getElementById("button_start").onclick = function () {
 
     return false;
 }
+
+// 音ファイルを読み込む関数
+function getAudio() {
+    window.context = new AudioContext();
+    var req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
+    req.open("get", "./sound/nc162468.wav", true); // アクセスするファイルを指定
+    req.responseType = 'arraybuffer';  // XMLHttpRequest Level 2
+    req.send(null); // HTTPリクエストの発行
+    req.onload = function () {
+        if (req.status === 200) {
+            var arrayBuffer = req.response;
+            if (arrayBuffer instanceof ArrayBuffer) {
+                // The 2nd argument for decodeAudioData
+                var successCallback = function (audioBuffer) {
+                    /* audioBuffer is the instance of AudioBuffer */
+                    // Create the instance of AudioBufferSourceNode
+                    window.source = context.createBufferSource();
+                    // Set the instance of AudioBuffer
+                    source.buffer = audioBuffer;
+                    // Set parameters
+                    source.loop = false;
+                    source.loopStart = 0;
+                    source.loopEnd = audioBuffer.duration;
+                    source.playbackRate.value = 1.0;
+                    // AudioBufferSourceNode (Input) -> AudioDestinationNode (Output)
+                    source.connect(context.destination);
+                };
+                // The 3rd argument for decodeAudioData
+                var errorCallback = function (error) {
+                    if (error instanceof Error) {
+                        window.alert(error.message);
+                    } else {
+                        window.alert('Error : "decodeAudioData" method.');
+                    }
+                };
+                // Create the instance of AudioBuffer (Asynchronously)
+                context.decodeAudioData(arrayBuffer, successCallback, errorCallback);
+            }
+        }
+    };
+}
+
+//音ファイルを再生する関数
+function playAudio(){
+    source.start(0);
+    source.onended = function(event) {
+        // // Remove event handler
+        source.onended     = null;
+        // document.onkeydown = null;
+        // Stop audio
+        source.stop(0);
+        console.log('"on' + event.type + '" event handler !!');
+        // Audio is not started !!
+        // It is necessary to create the instance of AudioBufferSourceNode again
+        // source.start(0);
+        getAudio();
+    };
+}
+
 
 //降参確認ボタンを押した時に実行される関数
 document.getElementById("button_confirm").onclick = function () {
@@ -279,9 +338,12 @@ function checkAnswer(answer) {
         setRemainingNumber(remaining_number);
         window.last_pokemon = pokemon.name;
         document.form_answer.reset();
-        if(document.getElementById("checkbox_audio").checked){
-            audio.play();
+        if (document.getElementById("checkbox_audio").checked) {
+            // audio.play();
             // audioElement.play();
+            // Start audio
+            // source.start(0);
+            playAudio();
         }
     }
     // for (pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)) {
