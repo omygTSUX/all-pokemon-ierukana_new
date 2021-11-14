@@ -87,57 +87,62 @@
         </div>
     </header>
     <main>
-        <div class="modal" id="confirm_modal" tabindex="-1" aria-labelledby="confirm_modal_label" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>勝負を　あきらめて<br>降参しますか？</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">いいえ</button>
-                        <button type="button" id="button_confirm" class="btn btn-primary btn-sm"
-                            data-bs-dismiss="modal">はい</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <h1 id="h1" class="mb-0 text-center h2">
-            ホウエンポケモン135匹言えるかな？
-        </h1>
-        <div class="container mb-2 rounded">
-            <div class="row rounded">
-                <div class="col-md-3 col-6 border rounded text-center bgcolor_white fit-content">
-                    <p id="timer" class="h4 mb-0">000:00:00</p>
-                </div>
-                <div class="col-md-3 col-6 border rounded text-center bgcolor_white fit-content">
-                    <p id="remaining_number" class="h4 mb-0">残り???匹</p>
-                </div>
-                <div class="col-auto">
-                    <form name="form_answer" id="form_answer" autocomplete="off">
-                        <div class="row">
-                            <div class="col-auto">
-                                <input type="text" id="input_answer" placeholder="開始してね"
-                                    class="form-control-sm" disabled>
-                            </div>
-                            <div class="col-auto">
-                                <input type="submit" id="button_answer" value="回答"
-                                    class="btn btn-primary btn-sm" disabled>
-                            </div>
+        <div id="others">
+            <div class="modal" id="confirm_modal" tabindex="-1" aria-labelledby="confirm_modal_label"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                    </form>
+                        <div class="modal-body">
+                            <p>勝負を　あきらめて<br>降参しますか？</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">いいえ</button>
+                            <button type="button" id="button_confirm" class="btn btn-primary btn-sm"
+                                data-bs-dismiss="modal">はい</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-auto">
-                    <button id="button_start" class="btn btn-success btn-sm stopped initial">開始</button>
-                </div>
-                <div class="col-auto rounded">
-                    <a id="button_tweet" href="" rel="nofollow" role="button" class="btn btn-info btn-sm" onClick="gtag('event', 'click', {'event_category': 'button_tweet', 'event_label': 'button_tweet'});">結果Tweet</a>
+            </div>
+            <h1 id="h1" class="mb-0 text-center h2">
+                ホウエンポケモン135匹言えるかな？
+            </h1>
+            <div class="container mb-2 rounded">
+                <div class="row rounded">
+                    <div class="col-md-3 col-6 border rounded text-center bgcolor_white fit-content">
+                        <p id="timer" class="h4 mb-0">000:00:00</p>
+                    </div>
+                    <div class="col-md-3 col-6 border rounded text-center bgcolor_white fit-content">
+                        <p id="remaining_number" class="h4 mb-0">残り???匹</p>
+                    </div>
+                    <div class="col-auto">
+                        <form name="form_answer" id="form_answer" autocomplete="off">
+                            <div class="row">
+                                <div class="col-auto">
+                                    <input type="text" id="input_answer" placeholder="開始してね" class="form-control-sm"
+                                        disabled>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="submit" id="button_answer" value="回答" class="btn btn-primary btn-sm"
+                                        disabled>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-auto">
+                        <button id="button_start" class="btn btn-success btn-sm stopped initial">開始</button>
+                    </div>
+                    <div class="col-auto rounded">
+                        <a id="button_tweet" href="" rel="nofollow" role="button" class="btn btn-info btn-sm"
+                            onClick="gtag('event', 'click', {'event_category': 'button_tweet', 'event_label': 'button_tweet'});">結果Tweet</a>
+                    </div>
                 </div>
             </div>
         </div>
-        <ul id="pokemon_list" class="list-unstyled d-flex flex-wrap border border-secondary p-0 bgcolor_white all_pokemon">
+        <ul id="pokemon_list"
+            class="list-unstyled d-flex flex-wrap border border-secondary p-0 bgcolor_white all_pokemon">
         </ul>
     </main>
     <footer>
