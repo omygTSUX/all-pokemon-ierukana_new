@@ -220,14 +220,13 @@ function playAudio(){
         // document.onkeydown = null;
         // Stop audio
         source.stop(0);
-        console.log('"on' + event.type + '" event handler !!');
+        // console.log('"on' + event.type + '" event handler !!');
         // Audio is not started !!
         // It is necessary to create the instance of AudioBufferSourceNode again
         // source.start(0);
         getAudio();
     };
 }
-
 
 //降参確認ボタンを押した時に実行される関数
 document.getElementById("button_confirm").onclick = function () {
@@ -329,6 +328,13 @@ function checkAnswer(answer) {
     var eratta_result = eratta(answer);
     var pokemon = all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1).find((v) => v.name === eratta_result);
     if (pokemon != undefined && !answered_list[pokemon.number - number_start + 1]) {
+        if (document.getElementById("checkbox_audio").checked) {
+            // audio.play();
+            // audioElement.play();
+            // Start audio
+            // source.start(0);
+            playAudio();
+        }
         var li = document.getElementById('pokemon_' + pokemon.number);
         li.classList.add("found");
         li.innerHTML = "<img src='./img/pokemon/" + padZero(pokemon.number, 3) + ".png' class='image_pokemon'>";
@@ -338,13 +344,6 @@ function checkAnswer(answer) {
         setRemainingNumber(remaining_number);
         window.last_pokemon = pokemon.name;
         document.form_answer.reset();
-        if (document.getElementById("checkbox_audio").checked) {
-            // audio.play();
-            // audioElement.play();
-            // Start audio
-            // source.start(0);
-            playAudio();
-        }
     }
     // for (pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)) {
     //     if (eratta_result == pokemon[1] && !answered_list[pokemon[0] - number_start + 1]) {
