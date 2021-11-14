@@ -271,7 +271,9 @@ function checkAnswer(answer) {
         setRemainingNumber(remaining_number);
         window.last_pokemon = pokemon.name;
         document.form_answer.reset();
-        audio.play();
+        if(document.getElementById("checkbox_audio").checked){
+            audio.play();
+        }
     }
     // for (pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)) {
     //     if (eratta_result == pokemon[1] && !answered_list[pokemon[0] - number_start + 1]) {
