@@ -1,7 +1,13 @@
+/* html{
+    height: -webkit-fill-available;
+} */
+
 body {
     background-image: url("./img/system/nc68656.png");
     background-color:rgba(255,255,255,0.8);
     background-blend-mode:lighten;
+    height: 100vh;
+    max-height: calc(var(--sp_height));
 }
 
 a, a:visited{
@@ -96,7 +102,8 @@ input[disabled]{
 
 #pokemon_list{
     position: relative;
-    max-height: 70vh;
+    /* max-height: 80vh; */
+    max-height: calc(var(--pokemon_list_height));
     overflow: scroll;
 }
 

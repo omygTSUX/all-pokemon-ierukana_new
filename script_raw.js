@@ -72,6 +72,27 @@ function padZero(v, digit) {
     return result;
 }
 
+// 画面の高さを100vhに調節する関数
+function setFillHeight() {
+    var sp_height = window.outerHeight;
+    document.documentElement.style.setProperty("--sp_height", `${sp_height}px`);
+}
+
+// 画面のサイズ変動があった時に高さを再計算する
+window.addEventListener('resize', function() {
+    setFillHeight();
+    setPokemonListHeight();
+}, false);
+
+// ポケモンリストの高さを調節する関数
+function setPokemonListHeight(){
+    var body_height = document.querySelector("body").offsetHeight;
+    var header_height = document.querySelector("header").offsetHeight;
+    var others_height = document.querySelector("#others").offsetHeight;
+    var footer_height = document.querySelector("footer").offsetHeight;
+    document.documentElement.style.setProperty("--pokemon_list_height", `${(body_height - header_height - others_height - footer_height)*0.9}px`);
+}
+
 // 数字を時間に変換する関数
 function toHms(t) {
     var hms = "";
@@ -120,6 +141,8 @@ window.addEventListener("DOMContentLoaded", function () {
     // setNumberOfPokemons(number_pokemons);
     setRemainingNumber(number_pokemons);
     createPokemonList(number_pokemons, number_start);
+    setFillHeight();
+    setPokemonListHeight();
 }, false);
 
 // 開始ボタンを押した時に実行される関数
