@@ -86,6 +86,12 @@ window.addEventListener('resize', function() {
     setPokemonListHeight();
 }, false);
 
+// 画面のサイズ変動があった時に高さを再計算する
+window.addEventListener('focus', function() {
+    setFillHeight();
+    setPokemonListHeight();
+}, false);
+
 // ポケモンリストの高さを調節する関数
 function setPokemonListHeight(){
     var body_height = document.querySelector("body").offsetHeight;
