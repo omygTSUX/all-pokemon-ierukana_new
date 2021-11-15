@@ -173,6 +173,14 @@ input[disabled]{
     height: fit-content;
 }
 
+#dummy{
+    width: 100%;
+}
+
+#dummy > img{
+    width: 100%;
+}
+
 @media screen and (max-width: 1024px) {
     .li_wrapper{
         width: calc(100% / 18);

@@ -19,6 +19,7 @@ function createPokemonList(number_pokemons, number_start) {
         var li = "<li class='li_wrapper'>" + div + "</li>";
         dom += li;
     }
+    dom += "<div id='dummy'><img src='./img/system/padding.jpeg'></div>";
     ul.innerHTML = dom;
     // var fragment = document.createDocumentFragment();
     // for (var p = 0; p < number_pokemons; p++) {
