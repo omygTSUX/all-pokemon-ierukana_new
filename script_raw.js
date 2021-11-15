@@ -88,8 +88,10 @@ window.addEventListener('resize', function() {
 
 // 解答欄にフォーカスした時に高さを再計算する
 document.getElementById("input_answer").onfocus= function () {
-    setFillHeight();
-    setPokemonListHeight();
+    setTimeout("setFillHeight()", 500);
+    setTimeout("setPokemonListHeight()", 50);
+    // setFillHeight();
+    // setPokemonListHeight();
 }
 
 // ポケモンリストの高さを調節する関数
