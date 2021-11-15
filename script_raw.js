@@ -362,7 +362,7 @@ function checkAnswer(answer) {
         var li = document.getElementById('pokemon_' + pokemon.number);
         li.classList.add("found");
         li.innerHTML = "<img src='./img/pokemon/" + padZero(pokemon.number, 3) + ".png' class='image_pokemon'>";
-        li.scrollIntoView({behavior: "smooth", block: "nearest"});
+        li.scrollIntoView({behavior: "smooth", block: "start"});
         answered_list[pokemon.number - number_start + 1] = true;
         remaining_number--;
         setRemainingNumber(remaining_number);
