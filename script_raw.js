@@ -78,30 +78,37 @@ function setFillHeight() {
     // var vh = window.innerHeight * 0.01;
     var vh = visualViewport.height * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+    var body_height = document.querySelector("body").offsetHeight;
+    var header_height = document.querySelector("header").offsetHeight;
+    var others_height = document.querySelector("#others").offsetHeight;
+    var footer_height = document.querySelector("footer").offsetHeight;
+    document.documentElement.style.setProperty("--pokemon_list_height", `${(body_height - header_height - others_height - footer_height)*0.95}px`);
 }
 
 // 画面のサイズ変動があった時に高さを再計算する
 window.addEventListener('resize', function() {
     setFillHeight();
-    setPokemonListHeight();
 }, false);
 
 // 解答欄にフォーカスした時に高さを再計算する
-document.getElementById("input_answer").onfocus= function () {
+document.getElementById("input_answer").onfocus = function () {
     setTimeout("setFillHeight()", 500);
-    setTimeout("setPokemonListHeight()", 550);
-    // setFillHeight();
-    // setPokemonListHeight();
 }
 
-// ポケモンリストの高さを調節する関数
-function setPokemonListHeight(){
-    var body_height = document.querySelector("body").offsetHeight;
-    var header_height = document.querySelector("header").offsetHeight;
-    var others_height = document.querySelector("#others").offsetHeight;
-    var footer_height = document.querySelector("footer").offsetHeight;
-    document.documentElement.style.setProperty("--pokemon_list_height", `${(body_height - header_height - others_height - footer_height)*0.9}px`);
+// 解答欄からフォーカスアウトした時に高さを再計算する
+document.getElementById("input_answer").onblur = function () {
+    setTimeout("setFillHeight()", 500);
 }
+
+// // ポケモンリストの高さを調節する関数
+// function setPokemonListHeight(){
+//     var body_height = document.querySelector("body").offsetHeight;
+//     var header_height = document.querySelector("header").offsetHeight;
+//     var others_height = document.querySelector("#others").offsetHeight;
+//     var footer_height = document.querySelector("footer").offsetHeight;
+//     document.documentElement.style.setProperty("--pokemon_list_height", `${(body_height - header_height - others_height - footer_height)*0.9}px`);
+// }
 
 // 数字を時間に変換する関数
 function toHms(t) {
@@ -152,7 +159,6 @@ window.addEventListener("DOMContentLoaded", function () {
     setRemainingNumber(number_pokemons);
     createPokemonList(number_pokemons, number_start);
     setFillHeight();
-    setPokemonListHeight();
 }, false);
 
 // 開始ボタンを押した時に実行される関数
