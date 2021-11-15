@@ -83,7 +83,7 @@ function setFillHeight() {
     var header_height = document.querySelector("header").offsetHeight;
     var others_height = document.querySelector("#others").offsetHeight;
     var footer_height = document.querySelector("footer").offsetHeight;
-    document.documentElement.style.setProperty("--pokemon_list_height", `${(body_height - header_height - others_height - footer_height)*0.95}px`);
+    document.documentElement.style.setProperty("--pokemon_list_height", `${(body_height - header_height - others_height - footer_height)*0.9}px`);
 }
 
 // 画面のサイズ変動があった時に高さを再計算する
