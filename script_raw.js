@@ -75,7 +75,8 @@ function padZero(v, digit) {
 
 // 画面の高さを100vhに調節する関数
 function setFillHeight() {
-    var vh = window.innerHeight * 0.01;
+    // var vh = window.innerHeight * 0.01;
+    var vh = visualViewport.height * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
 
