@@ -89,7 +89,7 @@ window.addEventListener('resize', function() {
 // 解答欄にフォーカスした時に高さを再計算する
 document.getElementById("input_answer").onfocus= function () {
     setTimeout("setFillHeight()", 500);
-    setTimeout("setPokemonListHeight()", 50);
+    setTimeout("setPokemonListHeight()", 550);
     // setFillHeight();
     // setPokemonListHeight();
 }
@@ -371,7 +371,7 @@ function checkAnswer(answer) {
         var li = document.getElementById('pokemon_' + pokemon.number);
         li.classList.add("found");
         li.innerHTML = "<img src='./img/pokemon/" + padZero(pokemon.number, 3) + ".png' class='image_pokemon'>";
-        li.scrollIntoView({behavior: "smooth", block: "start"});
+        li.scrollIntoView({behavior: "smooth", block: "nearest"});
         answered_list[pokemon.number - number_start + 1] = true;
         remaining_number--;
         setRemainingNumber(remaining_number);
