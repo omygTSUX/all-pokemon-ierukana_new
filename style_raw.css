@@ -173,6 +173,10 @@ input[disabled]{
     height: fit-content;
 }
 
+.form-check{
+    min-height: 0;
+}
+
 /* #dummy{
     width: 100%;
 }

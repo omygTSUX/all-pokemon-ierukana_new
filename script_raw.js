@@ -83,11 +83,11 @@ function setFillHeight() {
     var header_height = document.querySelector("header").offsetHeight;
     var others_height = document.querySelector("#others").offsetHeight;
     var footer_height = document.querySelector("footer").offsetHeight;
-    document.documentElement.style.setProperty("--pokemon_list_height", `${(body_height - header_height - others_height - footer_height)*0.9}px`);
+    document.documentElement.style.setProperty("--pokemon_list_height", `${(body_height - header_height - others_height - footer_height) * 0.9}px`);
 }
 
 // 画面のサイズ変動があった時に高さを再計算する
-window.addEventListener('resize', function() {
+window.addEventListener('resize', function () {
     setFillHeight();
 }, false);
 
@@ -251,11 +251,11 @@ function getAudio() {
 }
 
 //音ファイルを再生する関数
-function playAudio(){
+function playAudio() {
     source.start(0);
-    source.onended = function(event) {
+    source.onended = function (event) {
         // // Remove event handler
-        source.onended     = null;
+        source.onended = null;
         // document.onkeydown = null;
         // Stop audio
         source.stop(0);
@@ -377,7 +377,9 @@ function checkAnswer(answer) {
         var li = document.getElementById('pokemon_' + pokemon.number);
         li.classList.add("found");
         li.innerHTML = "<img src='./img/pokemon/" + padZero(pokemon.number, 3) + ".png' class='image_pokemon'>";
-        li.scrollIntoView({behavior: "smooth", block: "nearest"});
+        if (document.getElementById("checkbox_scroll").checked) {
+            li.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
         answered_list[pokemon.number - number_start + 1] = true;
         remaining_number--;
         setRemainingNumber(remaining_number);
