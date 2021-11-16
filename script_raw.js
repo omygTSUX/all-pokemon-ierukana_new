@@ -218,22 +218,23 @@ function getAudio() {
     req.send(null); // HTTPリクエストの発行
     req.onload = function () {
         if (req.status === 200) {
-            var arrayBuffer = req.response;
+            window.arrayBuffer = req.response;
             if (arrayBuffer instanceof ArrayBuffer) {
                 // The 2nd argument for decodeAudioData
-                var successCallback = function (audioBuffer) {
+                var successCallback = function (audioBufferOriginal) {
                     /* audioBuffer is the instance of AudioBuffer */
                     // Create the instance of AudioBufferSourceNode
-                    window.source = context.createBufferSource();
+                    // window.source = context.createBufferSource();
                     // Set the instance of AudioBuffer
-                    source.buffer = audioBuffer;
-                    // Set parameters
-                    source.loop = false;
-                    source.loopStart = 0;
-                    source.loopEnd = audioBuffer.duration;
-                    source.playbackRate.value = 1.0;
-                    // AudioBufferSourceNode (Input) -> AudioDestinationNode (Output)
-                    source.connect(context.destination);
+                    window.audioBuffer = audioBufferOriginal;
+                    // source.buffer = audioBuffer;
+                    // // Set parameters
+                    // source.loop = false;
+                    // source.loopStart = 0;
+                    // source.loopEnd = audioBuffer.duration;
+                    // source.playbackRate.value = 1.0;
+                    // // AudioBufferSourceNode (Input) -> AudioDestinationNode (Output)
+                    // source.connect(context.destination);
                 };
                 // The 3rd argument for decodeAudioData
                 var errorCallback = function (error) {
@@ -250,21 +251,51 @@ function getAudio() {
     };
 }
 
+//音ソースを使い回す関数
+function createSource(audioBuffer) {
+    /* audioBuffer is the instance of AudioBuffer */
+    // Create the instance of AudioBufferSourceNode
+    window.source = context.createBufferSource();
+    // Set the instance of AudioBuffer
+    source.buffer = audioBuffer;
+    // Set parameters
+    source.loop = false;
+    source.loopStart = 0;
+    source.loopEnd = audioBuffer.duration;
+    source.playbackRate.value = 1.0;
+    // AudioBufferSourceNode (Input) -> AudioDestinationNode (Output)
+    source.connect(context.destination);
+}
+
 //音ファイルを再生する関数
 function playAudio() {
+    // var audioBuffer = window.audioBufferOriginal;
+        /* audioBuffer is the instance of AudioBuffer */
+    // Create the instance of AudioBufferSourceNode
+    window.source = context.createBufferSource();
+    // Set the instance of AudioBuffer
+    source.buffer = audioBuffer;
+    // Set parameters
+    source.loop = false;
+    source.loopStart = 0;
+    source.loopEnd = audioBuffer.duration;
+    source.playbackRate.value = 1.0;
+    // AudioBufferSourceNode (Input) -> AudioDestinationNode (Output)
+    source.connect(context.destination);
     source.start(0);
-    source.onended = function (event) {
-        // // Remove event handler
-        source.onended = null;
-        // document.onkeydown = null;
-        // Stop audio
-        source.stop(0);
-        // console.log('"on' + event.type + '" event handler !!');
-        // Audio is not started !!
-        // It is necessary to create the instance of AudioBufferSourceNode again
-        // source.start(0);
-        getAudio();
-    };
+    // source.onended = function (event) {
+    //     // // Remove event handler
+    //     source.onended = null;
+    //     // document.onkeydown = null;
+    //     // Stop audio
+    //     source.stop(0);
+    //     // console.log('"on' + event.type + '" event handler !!');
+    //     // Audio is not started !!
+    //     // It is necessary to create the instance of AudioBufferSourceNode again
+    //     // source.start(0);
+    //     // var audioBuffer = window.audioBufferOriginal;
+    //     // createSource(audioBuffer);
+    // };
 }
 
 //降参確認ボタンを押した時に実行される関数
