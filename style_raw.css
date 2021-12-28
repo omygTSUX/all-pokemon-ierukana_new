@@ -64,6 +64,10 @@ header .col{
     }
   }
 
+#button_tweet_modal{
+    color: #ffffff;
+}
+
 .initial {
     animation:1.5s ease-in-out infinite running expansion_start;
 }

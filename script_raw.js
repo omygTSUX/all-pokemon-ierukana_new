@@ -389,11 +389,9 @@ function eratta(answer) {
 // 正解判定をする関数
 function checkAnswer(answer) {
     // if(answer=="クリア"){
-    //     for(pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)){
-    //             remaining_number--;
-    //             setRemainingNumber(remaining_number);
-    //             document.form_answer.reset();
-    //     }
+    //     remaining_number = 0;
+    //     last_pokemon = "ピカチュウ";
+    //     document.form_answer.reset();
     // }
     var eratta_result = eratta(answer);
     var pokemon = all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1).find((v) => v.name === eratta_result);
@@ -444,16 +442,20 @@ document.form_answer.onreset = function () {
         button.classList.add('stopped');
         var button_tweet = document.getElementById("button_tweet");
         button_tweet.classList.add('highlight');
-        setTimeout("alertClearMessage()", 1000);
+        // setTimeout("alertClearMessage()", 1000);
+        var clear_modal = new bootstrap.Modal(document.getElementById("clear_modal"), {
+            keyboard: false
+          });
+        clear_modal.toggle();
     }
 }
 
-function alertClearMessage() {
-    window.alert("クリアおめでとう！結果Tweetボタンでぜひ共有してください！");
-}
+// function alertClearMessage() {
+//     window.alert("クリアおめでとう！結果Tweetボタンでぜひ共有してください！");
+// }
 
 // ツイートボタンの文言を設定する関数
-document.getElementById("button_tweet").onclick = function () {
+function openTweetWindow() {
     var time = toJapaneseHms(document.getElementById("timer").textContent);
     var number_answered = number_pokemons - remaining_number;
     var title = document.title;
@@ -467,4 +469,10 @@ document.getElementById("button_tweet").onclick = function () {
     }
     window.open(encodeURI(decodeURI(href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1');
     return false;
+}
+document.getElementById("button_tweet").onclick = function () {
+    openTweetWindow();
+}
+document.getElementById("button_tweet_modal").onclick = function () {
+    openTweetWindow();
 }
