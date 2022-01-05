@@ -64,7 +64,11 @@ header .col{
     }
   }
 
-#button_tweet_modal{
+#button_tweet_surrender_modal{
+    color: #ffffff;
+}
+
+#button_tweet_clear_modal{
     color: #ffffff;
 }
 

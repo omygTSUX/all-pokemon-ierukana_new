@@ -329,6 +329,10 @@ document.getElementById("button_confirm").onclick = function () {
         }
     }
 
+    var time = toJapaneseHms(document.getElementById("timer").textContent);
+    var number_answered = number_pokemons - remaining_number;
+    document.getElementById("text_surrender_modal").innerHTML = "キミは" + time + "で<br>ポケモン" + number_answered + "/" + number_pokemons + "匹言えたよ！";
+
     return false;
 }
 
@@ -484,6 +488,9 @@ function openTweetWindow() {
 document.getElementById("button_tweet").onclick = function () {
     openTweetWindow();
 }
-document.getElementById("button_tweet_modal").onclick = function () {
+document.getElementById("button_tweet_surrender_modal").onclick = function () {
+    openTweetWindow();
+}
+document.getElementById("button_tweet_clear_modal").onclick = function () {
     openTweetWindow();
 }
