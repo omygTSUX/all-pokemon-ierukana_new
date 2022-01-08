@@ -170,6 +170,7 @@ document.getElementById("button_start").onclick = function () {
             getJson();
             getCorrectAudio();
             getIncorrectAudio();
+            getClearAudio();
             // window.audio = new Audio("./sound/nc162468.wav");
             // window.audioContext = new AudioContext();
             // // get the audio element
@@ -214,7 +215,7 @@ document.getElementById("button_start").onclick = function () {
 function getCorrectAudio() {
     window.correctContext = new AudioContext();
     var req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
-    req.open("get", "./sound/nc162468.wav", true); // アクセスするファイルを指定
+    req.open("get", "./sound/nc162468.mp3", true); // アクセスするファイルを指定
     req.responseType = 'arraybuffer';  // XMLHttpRequest Level 2
     req.send(null); // HTTPリクエストの発行
     req.onload = function () {
@@ -265,19 +266,7 @@ function getIncorrectAudio() {
             if (incorrectArrayBuffer instanceof ArrayBuffer) {
                 // The 2nd argument for decodeAudioData
                 var successCallback = function (audioBufferOriginal) {
-                    /* audioBuffer is the instance of AudioBuffer */
-                    // Create the instance of AudioBufferSourceNode
-                    // window.source = context.createBufferSource();
-                    // Set the instance of AudioBuffer
                     window.incorrectAudioBuffer = audioBufferOriginal;
-                    // source.buffer = audioBuffer;
-                    // // Set parameters
-                    // source.loop = false;
-                    // source.loopStart = 0;
-                    // source.loopEnd = audioBuffer.duration;
-                    // source.playbackRate.value = 1.0;
-                    // // AudioBufferSourceNode (Input) -> AudioDestinationNode (Output)
-                    // source.connect(context.destination);
                 };
                 // The 3rd argument for decodeAudioData
                 var errorCallback = function (error) {
@@ -289,6 +278,36 @@ function getIncorrectAudio() {
                 };
                 // Create the instance of AudioBuffer (Asynchronously)
                 incorrectContext.decodeAudioData(incorrectArrayBuffer, successCallback, errorCallback);
+            }
+        }
+    };
+}
+
+// クリア音ファイルを読み込む関数
+function getClearAudio() {
+    window.clearContext = new AudioContext();
+    var req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
+    req.open("get", "./sound/進化おめでとう.mp3", true); // アクセスするファイルを指定
+    req.responseType = 'arraybuffer';  // XMLHttpRequest Level 2
+    req.send(null); // HTTPリクエストの発行
+    req.onload = function () {
+        if (req.status === 200) {
+            window.clearArrayBuffer = req.response;
+            if (clearArrayBuffer instanceof ArrayBuffer) {
+                // The 2nd argument for decodeAudioData
+                var successCallback = function (audioBufferOriginal) {
+                    window.clearAudioBuffer = audioBufferOriginal;
+                };
+                // The 3rd argument for decodeAudioData
+                var errorCallback = function (error) {
+                    if (error instanceof Error) {
+                        window.alert(error.message);
+                    } else {
+                        window.alert('Error : "decodeAudioData" method.');
+                    }
+                };
+                // Create the instance of AudioBuffer (Asynchronously)
+                clearContext.decodeAudioData(clearArrayBuffer, successCallback, errorCallback);
             }
         }
     };
@@ -343,9 +362,7 @@ function playCorrectAudio() {
 
 // 不正解音ファイルを再生する関数
 function playIncorrectAudio() {
-    // var audioBuffer = window.audioBufferOriginal;
     /* audioBuffer is the instance of AudioBuffer */
-    // Create the instance of AudioBufferSourceNode
     window.incorrectSource = incorrectContext.createBufferSource();
     // Set the instance of AudioBuffer
     incorrectSource.buffer = incorrectAudioBuffer;
@@ -354,22 +371,23 @@ function playIncorrectAudio() {
     incorrectSource.loopStart = 0;
     incorrectSource.loopEnd = incorrectAudioBuffer.duration;
     incorrectSource.playbackRate.value = 1.0;
-    // AudioBufferSourceNode (Input) -> AudioDestinationNode (Output)
     incorrectSource.connect(incorrectContext.destination);
     incorrectSource.start(0);
-    // source.onended = function (event) {
-    //     // // Remove event handler
-    //     source.onended = null;
-    //     // document.onkeydown = null;
-    //     // Stop audio
-    //     source.stop(0);
-    //     // console.log('"on' + event.type + '" event handler !!');
-    //     // Audio is not started !!
-    //     // It is necessary to create the instance of AudioBufferSourceNode again
-    //     // source.start(0);
-    //     // var audioBuffer = window.audioBufferOriginal;
-    //     // createSource(audioBuffer);
-    // };
+}
+
+// クリア音ファイルを再生する関数
+function playClearAudio() {
+    /* audioBuffer is the instance of AudioBuffer */
+    window.clearSource = clearContext.createBufferSource();
+    // Set the instance of AudioBuffer
+    clearSource.buffer = clearAudioBuffer;
+    // Set parameters
+    clearSource.loop = false;
+    clearSource.loopStart = 0;
+    clearSource.loopEnd = clearAudioBuffer.duration;
+    clearSource.playbackRate.value = 1.0;
+    clearSource.connect(clearContext.destination);
+    clearSource.start(0);
 }
 
 //降参確認ボタンを押した時に実行される関数
@@ -544,6 +562,7 @@ document.form_answer.onreset = function () {
         button_tweet.classList.add('highlight');
 
         setTimeout("showClearMessage()", 1000);
+        setTimeout("playClearAudio()", 1000);
     }
 }
 
