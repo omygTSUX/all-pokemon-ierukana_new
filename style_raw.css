@@ -115,10 +115,6 @@ footer{
     transform: translate(-50%, -50%);
 }
 
-.none{
-    display: none;
-}
-
 .bgcolor_white{
     background-color: white;
 }
@@ -225,6 +221,17 @@ input[disabled]{
 
     .li_wrapper{
         width: calc(100% / 15);
+    }
+
+    #copyright{
+        position: static;
+        left: auto;
+        top: auto;
+        transform: scale(0.8) translate(0, 0);
+    }
+
+    .none{
+        display: none;
     }
 }
 
