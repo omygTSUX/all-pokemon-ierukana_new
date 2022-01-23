@@ -93,14 +93,20 @@ window.addEventListener('resize', function () {
 
 // 解答欄にフォーカスした時に高さを再計算する、コピーライトを非表示にする
 document.getElementById("input_answer").onfocus = function () {
+    var noneOnFocusList = document.getElementsByClassName("none_onfocus");
+    for(e of noneOnFocusList){
+        e.classList.add("none");
+    } 
     setTimeout("setFillHeight()", 500);
-    document.getElementById("copyright").classList.add("none");
 }
 
 // 解答欄からフォーカスアウトした時に高さを再計算する、コピーライトを表示にする
 document.getElementById("input_answer").onblur = function () {
+    var noneOnFocusList = document.getElementsByClassName("none_onfocus");
+    for(e of noneOnFocusList){
+        e.classList.remove("none");
+    } 
     setTimeout("setFillHeight()", 500);
-    document.getElementById("copyright").classList.remove("none");
 }
 
 // // ポケモンリストの高さを調節する関数
@@ -489,11 +495,11 @@ function eratta(answer) {
 
 // 正解判定をする関数
 function checkAnswer(answer) {
-    // if(answer=="クリア"){
-    //     remaining_number = 0;
-    //     last_pokemon = "ピカチュウ";
-    //     document.form_answer.reset();
-    // }
+    if(answer=="クリア"){
+        remaining_number = 0;
+        last_pokemon = "ピカチュウ";
+        document.form_answer.reset();
+    }
     var eratta_result = eratta(answer);
     var pokemon = all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1).find((v) => v.name === eratta_result);
     if (pokemon != undefined && !answered_list[pokemon.number - number_start + 1]) {
