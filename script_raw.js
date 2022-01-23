@@ -91,14 +91,16 @@ window.addEventListener('resize', function () {
     setFillHeight();
 }, false);
 
-// 解答欄にフォーカスした時に高さを再計算する
+// 解答欄にフォーカスした時に高さを再計算する、コピーライトを非表示にする
 document.getElementById("input_answer").onfocus = function () {
     setTimeout("setFillHeight()", 500);
+    document.getElementById("copyright").classList.add("none");
 }
 
-// 解答欄からフォーカスアウトした時に高さを再計算する
+// 解答欄からフォーカスアウトした時に高さを再計算する、コピーライトを表示にする
 document.getElementById("input_answer").onblur = function () {
     setTimeout("setFillHeight()", 500);
+    document.getElementById("copyright").classList.remove("none");
 }
 
 // // ポケモンリストの高さを調節する関数
