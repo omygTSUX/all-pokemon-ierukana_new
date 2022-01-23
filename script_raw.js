@@ -553,7 +553,13 @@ function checkAnswer(answer) {
         button_tweet.classList.add('highlight');
 
         setTimeout("showClearMessage()", 1000);
-        setTimeout("playClearAudio()", 1000);
+        if (document.getElementById("checkbox_audio").checked) {
+            // audio.play();
+            // audioElement.play();
+            // Start audio
+            // source.start(0);
+            playClearAudio();
+        }
     }
     // for (pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)) {
     //     if (eratta_result == pokemon[1] && !answered_list[pokemon[0] - number_start + 1]) {
