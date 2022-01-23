@@ -295,7 +295,7 @@ function getIncorrectAudio() {
 function getClearAudio() {
     window.clearContext = new AudioContext();
     var req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
-    req.open("get", "./sound/進化おめでとう.mp3", true); // アクセスするファイルを指定
+    req.open("get", "./sound/celebrate_evolution.mp3", true); // アクセスするファイルを指定
     req.responseType = 'arraybuffer';  // XMLHttpRequest Level 2
     req.send(null); // HTTPリクエストの発行
     req.onload = function () {
