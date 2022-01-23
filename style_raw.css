@@ -225,6 +225,7 @@ input[disabled]{
 
     #copyright{
         position: static;
+        transform-origin: left; 
         transform: scale(0.8);
     }
 
