@@ -558,7 +558,7 @@ function checkAnswer(answer) {
             // audioElement.play();
             // Start audio
             // source.start(0);
-            playClearAudio();
+            setTimeout("playClearAudio()", 1000);
         }
     }
     // for (pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)) {
