@@ -96,15 +96,23 @@ header .col{
  font-size: xx-small;
 }
 
+footer{
+    position: relative;
+}
+
 .note {
     transform: scale(0.8);
 }
 
 #copyright{
-    margin: auto;
+    margin: 0 auto;
     transform-origin: left; 
     /* text-align: center; */
     width: max-content;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .none{
