@@ -520,28 +520,6 @@ function checkAnswer(answer) {
         remaining_number--;
         setRemainingNumber(remaining_number);
         window.last_pokemon = pokemon.name;
-        if (remaining_number == 0) {
-            stopTimer();
-    
-            var input_answer = document.getElementById("input_answer");
-            input_answer.setAttribute("disabled", true);
-            input_answer.setAttribute("placeholder", "開始してね");
-    
-            document.getElementById("button_answer").setAttribute("disabled", true);
-    
-            var button = document.getElementById("button_start");
-            button.textContent = "開始";
-            button.classList.replace('btn-danger', 'btn-success');
-            button.classList.add('stopped');
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-target");
-    
-            var button_tweet = document.getElementById("button_tweet");
-            button_tweet.classList.add('highlight');
-    
-            setTimeout("showClearMessage()", 1000);
-            setTimeout("playClearAudio()", 1000);
-        }
         document.form_answer.reset();
     }
     else {
@@ -554,6 +532,28 @@ function checkAnswer(answer) {
                 playIncorrectAudio();
             }
         }
+    }
+    if (remaining_number == 0) {
+        stopTimer();
+
+        var input_answer = document.getElementById("input_answer");
+        input_answer.setAttribute("disabled", true);
+        input_answer.setAttribute("placeholder", "開始してね");
+
+        document.getElementById("button_answer").setAttribute("disabled", true);
+
+        var button = document.getElementById("button_start");
+        button.textContent = "開始";
+        button.classList.replace('btn-danger', 'btn-success');
+        button.classList.add('stopped');
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-target");
+
+        var button_tweet = document.getElementById("button_tweet");
+        button_tweet.classList.add('highlight');
+
+        setTimeout("showClearMessage()", 1000);
+        setTimeout("playClearAudio()", 1000);
     }
     // for (pokemon of all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1)) {
     //     if (eratta_result == pokemon[1] && !answered_list[pokemon[0] - number_start + 1]) {
