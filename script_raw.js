@@ -495,11 +495,11 @@ function eratta(answer) {
 
 // 正解判定をする関数
 function checkAnswer(answer) {
-    if(answer=="クリア"){
-        remaining_number = 0;
-        last_pokemon = "ピカチュウ";
-        document.form_answer.reset();
-    }
+    // if(answer=="クリア"){
+    //     remaining_number = 0;
+    //     last_pokemon = "ピカチュウ";
+    //     document.form_answer.reset();
+    // }
     var eratta_result = eratta(answer);
     var pokemon = all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1).find((v) => v.name === eratta_result);
     if (pokemon != undefined && !answered_list[pokemon.number - number_start + 1]) {
