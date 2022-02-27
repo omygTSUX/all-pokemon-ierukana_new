@@ -295,7 +295,7 @@ function getIncorrectAudio() {
 function getClearAudio() {
     window.clearContext = new AudioContext();
     var req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
-    req.open("get", "./sound/celebrate_evolution.mp3", true); // アクセスするファイルを指定
+    req.open("get", "./sound/celebrate_evolution_long.mp3", true); // アクセスするファイルを指定
     req.responseType = 'arraybuffer';  // XMLHttpRequest Level 2
     req.send(null); // HTTPリクエストの発行
     req.onload = function () {
@@ -495,11 +495,11 @@ function eratta(answer) {
 
 // 正解判定をする関数
 function checkAnswer(answer) {
-    // if(answer=="クリア"){
-    //     remaining_number = 0;
-    //     last_pokemon = "ピカチュウ";
-    //     document.form_answer.reset();
-    // }
+    if(answer=="クリア"){
+        remaining_number = 0;
+        last_pokemon = "ピカチュウ";
+        document.form_answer.reset();
+    }
     var eratta_result = eratta(answer);
     var pokemon = all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1).find((v) => v.name === eratta_result);
     if (pokemon != undefined && !answered_list[pokemon.number - number_start + 1]) {
@@ -570,7 +570,8 @@ document.form_answer.onreset = function () {
         button_tweet.classList.add('highlight');
 
         setTimeout("showClearMessage()", 1000);
-        setTimeout("playClearAudio()", 1000);
+        // setTimeout("playClearAudio()", 1000);
+        playClearAudio();
     }
 }
 
