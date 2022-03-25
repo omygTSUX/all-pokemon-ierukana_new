@@ -425,7 +425,7 @@ document.getElementById("button_confirm").onclick = function () {
         var id = li.id.slice(8);
         if (!answered_list_local[id - number_start + 1]) {
             li.classList.add("found", "not_answered");
-            li.innerHTML = "<img src='./img/pokemon/" + padZero(id, 3) + ".png' class='image_pokemon' loading='lazy'>";
+            li.innerHTML = "<img src='./img/pokemon/" + padZero(id, 3) + ".png' class='image_pokemon' loading='lazy' title='"+ all_pokemon_list[id-1].name +"'>";
         }
     }
 
@@ -512,7 +512,7 @@ function checkAnswer(answer) {
         }
         var li = document.getElementById('pokemon_' + pokemon.number);
         li.classList.add("found");
-        li.innerHTML = "<img src='./img/pokemon/" + padZero(pokemon.number, 3) + ".png' class='image_pokemon'>";
+        li.innerHTML = "<img src='./img/pokemon/" + padZero(pokemon.number, 3) + ".png' class='image_pokemon' title='"+ pokemon.name +"'>";
         if (document.getElementById("checkbox_scroll").checked) {
             li.scrollIntoView({ behavior: "smooth", block: "nearest" });
         }
