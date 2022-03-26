@@ -3,9 +3,10 @@
 } */
 
 body {
-    background-image: url("./img/system/nc68656.png");
-    background-color:rgba(255,255,255,0.8);
-    background-blend-mode:lighten;
+    /* background-image: url("./img/system/nc68656.png"); */
+    /* background-color:rgba(255,255,255,0.8);
+    background-blend-mode:lighten; */
+    background-image: url("./img/system/background.png");
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
 }
