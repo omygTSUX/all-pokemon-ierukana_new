@@ -244,7 +244,7 @@ input[disabled]{
     }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 530px) {
     .pc_only {
         display: none;
     }
