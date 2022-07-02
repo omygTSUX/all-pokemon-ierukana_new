@@ -4,11 +4,17 @@
 
 body {
     /* background-image: url("./img/system/nc68656.png"); */
-    /* background-color:rgba(255,255,255,0.8);
+    /* background-color:rgba(255, 210, 251, 0.5);
     background-blend-mode:lighten; */
     background-image: url("./img/system/background.png");
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
+}
+
+.gen-1 {
+    background-image: url("./img/system/background.png"), url("./img/system/color_gen1.png");
+    background-repeat:repeat, no-repeat;
+    background-size: auto, 100% 100%;
 }
 
 a, a:visited{
@@ -118,6 +124,10 @@ footer{
 
 .bgcolor_white{
     background-color: white;
+}
+
+.bgcolor_white_alpha{
+    background-color: rgba(255,255,255,0.7);
 }
 
 input[disabled]{
