@@ -211,8 +211,10 @@ document.getElementById("button_start").onclick = function () {
         var li_pokemons = document.getElementsByClassName('li_pokemon');
         for (li of li_pokemons) {
             li.classList.remove("found", "not_answered");
+            li.classList.add("not_found");
             var id = li.id.slice(8);
-            li.textContent = padZero(id, 3);
+            // li.textContent = padZero(id, 3);
+            li.innerHTML = padZero(id, 3) + "<img src='./img/pokemon/" + padZero(id, 3) + ".png' class='image_pokemon' loading='lazy' title=''>";
         }
     }
 
@@ -424,8 +426,9 @@ document.getElementById("button_confirm").onclick = function () {
     for (li of li_pokemons) {
         var id = li.id.slice(8);
         if (!answered_list_local[id - number_start + 1]) {
+            li.classList.remove("not_found");
             li.classList.add("found", "not_answered");
-            li.innerHTML = "<img src='./img/pokemon/" + padZero(id, 3) + ".png' class='image_pokemon' loading='lazy' title='"+ all_pokemon_list[id-1].name +"'>";
+            // li.innerHTML = "<img src='./img/pokemon/" + padZero(id, 3) + ".png' class='image_pokemon' loading='lazy' title='"+ all_pokemon_list[id-1].name +"'>";
         }
     }
 

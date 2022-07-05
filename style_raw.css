@@ -172,9 +172,9 @@ input[disabled]{
     background-blend-mode:lighten;
 }
 
-/* .li_pokemon > img{
-    display: none;
-} */
+.not_found > img{
+    visibility: hidden;
+}
 
 .found{
     background-image: none;
