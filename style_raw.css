@@ -13,49 +13,49 @@ body {
 
 .gen-1 {
     background-image: url("./img/system/background.png"), url("./img/system/color_gen1.png");
-    background-repeat:repeat, no-repeat;
+    background-repeat:repeat, repeat-y;
     background-size: auto, 100% 100%;
 }
 
 .gen-2 {
     background-image: url("./img/system/background.png"), url("./img/system/color_gen2.png");
-    background-repeat:repeat, no-repeat;
+    background-repeat:repeat, repeat-y;
     background-size: auto, 100% 100%;
 }
 
 .gen-3 {
     background-image: url("./img/system/background.png"), url("./img/system/color_gen3.png");
-    background-repeat:repeat, no-repeat;
+    background-repeat:repeat, repeat-y;
     background-size: auto, 100% 100%;
 }
 
 .gen-4 {
     background-image: url("./img/system/background.png"), url("./img/system/color_gen4.png");
-    background-repeat:repeat, no-repeat;
+    background-repeat:repeat, repeat-y;
     background-size: auto, 100% 100%;
 }
 
 .gen-5 {
     background-image: url("./img/system/background.png"), url("./img/system/color_gen5.png");
-    background-repeat:repeat, no-repeat;
+    background-repeat:repeat, repeat-y;
     background-size: auto, 100% 100%;
 }
 
 .gen-6 {
     background-image: url("./img/system/background.png"), url("./img/system/color_gen6.png");
-    background-repeat:repeat, no-repeat;
+    background-repeat:repeat, repeat-y;
     background-size: auto, 100% 100%;
 }
 
 .gen-7 {
     background-image: url("./img/system/background.png"), url("./img/system/color_gen7.png");
-    background-repeat:repeat, no-repeat;
+    background-repeat:repeat, repeat-y;
     background-size: auto, 100% 100%;
 }
 
 .gen-8 {
     background-image: url("./img/system/background.png"), url("./img/system/color_gen8.png");
-    background-repeat:repeat, no-repeat;
+    background-repeat:repeat, repeat-y;
     background-size: auto, 100% 100%;
 }
 
