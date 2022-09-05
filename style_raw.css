@@ -261,6 +261,11 @@ input[disabled]{
     width: 100%;
 } */
 
+.ad_amazon{
+    min-width: 150px;
+    min-height: 200px;
+}
+
 @media screen and (max-width: 1024px) {
     .li_wrapper{
         width: calc(100% / 18);
