@@ -272,6 +272,10 @@ input[disabled]{
     min-height: 200px;
 }
 
+#button_menu {
+    display: none;
+}
+
 @media screen and (max-width: 1024px) {
     .li_wrapper{
         width: calc(100% / 18);
@@ -294,6 +298,10 @@ input[disabled]{
 
     .none{
         display: none;
+    }
+
+    #button_menu{
+        display: inline-block;
     }
 }
 
@@ -335,5 +343,9 @@ input[disabled]{
     .col-auto{
         padding-left: 6px;
         padding-right: 4px;
+    }
+    
+    .xx-small-sp{
+        font-size: xx-small;
     }
 }

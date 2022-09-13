@@ -91,23 +91,61 @@ window.addEventListener('resize', function () {
     setFillHeight();
 }, false);
 
-// 解答欄にフォーカスした時に高さを再計算する、コピーライトを非表示にする
+// 解答欄にフォーカスした時に高さを再計算する
 document.getElementById("input_answer").onfocus = function () {
-    var noneOnFocusList = document.getElementsByClassName("none_onfocus");
-    for(e of noneOnFocusList){
-        e.classList.add("none");
-    } 
+    noneHeaderAndFooter();
+}
+
+// 解答欄からフォーカスアウトした時に高さを再計算する
+document.getElementById("input_answer").onblur = function () {
     setTimeout("setFillHeight()", 500);
 }
 
-// 解答欄からフォーカスアウトした時に高さを再計算する、コピーライトを表示にする
-document.getElementById("input_answer").onblur = function () {
+// ヘッダーとフッターを非表示にする関数
+function noneHeaderAndFooter(){
     var noneOnFocusList = document.getElementsByClassName("none_onfocus");
-    for(e of noneOnFocusList){
-        e.classList.remove("none");
-    } 
+    for (e of noneOnFocusList) {
+        e.classList.add("none");
+    }
     setTimeout("setFillHeight()", 500);
+    var button_menu = document.getElementById("button_menu");
+    button_menu.textContent = "メニュー";
+    button_menu.classList.add('on_focus');
 }
+
+// ヘッダーとフッターを表示する関数
+function displayHeaderAndFooter(){
+    var noneOnFocusList = document.getElementsByClassName("none_onfocus");
+    for (e of noneOnFocusList) {
+        e.classList.remove("none");
+    }
+    setTimeout("setFillHeight()", 500);
+    var button_menu = document.getElementById("button_menu");
+    button_menu.textContent = "全画面化";
+    button_menu.classList.remove('on_focus');
+}
+
+// 全画面化ボタンを押したときの関数
+document.getElementById("button_menu").onclick = function () {
+    var button_menu = document.getElementById("button_menu");
+    if (button_menu.classList.contains("on_focus")){
+        displayHeaderAndFooter();
+    }
+    else{
+        noneHeaderAndFooter();
+    }
+    return false;
+}
+
+// // 解答欄からフォーカスアウトした時に高さを再計算する、コピーライトを表示にする
+// document.getElementById("input_answer").onblur = function () {
+//     var noneOnFocusList = document.getElementsByClassName("none_onfocus");
+//     for (e of noneOnFocusList) {
+//         e.classList.remove("none");
+//     }
+//     setTimeout("setFillHeight()", 500);
+// }
+
 
 // // ポケモンリストの高さを調節する関数
 // function setPokemonListHeight(){
@@ -214,6 +252,8 @@ document.getElementById("button_start").onclick = function () {
             var id = li.id.slice(8);
             li.textContent = padZero(id, 3);
         }
+
+        noneHeaderAndFooter();
     }
 
     return false;
@@ -409,7 +449,7 @@ document.getElementById("button_confirm").onclick = function () {
     input_answer.setAttribute("placeholder", "開始してね");
 
     document.getElementById("button_answer").setAttribute("disabled", true);
-    
+
     var button = document.getElementById("button_start");
     button.textContent = "開始";
     button.classList.replace('btn-danger', 'btn-success');
@@ -425,13 +465,15 @@ document.getElementById("button_confirm").onclick = function () {
         var id = li.id.slice(8);
         if (!answered_list_local[id - number_start + 1]) {
             li.classList.add("found", "not_answered");
-            li.innerHTML = "<img src='./img/pokemon/" + padZero(id, 3) + ".png' class='image_pokemon' loading='lazy' title='"+ all_pokemon_list[id-1].name +"'>";
+            li.innerHTML = "<img src='./img/pokemon/" + padZero(id, 3) + ".png' class='image_pokemon' loading='lazy' title='" + all_pokemon_list[id - 1].name + "'>";
         }
     }
 
     var time = toJapaneseHms(document.getElementById("timer").textContent);
     var number_answered = number_pokemons - remaining_number;
     document.getElementById("text_surrender_modal").innerHTML = "キミは" + time + "で<br>ポケモン" + number_answered + "/" + number_pokemons + "匹言えたよ！";
+
+    displayHeaderAndFooter();
 
     return false;
 }
@@ -512,7 +554,7 @@ function checkAnswer(answer) {
         }
         var li = document.getElementById('pokemon_' + pokemon.number);
         li.classList.add("found");
-        li.innerHTML = "<img src='./img/pokemon/" + padZero(pokemon.number, 3) + ".png' class='image_pokemon' title='"+ pokemon.name +"'>";
+        li.innerHTML = "<img src='./img/pokemon/" + padZero(pokemon.number, 3) + ".png' class='image_pokemon' title='" + pokemon.name + "'>";
         if (document.getElementById("checkbox_scroll").checked) {
             li.scrollIntoView({ behavior: "smooth", block: "nearest" });
         }
@@ -572,13 +614,15 @@ document.form_answer.onreset = function () {
         setTimeout("showClearMessage()", 1000);
         // setTimeout("playClearAudio()", 1000);
         playClearAudio();
+
+        displayHeaderAndFooter();
     }
 }
 
 function showClearMessage() {
     var clear_modal = new bootstrap.Modal(document.getElementById("clear_modal"), {
         keyboard: false
-      });
+    });
     clear_modal.show();
 }
 
