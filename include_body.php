@@ -1,44 +1,6 @@
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>ポケモン全部言えるかな？ゲーム</title>
-    <meta name="description" content="キミは全ポケモン920匹言えるかな？全ポケモン920匹を答えるタイムアタッククイズゲームにチャレンジしよう！">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ポケモン全部言えるかな？ゲーム">
-    <meta name="twitter:description" content="キミは全ポケモン920匹言えるかな？全ポケモン920匹を答えるタイムアタッククイズゲームにチャレンジしよう！">
-    <meta name="twitter:image" content="https://all-pokemon-ierukana.com/img/system/tweet_all.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link href="style_raw.css" rel="stylesheet">
-    <link rel="icon" href="./img/system/favicon.ico">
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-5QG7HRH');</script>
-    <!-- End Google Tag Manager -->
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-        crossorigin="anonymous"></script>
-    <script>
-        var gen = "test";
-        var number_start = 1;
-        var number_pokemons = 920;
-    </script>
-    <script defer src="script_raw.js"></script>
-</head>
-
-<body class="px-2 pb-2 px-sm-4 px-lg-5">
+<body class="px-2 pb-2 px-sm-4 px-lg-5 gen-<?php echo $gen; ?>">
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QG7HRH" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QG7HRH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <header class="none_onfocus">
         <div class="container mb-1 border rounded pc_only bgcolor_white_alpha">
@@ -77,8 +39,7 @@
         </div>
         <div class="dropdown sp_only">
             <div class="dropdown-wrapper bgcolor_white_alpha me-0 ms-auto">
-                <button class="btn dropdown-toggle btn-sm border rounded" type="button" id="dropdownMenuButton"
-                    data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn dropdown-toggle btn-sm border rounded" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                     他の地方
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -98,8 +59,7 @@
     </header>
     <main>
         <div id="others">
-            <div class="modal fade" id="confirm_modal" tabindex="-1" aria-labelledby="confirm_modal_label"
-                aria-hidden="true">
+            <div class="modal fade" id="confirm_modal" tabindex="-1" aria-labelledby="confirm_modal_label" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-sm">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -109,54 +69,44 @@
                             <p>勝負を　あきらめて<br>降参しますか？</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" id="button_confirm" class="btn btn-primary btn-sm"
-                                data-bs-target="#surrender_modal" data-bs-toggle="modal"
-                                data-bs-dismiss="modal">はい</button>
+                            <button type="button" id="button_confirm" class="btn btn-primary btn-sm" data-bs-target="#surrender_modal" data-bs-toggle="modal" data-bs-dismiss="modal">はい</button>
                             <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">いいえ</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="surrender_modal" tabindex="-1" aria-labelledby="surrender_modal_label"
-                data-bs-backdrop="static" aria-hidden="true">
+            <div class="modal fade" id="surrender_modal" tabindex="-1" aria-labelledby="surrender_modal_label" data-bs-backdrop="static" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-sm">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="btn-close" data-bs-target="#ad_modal" data-bs-toggle="modal"
-                                data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-target="#ad_modal" data-bs-toggle="modal" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <p id="text_surrender_modal"></p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" id="button_tweet_surrender_modal" class="btn btn-info btn-sm"
-                                data-bs-dismiss="modal">結果Tweet</button>
-                            <button type="button" class="btn btn-secondary btn-sm" data-bs-target="#ad_modal"
-                                data-bs-toggle="modal" data-bs-dismiss="modal">閉じる</button>
+                            <button type="button" id="button_tweet_surrender_modal" class="btn btn-info btn-sm" data-bs-dismiss="modal">結果Tweet</button>
+                            <button type="button" class="btn btn-secondary btn-sm" data-bs-target="#ad_modal" data-bs-toggle="modal" data-bs-dismiss="modal">閉じる</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="clear_modal" tabindex="-1" aria-labelledby="clear_modal_label"
-                data-bs-backdrop="static" aria-hidden="true">
+            <div class="modal fade" id="clear_modal" tabindex="-1" aria-labelledby="clear_modal_label" data-bs-backdrop="static" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="btn-close" data-bs-target="#ad_modal" data-bs-toggle="modal"
-                                data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-target="#ad_modal" data-bs-toggle="modal" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <p>クリアおめでとう！<br>キミはまさしく全ポケモンマスターだ！</p>
+                            <?php echo $clear_message; ?>
                             <p class="small">キミのクリアタイム：<span id="clear_time"></span><br>
                                 クリアした<span id="num_players">[通信待機中…]</span>人の平均タイム：<span
                                     id="average_time">[通信待機中…]</span>
                             </p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" id="button_tweet_clear_modal" class="btn btn-info btn-sm"
-                                data-bs-dismiss="modal">結果Tweet</button>
-                            <button type="button" class="btn btn-secondary btn-sm" data-bs-target="#ad_modal"
-                                data-bs-toggle="modal" data-bs-dismiss="modal">閉じる</button>
+                            <button type="button" id="button_tweet_clear_modal" class="btn btn-info btn-sm" data-bs-dismiss="modal">結果Tweet</button>
+                            <button type="button" class="btn btn-secondary btn-sm" data-bs-target="#ad_modal" data-bs-toggle="modal" data-bs-dismiss="modal">閉じる</button>
                         </div>
                     </div>
                 </div>
@@ -165,8 +115,7 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            広告<button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
+                            広告<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <div id="ad_modal_admax" class="text-center">
@@ -175,21 +124,18 @@
                                 <!-- admax -->
                             </div>
                             <div id="ad_modal_a8" class="text-center">
-                                <a href="https://px.a8.net/svt/ejp?a8mat=3NH3FJ+XXR16+50+2HH0SH" target="_blank"
-                                    rel="nofollow noopener">
-                                    <img border="0" width="300" height="300" alt=""
-                                        src="https://www27.a8.net/svt/bgt?aid=220827295057&wid=002&eno=01&mid=s00000000018015028000&mc=1"></a>
-                                <img border="0" width="1" height="1"
-                                    src="https://www18.a8.net/0.gif?a8mat=3NH3FJ+XXR16+50+2HH0SH" alt="">
+                                <a href="https://px.a8.net/svt/ejp?a8mat=3NH3FJ+XXR16+50+2HH0SH" target="_blank" rel="nofollow noopener">
+                                    <img border="0" width="300" height="300" alt="" src="https://www27.a8.net/svt/bgt?aid=220827295057&wid=002&eno=01&mid=s00000000018015028000&mc=1"></a>
+                                <img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=3NH3FJ+XXR16+50+2HH0SH" alt="">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <h1 id="h1" class="mb-0 text-center h2 none_onfocus">
-                全ポケモン920匹言えるかな？
+                <?php echo $h1; ?>
             </h1>
-            <p class="text-center xx-small note mb-0 none_onfocus">※スカーレット・バイオレットのポケモンを含みます</p>
+            <p class="text-center xx-small note mb-0 none_onfocus"><?php echo $note; ?></p>
             <div class="container mb-2 rounded">
                 <div class="row rounded">
                     <div class="col-md-3 col-6 border rounded text-center bgcolor_white_alpha fit-content">
@@ -202,12 +148,10 @@
                         <form name="form_answer" id="form_answer" autocomplete="off">
                             <div class="row">
                                 <div class="col-auto">
-                                    <input type="text" id="input_answer" placeholder="開始してね" class="form-control-sm"
-                                        disabled>
+                                    <input type="text" id="input_answer" placeholder="開始してね" class="form-control-sm" disabled>
                                 </div>
                                 <div class="col-auto">
-                                    <input type="submit" id="button_answer" value="回答"
-                                        class="btn btn-primary btn-sm xx-small-sp" disabled>
+                                    <input type="submit" id="button_answer" value="回答" class="btn btn-primary btn-sm xx-small-sp" disabled>
                                 </div>
                             </div>
                         </form>
@@ -219,14 +163,12 @@
                         <button id="button_menu" class="btn btn-secondary btn-sm xx-small-sp">全画面化</button>
                     </div>
                     <div class="col-auto rounded">
-                        <a id="button_tweet" rel="nofollow" role="button" class="btn btn-info btn-sm xx-small-sp"
-                            onClick="gtag('event', 'click', {'event_category': 'button_tweet', 'event_label': 'button_tweet'});">結果Tweet</a>
+                        <a id="button_tweet" rel="nofollow" role="button" class="btn btn-info btn-sm xx-small-sp" onClick="gtag('event', 'click', {'event_category': 'button_tweet', 'event_label': 'button_tweet'});">結果Tweet</a>
                     </div>
                 </div>
             </div>
         </div>
-        <ul id="pokemon_list"
-            class="list-unstyled d-flex flex-wrap border border-secondary rounded p-0 bgcolor_white all_pokemon">
+        <ul id="pokemon_list" class="list-unstyled d-flex flex-wrap border border-secondary rounded p-0 bgcolor_white all_pokemon">
         </ul>
     </main>
     <footer class="none_onfocus">
@@ -243,8 +185,7 @@
                     </div>
                 </div>
                 <div id="author" class="col text-end xx-small">
-                    <a href="https://twitter.com/omygTSUX" target="blank"
-                        onClick="gtag('event', 'click', {'event_category': 'author', 'event_label': 'author'});">バグ報告は作者へ：@omygTSUX</a>
+                    <a href="https://twitter.com/omygTSUX" target="blank" onClick="gtag('event', 'click', {'event_category': 'author', 'event_label': 'author'});">バグ報告は作者へ：@omygTSUX</a>
                 </div>
             </div>
         </div>
@@ -266,17 +207,56 @@
                 <div class="text-center mt-4">
                     <!-- START MoshimoAffiliateEasyLink -->
                     <script type="text/javascript">
-                        (function (b, c, f, g, a, d, e) {
+                        (function(b, c, f, g, a, d, e) {
                             b.MoshimoAffiliateObject = a;
-                            b[a] = b[a] || function () {
-                                arguments.currentScript = c.currentScript
-                                    || c.scripts[c.scripts.length - 2]; (b[a].q = b[a].q || []).push(arguments)
+                            b[a] = b[a] || function() {
+                                arguments.currentScript = c.currentScript ||
+                                    c.scripts[c.scripts.length - 2];
+                                (b[a].q = b[a].q || []).push(arguments)
                             };
                             c.getElementById(a) || (d = c.createElement(f), d.src = g,
                                 d.id = a, e = c.getElementsByTagName("body")[0], e.appendChild(d))
                         })
-                            (window, document, "script", "//dn.msmstatic.com/site/cardlink/bundle.js?20220329", "msmaflink");
-                        msmaflink({ "n": "ロストアビス 【BOX（30パック入り）】", "b": "", "t": "", "d": "https:\/\/thumbnail.image.rakuten.co.jp", "c_p": "", "p": ["\/@0_mall\/aromacoffee\/cabinet\/09084823\/imgrc0091915974.jpg"], "u": { "u": "https:\/\/item.rakuten.co.jp\/aromacoffee\/pm-pmcgrbb\/", "t": "rakuten", "r_v": "" }, "v": "2.1", "b_l": [{ "id": 1, "u_tx": "楽天市場で見る", "u_bc": "#f76956", "u_url": "https:\/\/item.rakuten.co.jp\/aromacoffee\/pm-pmcgrbb\/", "a_id": 3588805, "p_id": 54, "pl_id": 27059, "pc_id": 54, "s_n": "rakuten", "u_so": 1 }, { "id": 2, "u_tx": "Yahoo!ショッピングで見る", "u_bc": "#66a7ff", "u_url": "https:\/\/shopping.yahoo.co.jp\/search?first=1\u0026p=%E3%83%AD%E3%82%B9%E3%83%88%E3%82%A2%E3%83%93%E3%82%B9%20%E3%80%90BOX%EF%BC%8830%E3%83%91%E3%83%83%E3%82%AF%E5%85%A5%E3%82%8A%EF%BC%89%E3%80%91", "a_id": 3588816, "p_id": 1225, "pl_id": 27061, "pc_id": 1925, "s_n": "yahoo", "u_so": 2 }], "eid": "gyaZD", "s": "xs" });
+                        (window, document, "script", "//dn.msmstatic.com/site/cardlink/bundle.js?20220329", "msmaflink");
+                        msmaflink({
+                            "n": "ロストアビス 【BOX（30パック入り）】",
+                            "b": "",
+                            "t": "",
+                            "d": "https:\/\/thumbnail.image.rakuten.co.jp",
+                            "c_p": "",
+                            "p": ["\/@0_mall\/aromacoffee\/cabinet\/09084823\/imgrc0091915974.jpg"],
+                            "u": {
+                                "u": "https:\/\/item.rakuten.co.jp\/aromacoffee\/pm-pmcgrbb\/",
+                                "t": "rakuten",
+                                "r_v": ""
+                            },
+                            "v": "2.1",
+                            "b_l": [{
+                                "id": 1,
+                                "u_tx": "楽天市場で見る",
+                                "u_bc": "#f76956",
+                                "u_url": "https:\/\/item.rakuten.co.jp\/aromacoffee\/pm-pmcgrbb\/",
+                                "a_id": 3588805,
+                                "p_id": 54,
+                                "pl_id": 27059,
+                                "pc_id": 54,
+                                "s_n": "rakuten",
+                                "u_so": 1
+                            }, {
+                                "id": 2,
+                                "u_tx": "Yahoo!ショッピングで見る",
+                                "u_bc": "#66a7ff",
+                                "u_url": "https:\/\/shopping.yahoo.co.jp\/search?first=1\u0026p=%E3%83%AD%E3%82%B9%E3%83%88%E3%82%A2%E3%83%93%E3%82%B9%20%E3%80%90BOX%EF%BC%8830%E3%83%91%E3%83%83%E3%82%AF%E5%85%A5%E3%82%8A%EF%BC%89%E3%80%91",
+                                "a_id": 3588816,
+                                "p_id": 1225,
+                                "pl_id": 27061,
+                                "pc_id": 1925,
+                                "s_n": "yahoo",
+                                "u_so": 2
+                            }],
+                            "eid": "gyaZD",
+                            "s": "xs"
+                        });
                     </script>
                     <div id="msmaflink-gyaZD">リンク</div>
                     <!-- MoshimoAffiliateEasyLink END -->
@@ -286,17 +266,56 @@
                 <div class="text-center mt-4">
                     <!-- START MoshimoAffiliateEasyLink -->
                     <script type="text/javascript">
-                        (function (b, c, f, g, a, d, e) {
+                        (function(b, c, f, g, a, d, e) {
                             b.MoshimoAffiliateObject = a;
-                            b[a] = b[a] || function () {
-                                arguments.currentScript = c.currentScript
-                                    || c.scripts[c.scripts.length - 2]; (b[a].q = b[a].q || []).push(arguments)
+                            b[a] = b[a] || function() {
+                                arguments.currentScript = c.currentScript ||
+                                    c.scripts[c.scripts.length - 2];
+                                (b[a].q = b[a].q || []).push(arguments)
                             };
                             c.getElementById(a) || (d = c.createElement(f), d.src = g,
                                 d.id = a, e = c.getElementsByTagName("body")[0], e.appendChild(d))
                         })
-                            (window, document, "script", "//dn.msmstatic.com/site/cardlink/bundle.js?20220329", "msmaflink");
-                        msmaflink({ "n": "白熱のアルカナ 1BOX ", "b": "", "t": "", "d": "https:\/\/thumbnail.image.rakuten.co.jp", "c_p": "\/@0_mall\/akasatana-shop\/cabinet", "p": ["\/compass1661841087.jpg", "\/compass1661841121.jpg"], "u": { "u": "https:\/\/item.rakuten.co.jp\/akasatana-shop\/4521329365480\/", "t": "rakuten", "r_v": "" }, "v": "2.1", "b_l": [{ "id": 1, "u_tx": "楽天市場で見る", "u_bc": "#f76956", "u_url": "https:\/\/item.rakuten.co.jp\/akasatana-shop\/4521329365480\/", "a_id": 3588805, "p_id": 54, "pl_id": 27059, "pc_id": 54, "s_n": "rakuten", "u_so": 1 }, { "id": 2, "u_tx": "Yahoo!ショッピングで見る", "u_bc": "#66a7ff", "u_url": "https:\/\/shopping.yahoo.co.jp\/search?first=1\u0026p=%E7%99%BD%E7%86%B1%E3%81%AE%E3%82%A2%E3%83%AB%E3%82%AB%E3%83%8A%201BOX%20", "a_id": 3588816, "p_id": 1225, "pl_id": 27061, "pc_id": 1925, "s_n": "yahoo", "u_so": 2 }], "eid": "Tg8zB", "s": "xs" });
+                        (window, document, "script", "//dn.msmstatic.com/site/cardlink/bundle.js?20220329", "msmaflink");
+                        msmaflink({
+                            "n": "白熱のアルカナ 1BOX ",
+                            "b": "",
+                            "t": "",
+                            "d": "https:\/\/thumbnail.image.rakuten.co.jp",
+                            "c_p": "\/@0_mall\/akasatana-shop\/cabinet",
+                            "p": ["\/compass1661841087.jpg", "\/compass1661841121.jpg"],
+                            "u": {
+                                "u": "https:\/\/item.rakuten.co.jp\/akasatana-shop\/4521329365480\/",
+                                "t": "rakuten",
+                                "r_v": ""
+                            },
+                            "v": "2.1",
+                            "b_l": [{
+                                "id": 1,
+                                "u_tx": "楽天市場で見る",
+                                "u_bc": "#f76956",
+                                "u_url": "https:\/\/item.rakuten.co.jp\/akasatana-shop\/4521329365480\/",
+                                "a_id": 3588805,
+                                "p_id": 54,
+                                "pl_id": 27059,
+                                "pc_id": 54,
+                                "s_n": "rakuten",
+                                "u_so": 1
+                            }, {
+                                "id": 2,
+                                "u_tx": "Yahoo!ショッピングで見る",
+                                "u_bc": "#66a7ff",
+                                "u_url": "https:\/\/shopping.yahoo.co.jp\/search?first=1\u0026p=%E7%99%BD%E7%86%B1%E3%81%AE%E3%82%A2%E3%83%AB%E3%82%AB%E3%83%8A%201BOX%20",
+                                "a_id": 3588816,
+                                "p_id": 1225,
+                                "pl_id": 27061,
+                                "pc_id": 1925,
+                                "s_n": "yahoo",
+                                "u_so": 2
+                            }],
+                            "eid": "Tg8zB",
+                            "s": "xs"
+                        });
                     </script>
                     <div id="msmaflink-Tg8zB">リンク</div>
                     <!-- MoshimoAffiliateEasyLink END -->
@@ -306,17 +325,56 @@
                 <div class="text-center mt-4">
                     <!-- START MoshimoAffiliateEasyLink -->
                     <script type="text/javascript">
-                        (function (b, c, f, g, a, d, e) {
+                        (function(b, c, f, g, a, d, e) {
                             b.MoshimoAffiliateObject = a;
-                            b[a] = b[a] || function () {
-                                arguments.currentScript = c.currentScript
-                                    || c.scripts[c.scripts.length - 2]; (b[a].q = b[a].q || []).push(arguments)
+                            b[a] = b[a] || function() {
+                                arguments.currentScript = c.currentScript ||
+                                    c.scripts[c.scripts.length - 2];
+                                (b[a].q = b[a].q || []).push(arguments)
                             };
                             c.getElementById(a) || (d = c.createElement(f), d.src = g,
                                 d.id = a, e = c.getElementsByTagName("body")[0], e.appendChild(d))
                         })
-                            (window, document, "script", "//dn.msmstatic.com/site/cardlink/bundle.js?20220329", "msmaflink");
-                        msmaflink({ "n": "スプラトゥーン3", "b": "", "t": "", "d": "https:\/\/thumbnail.image.rakuten.co.jp", "c_p": "\/@0_mall\/book\/cabinet\/0337", "p": ["\/4902370550337.jpg", "\/4902370550337_2.jpg", "\/4902370550337_3.jpg"], "u": { "u": "https:\/\/item.rakuten.co.jp\/book\/17134614\/", "t": "rakuten", "r_v": "" }, "v": "2.1", "b_l": [{ "id": 1, "u_tx": "楽天市場で見る", "u_bc": "#f76956", "u_url": "https:\/\/item.rakuten.co.jp\/book\/17134614\/", "a_id": 3588805, "p_id": 54, "pl_id": 27059, "pc_id": 54, "s_n": "rakuten", "u_so": 0 }, { "id": 2, "u_tx": "Yahoo!ショッピングで見る", "u_bc": "#66a7ff", "u_url": "https:\/\/shopping.yahoo.co.jp\/search?first=1\u0026p=%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33", "a_id": 3588816, "p_id": 1225, "pl_id": 27061, "pc_id": 1925, "s_n": "yahoo", "u_so": 1 }], "eid": "TMDed", "s": "xs" });
+                        (window, document, "script", "//dn.msmstatic.com/site/cardlink/bundle.js?20220329", "msmaflink");
+                        msmaflink({
+                            "n": "スプラトゥーン3",
+                            "b": "",
+                            "t": "",
+                            "d": "https:\/\/thumbnail.image.rakuten.co.jp",
+                            "c_p": "\/@0_mall\/book\/cabinet\/0337",
+                            "p": ["\/4902370550337.jpg", "\/4902370550337_2.jpg", "\/4902370550337_3.jpg"],
+                            "u": {
+                                "u": "https:\/\/item.rakuten.co.jp\/book\/17134614\/",
+                                "t": "rakuten",
+                                "r_v": ""
+                            },
+                            "v": "2.1",
+                            "b_l": [{
+                                "id": 1,
+                                "u_tx": "楽天市場で見る",
+                                "u_bc": "#f76956",
+                                "u_url": "https:\/\/item.rakuten.co.jp\/book\/17134614\/",
+                                "a_id": 3588805,
+                                "p_id": 54,
+                                "pl_id": 27059,
+                                "pc_id": 54,
+                                "s_n": "rakuten",
+                                "u_so": 0
+                            }, {
+                                "id": 2,
+                                "u_tx": "Yahoo!ショッピングで見る",
+                                "u_bc": "#66a7ff",
+                                "u_url": "https:\/\/shopping.yahoo.co.jp\/search?first=1\u0026p=%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33",
+                                "a_id": 3588816,
+                                "p_id": 1225,
+                                "pl_id": 27061,
+                                "pc_id": 1925,
+                                "s_n": "yahoo",
+                                "u_so": 1
+                            }],
+                            "eid": "TMDed",
+                            "s": "xs"
+                        });
                     </script>
                     <div id="msmaflink-TMDed">リンク</div>
                     <!-- MoshimoAffiliateEasyLink END -->
@@ -324,12 +382,9 @@
             </div>
             <div class="col">
                 <div class="text-center mt-4">
-                    <a href="https://px.a8.net/svt/ejp?a8mat=3NH3FJ+XXR16+50+2HMT4H" target="_blank"
-                        rel="nofollow noopener">
-                        <img border="0" width="300" height="250" alt=""
-                            src="https://www23.a8.net/svt/bgt?aid=220827295057&wid=002&eno=01&mid=s00000000018015055000&mc=1"></a>
-                    <img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=3NH3FJ+XXR16+50+2HMT4H"
-                        alt="">
+                    <a href="https://px.a8.net/svt/ejp?a8mat=3NH3FJ+XXR16+50+2HMT4H" rel="nofollow">
+                        <img border="0" width="300" height="250" alt="" src="https://www23.a8.net/svt/bgt?aid=220827295057&wid=002&eno=01&mid=s00000000018015055000&mc=1"></a>
+                    <img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=3NH3FJ+XXR16+50+2HMT4H" alt="">
                 </div>
             </div>
             <div class="col">
@@ -339,9 +394,6 @@
                     <!-- admax -->
                 </div>
             </div>
-
         </div>
     </div>
 </body>
-
-</html>

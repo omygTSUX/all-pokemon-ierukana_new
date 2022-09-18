@@ -180,7 +180,7 @@ function toJapaneseHms(hms) {
 
 // タイマーを動かす関数
 function setTime() {
-    var shown_time = new Date().getTime() - start_time;
+    window.shown_time = new Date().getTime() - start_time;
     var timer = document.getElementById('timer');
     timer.textContent = toHms(Math.floor(shown_time / 1000));
 }
@@ -205,6 +205,7 @@ window.addEventListener("DOMContentLoaded", function () {
     setRemainingNumber(number_pokemons);
     createPokemonList(number_pokemons, number_start);
     setFillHeight();
+    choiceRandomAd();
 }, false);
 
 // 開始ボタンを押した時に実行される関数
@@ -595,6 +596,7 @@ function checkAnswer(answer) {
 document.form_answer.onreset = function () {
     if (remaining_number == 0) {
         stopTimer();
+        logClearTime();
 
         var input_answer = document.getElementById("input_answer");
         input_answer.setAttribute("disabled", true);
@@ -651,4 +653,41 @@ document.getElementById("button_tweet_surrender_modal").onclick = function () {
 }
 document.getElementById("button_tweet_clear_modal").onclick = function () {
     openTweetWindow();
+}
+
+// 広告をランダムに表示する関数
+function choiceRandomAd(){
+    var rndm = Math.floor(Math.random()*2);
+    if (rndm == 0){
+        document.getElementById("ad_modal_admax").classList.add("ad_none");
+    }
+    else{
+        document.getElementById("ad_modal_a8").classList.add("ad_none");
+    }
+}
+
+// クリアタイムをDBに記録する関数
+function logClearTime() {
+    var clear_time = Math.floor(window.shown_time/1000);
+    var data = "clear_time="+ clear_time + "&gen=" + gen;
+    var request = new XMLHttpRequest();
+    request.open('post', "sqlite_update_clear_time.php", true);
+    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    request.send(data);
+    request.onload = function () {
+        // console.log(request.responseText);
+        var res = JSON.parse(request.responseText);
+        var num_players = res["num_players"];
+        var average_time = res["average_time"];
+        if (!isNaN(average_time)){
+            average_time = toJapaneseHms(toHms(average_time));
+        }
+
+        var span_clear_time = document.getElementById("clear_time");
+        span_clear_time.textContent = toJapaneseHms(toHms(clear_time));
+        var span_num_players = document.getElementById("num_players");
+        span_num_players.textContent = num_players;
+        var span_average_time = document.getElementById("average_time");
+        span_average_time.textContent = average_time;
+    }
 }

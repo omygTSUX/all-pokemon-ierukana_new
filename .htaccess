@@ -1,0 +1,16 @@
+#リライトの設定
+RewriteEngine On
+
+# リダイレクト
+Redirect permanent /810-.html https://all-pokemon-ierukana.com/810-905.html
+
+# www無しのURLに統一
+RewriteCond %{HTTP_HOST} ^www\.all-pokemon-ierukana\.com
+RewriteRule ^(.*) https://all-pokemon-ierukana.com/$1 [R=301,L]
+
+# httpをhttpsに統一
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+
+# phpを動作させる
+AddHandler php8.1-script .html
