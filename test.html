@@ -28,7 +28,7 @@
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
     <script>
-        var gen = "test";
+        var gen = "all";
         var number_start = 1;
         var number_pokemons = 920;
     </script>
@@ -126,7 +126,12 @@
                                 data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <p id="text_surrender_modal"></p>
+                            <p>
+                                キミは<span id="surrender_time"></span>で<br>ポケモン<span id="num_answers"></span> / 920匹言えたよ！
+                            </p>
+                            <p class="small">降参した<span id="num_players">[通信待機中…]</span>人の平均解答数：<span
+                                    id="average_num_answers">[通信待機中…]</span> / 920匹
+                            </p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" id="button_tweet_surrender_modal" class="btn btn-info btn-sm"
@@ -169,11 +174,6 @@
                                 aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <div id="ad_modal_admax" class="text-center">
-                                <!-- admax -->
-                                <script src="https://adm.shinobi.jp/o/2a44cdc906aa04b85f7842733f5214d1"></script>
-                                <!-- admax -->
-                            </div>
                             <div id="ad_modal_a8" class="text-center">
                                 <a href="https://px.a8.net/svt/ejp?a8mat=3NH3FJ+XXR16+50+2HH0SH" target="_blank"
                                     rel="nofollow noopener">

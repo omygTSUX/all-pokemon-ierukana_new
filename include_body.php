@@ -82,7 +82,12 @@
                             <button type="button" class="btn-close" data-bs-target="#ad_modal" data-bs-toggle="modal" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <p id="text_surrender_modal"></p>
+                        <p>
+                                キミは<span id="surrender_time"></span>で<br>ポケモン<span id="num_answers"></span> / <?php echo $number_pokemons; ?>匹言えたよ！
+                            </p>
+                            <p class="small">降参した<span id="num_players">[通信待機中…]</span>人の平均解答数：<span
+                                    id="average_num_answers">[通信待機中…]</span> / <?php echo $number_pokemons; ?>匹
+                            </p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" id="button_tweet_surrender_modal" class="btn btn-info btn-sm" data-bs-dismiss="modal">結果Tweet</button>
@@ -100,8 +105,7 @@
                         <div class="modal-body">
                             <?php echo $clear_message; ?>
                             <p class="small">キミのクリアタイム：<span id="clear_time"></span><br>
-                                クリアした<span id="num_players">[通信待機中…]</span>人の平均タイム：<span
-                                    id="average_time">[通信待機中…]</span>
+                                クリアした<span id="num_players">[通信待機中…]</span>人の平均タイム：<span id="average_time">[通信待機中…]</span>
                             </p>
                         </div>
                         <div class="modal-footer">
@@ -118,11 +122,6 @@
                             広告<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <div id="ad_modal_admax" class="text-center">
-                                <!-- admax -->
-                                <script src="https://adm.shinobi.jp/o/2a44cdc906aa04b85f7842733f5214d1"></script>
-                                <!-- admax -->
-                            </div>
                             <div id="ad_modal_a8" class="text-center">
                                 <a href="https://px.a8.net/svt/ejp?a8mat=3NH3FJ+XXR16+50+2HH0SH" target="_blank" rel="nofollow noopener">
                                     <img border="0" width="300" height="300" alt="" src="https://www27.a8.net/svt/bgt?aid=220827295057&wid=002&eno=01&mid=s00000000018015028000&mc=1"></a>
@@ -203,6 +202,65 @@
     <div class="container mt-4 border border-secondary rounded">
         <p class="mt-2 small fw-bold text-center">広告</p>
         <div class="row">
+            <div class="col">
+                <div class="text-center mt-4">
+                    <!-- START MoshimoAffiliateEasyLink -->
+                    <script type="text/javascript">
+                        (function(b, c, f, g, a, d, e) {
+                            b.MoshimoAffiliateObject = a;
+                            b[a] = b[a] || function() {
+                                arguments.currentScript = c.currentScript ||
+                                    c.scripts[c.scripts.length - 2];
+                                (b[a].q = b[a].q || []).push(arguments)
+                            };
+                            c.getElementById(a) || (d = c.createElement(f), d.src = g,
+                                d.id = a, e = c.getElementsByTagName("body")[0], e.appendChild(d))
+                        })
+                        (window, document, "script", "//dn.msmstatic.com/site/cardlink/bundle.js?20220329", "msmaflink");
+                        msmaflink({
+                            "n": "ポケカ 「パラダイムトリガー」 10月21日発売予定",
+                            "b": "",
+                            "t": "",
+                            "d": "https:\/\/thumbnail.image.rakuten.co.jp",
+                            "c_p": "",
+                            "p": ["\/@0_mall\/bell-world\/cabinet\/card-game\/pokemon\/pokeka-paradigm-02.jpg"],
+                            "u": {
+                                "u": "https:\/\/item.rakuten.co.jp\/bell-world\/pokeka-paradigm\/",
+                                "t": "rakuten",
+                                "r_v": ""
+                            },
+                            "v": "2.1",
+                            "b_l": [{
+                                "id": 1,
+                                "u_tx": "楽天市場で見る",
+                                "u_bc": "#f76956",
+                                "u_url": "https:\/\/item.rakuten.co.jp\/bell-world\/pokeka-paradigm\/",
+                                "a_id": 3588805,
+                                "p_id": 54,
+                                "pl_id": 27059,
+                                "pc_id": 54,
+                                "s_n": "rakuten",
+                                "u_so": 1
+                            }, {
+                                "id": 2,
+                                "u_tx": "Yahoo!ショッピングで見る",
+                                "u_bc": "#66a7ff",
+                                "u_url": "https:\/\/shopping.yahoo.co.jp\/search?first=1\u0026p=%E3%83%9D%E3%82%B1%E3%82%AB%20%E3%80%8C%E3%83%91%E3%83%A9%E3%83%80%E3%82%A4%E3%83%A0%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC%E3%80%8D%2010%E6%9C%8821%E6%97%A5%E7%99%BA%E5%A3%B2%E4%BA%88%E5%AE%9A",
+                                "a_id": 3588816,
+                                "p_id": 1225,
+                                "pl_id": 27061,
+                                "pc_id": 1925,
+                                "s_n": "yahoo",
+                                "u_so": 2
+                            }],
+                            "eid": "oP4cK",
+                            "s": "xs"
+                        });
+                    </script>
+                    <div id="msmaflink-oP4cK">リンク</div>
+                    <!-- MoshimoAffiliateEasyLink END -->
+                </div>
+            </div>
             <div class="col">
                 <div class="text-center mt-4">
                     <!-- START MoshimoAffiliateEasyLink -->

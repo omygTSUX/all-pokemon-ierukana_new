@@ -444,6 +444,7 @@ document.getElementById("button_confirm").onclick = function () {
     var answered_list_local = answered_list;
 
     stopTimer();
+    logNumOfAnswers();
 
     var input_answer = document.getElementById("input_answer");
     input_answer.setAttribute("disabled", true);
@@ -471,9 +472,8 @@ document.getElementById("button_confirm").onclick = function () {
         li.innerHTML = "<img src='./img/pokemon/" + padZero(id, 3) + ".png' class='image_pokemon' loading='lazy' title='" + all_pokemon_list[id - 1].name + "'>";
     }
 
-    var time = toJapaneseHms(document.getElementById("timer").textContent);
-    var number_answered = number_pokemons - remaining_number;
-    document.getElementById("text_surrender_modal").innerHTML = "キミは" + time + "で<br>ポケモン" + number_answered + "/" + number_pokemons + "匹言えたよ！";
+    var surrender_time = toJapaneseHms(toHms(Math.floor(window.shown_time/1000)));
+    document.getElementById("surrender_time").textContent = surrender_time;
 
     displayHeaderAndFooter();
 
@@ -655,17 +655,6 @@ document.getElementById("button_tweet_clear_modal").onclick = function () {
     openTweetWindow();
 }
 
-// 広告をランダムに表示する関数
-function choiceRandomAd(){
-    var rndm = Math.floor(Math.random()*2);
-    if (rndm == 0){
-        document.getElementById("ad_modal_admax").classList.add("ad_none");
-    }
-    else{
-        document.getElementById("ad_modal_a8").classList.add("ad_none");
-    }
-}
-
 // クリアタイムをDBに記録する関数
 function logClearTime() {
     var clear_time = Math.floor(window.shown_time/1000);
@@ -689,5 +678,28 @@ function logClearTime() {
         span_num_players.textContent = num_players;
         var span_average_time = document.getElementById("average_time");
         span_average_time.textContent = average_time;
+    }
+}
+
+// 解答数をDBに記録する関数
+function logNumOfAnswers() {
+    var num_answers = number_pokemons - remaining_number;
+    var data = "num_answers="+ num_answers + "&gen=" + gen;
+    var request = new XMLHttpRequest();
+    request.open('post', "sqlite_update_num_answers.php", true);
+    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    request.send(data);
+    request.onload = function () {
+        console.log(request.responseText);
+        var res = JSON.parse(request.responseText);
+        var num_players = res["num_players"];
+        var average_num_answers = res["average_num_answers"];
+
+        var span_num_answers = document.getElementById("num_answers");
+        span_num_answers.textContent = num_answers;
+        var span_num_players = document.getElementById("num_players");
+        span_num_players.textContent = num_players;
+        var span_average_num_answers = document.getElementById("average_num_answers");
+        span_average_num_answers.textContent = average_num_answers;
     }
 }
