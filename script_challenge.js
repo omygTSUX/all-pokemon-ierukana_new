@@ -6,8 +6,11 @@
 
 // 残りポケモンの数を動的に表示する関数
 function setRemainingNumber(remaining_number) {
-    var element = document.getElementById('remaining_number');
-    element.textContent = "残り" + padZero(remaining_number, 3) + "匹";
+    var number_answered = number_pokemons - remaining_number;
+    var span_number_answered = document.getElementById('span_number_answered');
+    var span_remaining_number = document.getElementById('span_remaining_number');
+    span_number_answered.textContent = padZero(number_answered, 3);
+    span_remaining_number.textContent = padZero(remaining_number, 3);
 }
 
 // ポケモンリストを動的に生成する関数
@@ -102,7 +105,7 @@ document.getElementById("input_answer").onblur = function () {
 }
 
 // ヘッダーとフッターを非表示にする関数
-function noneHeaderAndFooter(){
+function noneHeaderAndFooter() {
     var noneOnFocusList = document.getElementsByClassName("none_onfocus");
     for (e of noneOnFocusList) {
         e.classList.add("none");
@@ -114,7 +117,7 @@ function noneHeaderAndFooter(){
 }
 
 // ヘッダーとフッターを表示する関数
-function displayHeaderAndFooter(){
+function displayHeaderAndFooter() {
     var noneOnFocusList = document.getElementsByClassName("none_onfocus");
     for (e of noneOnFocusList) {
         e.classList.remove("none");
@@ -128,10 +131,10 @@ function displayHeaderAndFooter(){
 // 全画面化ボタンを押したときの関数
 document.getElementById("button_menu").onclick = function () {
     var button_menu = document.getElementById("button_menu");
-    if (button_menu.classList.contains("on_focus")){
+    if (button_menu.classList.contains("on_focus")) {
         displayHeaderAndFooter();
     }
-    else{
+    else {
         noneHeaderAndFooter();
     }
     return false;
@@ -195,6 +198,16 @@ function stopTimer() {
     clearInterval(timer_count);
 }
 
+// ユーザーにユニークIDを付与する関数
+function setPlayerId() {
+    var player_id = localStorage.getItem("player_id");
+    if (!player_id) {
+        localStorage.clear();
+        player_id = new Date().getTime().toString() + Math.floor(Math.random() * 1000000000000).toString();
+        localStorage.setItem("player_id", player_id);
+    }
+}
+
 // HTML読み込み時に自動実行する関数
 window.addEventListener("DOMContentLoaded", function () {
     // getJson();
@@ -205,7 +218,7 @@ window.addEventListener("DOMContentLoaded", function () {
     setRemainingNumber(number_pokemons);
     createPokemonList(number_pokemons, number_start);
     setFillHeight();
-    choiceRandomAd();
+    setPlayerId();
 }, false);
 
 // 開始ボタンを押した時に実行される関数
@@ -255,9 +268,16 @@ document.getElementById("button_start").onclick = function () {
         }
 
         noneHeaderAndFooter();
+
+        window.onbeforeunload = beforeUnload;
     }
 
     return false;
+}
+
+function beforeUnload(event){
+    event.preventDefault();
+    event.returnValue = 'ページを更新するとデータが消えますが続行しますか？';
 }
 
 // 正解音ファイルを読み込む関数
@@ -444,7 +464,25 @@ document.getElementById("button_confirm").onclick = function () {
     var answered_list_local = answered_list;
 
     stopTimer();
-    logNumOfAnswers();
+    var best_num_answers = localStorage.getItem('gen_' + gen + '_best_num_answers');
+    var num_answers = number_pokemons - remaining_number;
+    var span_num_answers = document.getElementById("num_answers");
+    span_num_answers.textContent = num_answers;
+    fetchAverageNumAnswers();
+    // console.log(!best_num_answers || num_answers > best_num_answers);
+    if(isNaN(best_num_answers)){
+        num_answers = 0;
+    }
+    if (!best_num_answers || num_answers > best_num_answers) {
+        best_num_answers = num_answers;
+        logNumOfAnswers(num_answers);
+        localStorage.setItem('gen_' + gen + '_best_num_answers', num_answers);
+    }
+    var message_best_num_answers = document.getElementById("message_best_num_answers");
+    message_best_num_answers.innerHTML = "キミの最高解答数：" + best_num_answers + " / " + number_pokemons + "匹 <br>" +
+        "記録更新を目指してまた挑戦してね！<br>" +
+        "ランキングの確認は<a href='./ranking.html' target='_blank' rel='nofollow noopener'>こちら</a>";
+
 
     var input_answer = document.getElementById("input_answer");
     input_answer.setAttribute("disabled", true);
@@ -472,11 +510,11 @@ document.getElementById("button_confirm").onclick = function () {
         li.innerHTML = "<img src='./img/pokemon/" + padZero(id, 3) + ".png' class='image_pokemon' loading='lazy' title='" + all_pokemon_list[id - 1].name + "'>";
     }
 
-    var surrender_time = toJapaneseHms(toHms(Math.floor(window.shown_time/1000)));
+    var surrender_time = toJapaneseHms(toHms(Math.floor(window.shown_time / 1000)));
     document.getElementById("surrender_time").textContent = surrender_time;
 
     displayHeaderAndFooter();
-
+    window.onbeforeunload = null;
     return false;
 }
 
@@ -596,7 +634,28 @@ function checkAnswer(answer) {
 document.form_answer.onreset = function () {
     if (remaining_number == 0) {
         stopTimer();
-        logClearTime();
+
+        var player_id = localStorage.getItem("player_id");
+        var best_time = localStorage.getItem('gen_' + gen + '_best_time');
+        var clear_time = Math.floor(window.shown_time / 1000);
+
+        var span_clear_time = document.getElementById("clear_time");
+        span_clear_time.textContent = toJapaneseHms(toHms(clear_time));
+
+            fetchAverageTime();
+
+        if(isNaN(best_time)){
+            clear_time = 35999;
+        }
+        // 記録がないか、クリアタイムがベストタイムより早い場合
+        if (!best_time || clear_time < best_time) {
+            best_time = clear_time;
+            localStorage.setItem('gen_' + gen + '_best_time', best_time);
+            logClearTime(clear_time, player_id);
+        }
+
+        // ランキングに入れるかどうか判定
+        fetchRanking(clear_time, player_id, best_time);
 
         var input_answer = document.getElementById("input_answer");
         input_answer.setAttribute("disabled", true);
@@ -656,11 +715,33 @@ document.getElementById("button_tweet_clear_modal").onclick = function () {
 }
 
 // クリアタイムをDBに記録する関数
-function logClearTime() {
-    var clear_time = Math.floor(window.shown_time/1000);
-    var data = "clear_time="+ clear_time + "&gen=" + gen;
+function logClearTime(clear_time, player_id) {
+    var data = "clear_time=" + clear_time + "&gen=" + gen + "&last_pokemon=" + last_pokemon + "&player_id=" + player_id;
     var request = new XMLHttpRequest();
     request.open('post', "sqlite_update_clear_time.php", true);
+    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    request.send(data);
+    request.onload = function () {
+        // console.log(request.responseText);
+        //     var res = JSON.parse(request.responseText);
+        //     var num_players = res["num_players"];
+        //     var average_time = res["average_time"];
+        //     if (!isNaN(average_time)) {
+        //         average_time = toJapaneseHms(toHms(average_time));
+        //     }
+
+        //     var span_num_clear_players = document.getElementById("num_clear_players");
+        //     span_num_clear_players.textContent = num_players;
+        //     var span_average_time = document.getElementById("average_time");
+        //     span_average_time.textContent = average_time;
+    }
+}
+
+// 平均タイムをDBから取得する関数
+function fetchAverageTime() {
+    var data = "gen=" + gen;
+    var request = new XMLHttpRequest();
+    request.open('post', "sqlite_fetch_average_time.php", true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     request.send(data);
     request.onload = function () {
@@ -668,38 +749,112 @@ function logClearTime() {
         var res = JSON.parse(request.responseText);
         var num_players = res["num_players"];
         var average_time = res["average_time"];
-        if (!isNaN(average_time)){
+        if (!isNaN(average_time)) {
             average_time = toJapaneseHms(toHms(average_time));
         }
 
-        var span_clear_time = document.getElementById("clear_time");
-        span_clear_time.textContent = toJapaneseHms(toHms(clear_time));
-        var span_num_players = document.getElementById("num_players");
-        span_num_players.textContent = num_players;
+        var span_num_clear_players = document.getElementById("num_clear_players");
+        span_num_clear_players.textContent = num_players;
         var span_average_time = document.getElementById("average_time");
         span_average_time.textContent = average_time;
     }
 }
 
 // 解答数をDBに記録する関数
-function logNumOfAnswers() {
-    var num_answers = number_pokemons - remaining_number;
-    var data = "num_answers="+ num_answers + "&gen=" + gen;
+function logNumOfAnswers(num_answers) {
+    var player_id = localStorage.getItem("player_id");
+    var data = "num_answers=" + num_answers + "&gen=" + gen + "&player_id=" + player_id;
     var request = new XMLHttpRequest();
     request.open('post', "sqlite_update_num_answers.php", true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     request.send(data);
+    // request.onload = function () {
+    //     // console.log(request.responseText);
+    //     var res = JSON.parse(request.responseText);
+    //     var num_players = res["num_players"];
+    //     var average_num_answers = res["average_num_answers"];
+
+    //     var span_num_answers = document.getElementById("num_answers");
+    //     span_num_answers.textContent = num_answers;
+    //     var span_num_surrender_players = document.getElementById("num_surrender_players");
+    //     span_num_surrender_players.textContent = num_players;
+    //     var span_average_num_answers = document.getElementById("average_num_answers");
+    //     span_average_num_answers.textContent = average_num_answers;
+    // }
+}
+
+// 平均解答数をDBから取得する関数
+function fetchAverageNumAnswers() {
+    var data = "gen=" + gen;
+    var request = new XMLHttpRequest();
+    request.open('post', "sqlite_fetch_average_num_answers.php", true);
+    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    request.send(data);
     request.onload = function () {
-        console.log(request.responseText);
+        // console.log(request.responseText);
         var res = JSON.parse(request.responseText);
         var num_players = res["num_players"];
         var average_num_answers = res["average_num_answers"];
 
-        var span_num_answers = document.getElementById("num_answers");
-        span_num_answers.textContent = num_answers;
-        var span_num_players = document.getElementById("num_players");
-        span_num_players.textContent = num_players;
+        var span_num_surrender_players = document.getElementById("num_surrender_players");
+        span_num_surrender_players.textContent = num_players;
         var span_average_num_answers = document.getElementById("average_num_answers");
         span_average_num_answers.textContent = average_num_answers;
     }
+}
+
+function fetchRanking(clear_time, player_id, best_time) {
+    var data = "clear_time=" + clear_time + "&gen=" + gen + "&player_id=" + player_id;
+    var request = new XMLHttpRequest();
+    request.open('post', "sqlite_fetch_ranking.php", true);
+    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    request.send(data);
+    request.onload = function () {
+        // console.log(request.responseText);
+        var res = JSON.parse(request.responseText);
+        var player_rank = res["player_rank"];
+        setRankInMessage(player_rank, best_time);
+    }
+}
+
+function setRankInMessage(player_rank, best_time) {
+    // console.log(player_rank);
+            var message_ranking = document.getElementById("message_ranking");
+    if (!isNaN(player_rank)) {
+            message_ranking.innerHTML = "おめでとう！" + player_rank + "位にランクインしたよ！<br>"
+                + "名前を入力してね(12文字以内)" +
+                "<form name='form_ranking' id='form_ranking' autocomplete='off' onsubmit='sendRankingName(); return false;'>" +
+                "<input type='text' id='input_ranking' class='form-control-sm' maxlength='12' required>" +
+                "<input type='submit' id='button_ranking' value='送信' class='btn btn-primary btn-sm'>" +
+                "</form>";
+        }
+    else {
+        message_ranking.innerHTML = "キミのベストタイム：" + toJapaneseHms(toHms(best_time)) + "<br>" +
+            "記録更新を目指してまた挑戦してね！<br>" +
+            "ランキングの確認は<a href='./ranking.html' target='_blank' rel='nofollow noopener'>こちら</a>";
+    }
+}
+
+function sendRankingName() {
+    var player_id = localStorage.getItem("player_id");
+    var clear_time = Math.floor(window.shown_time / 1000);
+    var input_ranking = document.getElementById("input_ranking");
+    var button_ranking = document.getElementById("button_ranking");
+    input_ranking.setAttribute("disabled", true);
+    button_ranking.setAttribute("disabled", true);
+    var name = input_ranking.value;
+    // console.log(name);
+
+    var data = "clear_time=" + clear_time + "&gen=" + gen + "&name=" + name + "&player_id=" + player_id;
+    var request = new XMLHttpRequest();
+    request.open('post', "sqlite_update_ranking.php", true);
+    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    request.send(data);
+    request.onload = function () {
+        var message_ranking = document.getElementById("message_ranking");
+        message_ranking.innerHTML = "名前をランキングに登録したよ！<br>" +
+            "ランキングの確認は<a href='./ranking.html' target='_blank' rel='nofollow noopener'>こちら</a>";
+    }
+
+    return false;
 }

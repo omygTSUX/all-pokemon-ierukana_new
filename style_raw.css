@@ -89,12 +89,16 @@ header .col {
 
 #h1,
 #timer,
-#remaining_number {
+#progress {
     font-family: monospace, sans-serif;
 }
 
-#input_answer {
+#input_answer{
     width: 7em;
+}
+
+#input_ranking {
+    width: 14em;
 }
 
 #input_answer:focus::placeholder {
@@ -282,13 +286,68 @@ input[disabled] {
     display: none;
 }
 
-@media screen and (max-width: 1024px) {
+#dropdown-wrapper-ranking {
+    width: 8em;
+}
+
+#dropdown-wrapper-ranking>* {
+    width: inherit;
+    min-width: inherit;
+}
+
+#div_ranking_table {
+    max-height: 60vh;
+    min-width: 340px;
+}
+
+.table {
+    table-layout: fixed;
+}
+
+.th_rank{
+    width: 15%;
+}
+
+.th_name{
+    width: 60%;
+}
+
+.th_time{
+    width: 25%;
+}
+
+.fixed {
+    position: sticky;
+    top: 0;
+}
+
+.table>:not(:last-child)>:last-child>* {
+    border-bottom-color: #cff4fc;
+}
+
+.ad_ranking_top *{
+    margin-left:-0.75rem !important;
+}
+
+.ad_ranking_top_pc{
+    display: block;
+}
+
+.ad_ranking_top_tb{
+    display: none;
+}
+
+.ad_ranking_top_sp{
+    display: none;
+}
+
+@media screen and (max-width: 1023px) {
     .li_wrapper {
         width: calc(100% / 18);
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
     .navi {
         font-size: small;
     }
@@ -309,9 +368,21 @@ input[disabled] {
     #button_menu {
         display: inline-block;
     }
+
+    .ad_ranking_top_pc{
+        display: none;
+    }
+
+    .ad_ranking_top_tb{
+        display: block;
+    }
+
+    .ad_ranking_top_sp{
+        display: none;
+    }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 599px) {
     .navi {
         font-size: x-small;
     }
@@ -321,7 +392,7 @@ input[disabled] {
     }
 }
 
-@media screen and (max-width: 530px) {
+@media screen and (max-width: 529px) {
     .pc_only {
         display: none;
     }
@@ -342,7 +413,11 @@ input[disabled] {
         font-size: medium;
     }
 
-    #remaining_number {
+    #span_number_answered {
+        font-size: medium;
+    }
+
+    #span_remaining_number {
         font-size: medium;
     }
 
@@ -353,5 +428,17 @@ input[disabled] {
 
     .xx-small-sp {
         font-size: xx-small;
+    }
+
+    .ad_ranking_top_pc{
+        display: none;
+    }
+
+    .ad_ranking_top_tb{
+        display: none;
+    }
+
+    .ad_ranking_top_sp{
+        display: block;
     }
 }

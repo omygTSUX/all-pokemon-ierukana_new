@@ -3,13 +3,13 @@
 <?php
 $gen = "challenge";
 $number_start = 1;
-$number_pokemons = 920;
+$number_pokemons = 923;
 $region = "全";
 $title = "ポケモン全部言えるかな？ゲーム(むずかし版)";
 $description = "キミは".$region."ポケモン".$number_pokemons."匹を図鑑番号のヒントなしに言えるかな？".$region."ポケモン".$number_pokemons."匹を答えるタイムアタッククイズゲームのむずかし版にチャレンジしよう！";
 $twitter_image = "https://all-pokemon-ierukana.com/img/system/tweet_challenge.png";
-$css = "style.css";
-$script = "script_challenge.js";
+$css = "style.css?".date('YmdHis');
+$script = "script_challenge.js?".date('YmdHis');
 
 require("include_head.php");
 

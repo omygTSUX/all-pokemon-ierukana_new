@@ -10,7 +10,6 @@ try {
     if($num_answers > 0){
         $table_name = "gen_" . $gen . "_num_answers";
         $query = "INSERT OR REPLACE INTO " . $table_name . " (num_answers, ip_address, player_id) VALUES (:num_answers, :ip_address, :player_id)";
-        echo($query);
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(':num_answers', $num_answers, PDO::PARAM_INT);
         $stmt->bindParam(':ip_address', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
