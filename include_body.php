@@ -197,70 +197,42 @@
             </p>
             <div class="text-center xx-small note">
                 <a href="./ranking.html">クリアタイムランキング</a>
-                <a href="./privacypolicy.html">プライバシーポリシー</a>
+                <a href="./privacypolicy.html">プライバシーポリシー・配信ガイドライン</a>
             </div>
         </div>
     </footer>
     <div class="container mt-4 border border-secondary rounded">
-        <p class="mt-2 small fw-bold text-center">広告</p>
         <div class="row">
+            <div class="col" id="ad_moshimo_vstaruniverse">
+                <div class="text-center mt-4">
+<!-- START MoshimoAffiliateEasyLink -->
+<script type="text/javascript">
+(function(b,c,f,g,a,d,e){b.MoshimoAffiliateObject=a;
+b[a]=b[a]||function(){arguments.currentScript=c.currentScript
+||c.scripts[c.scripts.length-2];(b[a].q=b[a].q||[]).push(arguments)};
+c.getElementById(a)||(d=c.createElement(f),d.src=g,
+d.id=a,e=c.getElementsByTagName("body")[0],e.appendChild(d))})
+(window,document,"script","//dn.msmstatic.com/site/cardlink/bundle.js?20220329","msmaflink");
+msmaflink({"n":"【予約】「VSTARユニバース」BOX ","b":"","t":"","d":"https:\/\/thumbnail.image.rakuten.co.jp","c_p":"\/@0_mall\/mokemoke\/cabinet","p":["\/imgrc0100500780.jpg","\/imgrc0100500781.jpg"],"u":{"u":"https:\/\/item.rakuten.co.jp\/mokemoke\/10000997\/","t":"rakuten","r_v":""},"v":"2.1","b_l":[{"id":1,"u_tx":"楽天市場で見る","u_bc":"#f76956","u_url":"https:\/\/item.rakuten.co.jp\/mokemoke\/10000997\/","a_id":3588805,"p_id":54,"pl_id":27059,"pc_id":54,"s_n":"rakuten","u_so":1},{"id":2,"u_tx":"Yahoo!ショッピングで見る","u_bc":"#66a7ff","u_url":"https:\/\/shopping.yahoo.co.jp\/search?first=1\u0026p=%E3%80%90%E4%BA%88%E7%B4%84%E3%80%91%E3%80%8CVSTAR%E3%83%A6%E3%83%8B%E3%83%90%E3%83%BC%E3%82%B9%E3%80%8DBOX%20","a_id":3588816,"p_id":1225,"pl_id":27061,"pc_id":1925,"s_n":"yahoo","u_so":2}],"eid":"Z6k0O","s":"s"});
+</script>
+<div id="msmaflink-Z6k0O">リンク</div>
+<!-- MoshimoAffiliateEasyLink END -->
+                </div>
+            </div>
             <div class="col" id="ad_moshimo_paradigmtrigger">
                 <div class="text-center mt-4">
-                    <!-- START MoshimoAffiliateEasyLink -->
-                    <script type="text/javascript">
-                        (function(b, c, f, g, a, d, e) {
-                            b.MoshimoAffiliateObject = a;
-                            b[a] = b[a] || function() {
-                                arguments.currentScript = c.currentScript ||
-                                    c.scripts[c.scripts.length - 2];
-                                (b[a].q = b[a].q || []).push(arguments)
-                            };
-                            c.getElementById(a) || (d = c.createElement(f), d.src = g,
-                                d.id = a, e = c.getElementsByTagName("body")[0], e.appendChild(d))
-                        })
-                        (window, document, "script", "//dn.msmstatic.com/site/cardlink/bundle.js?20220329", "msmaflink");
-                        msmaflink({
-                            "n": "【予約・発売前日発送】パラダイムトリガー BOX",
-                            "b": "",
-                            "t": "",
-                            "d": "https:\/\/thumbnail.image.rakuten.co.jp",
-                            "c_p": "",
-                            "p": ["\/@0_mall\/starford\/cabinet\/imgrc0146093864.jpg"],
-                            "u": {
-                                "u": "https:\/\/item.rakuten.co.jp\/starford\/of-4521329373126\/",
-                                "t": "rakuten",
-                                "r_v": ""
-                            },
-                            "v": "2.1",
-                            "b_l": [{
-                                "id": 1,
-                                "u_tx": "楽天市場で見る",
-                                "u_bc": "#f76956",
-                                "u_url": "https:\/\/item.rakuten.co.jp\/starford\/of-4521329373126\/",
-                                "a_id": 3588805,
-                                "p_id": 54,
-                                "pl_id": 27059,
-                                "pc_id": 54,
-                                "s_n": "rakuten",
-                                "u_so": 1
-                            }, {
-                                "id": 2,
-                                "u_tx": "Yahoo!ショッピングで見る",
-                                "u_bc": "#66a7ff",
-                                "u_url": "https:\/\/shopping.yahoo.co.jp\/search?first=1\u0026p=%E3%80%90%E4%BA%88%E7%B4%84%E3%83%BB%E7%99%BA%E5%A3%B2%E5%89%8D%E6%97%A5%E7%99%BA%E9%80%81%E3%80%91%E3%83%91%E3%83%A9%E3%83%80%E3%82%A4%E3%83%A0%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC%20BOX",
-                                "a_id": 3588816,
-                                "p_id": 1225,
-                                "pl_id": 27061,
-                                "pc_id": 1925,
-                                "s_n": "yahoo",
-                                "u_so": 2
-                            }],
-                            "eid": "9aPEh",
-                            "s": "xs"
-                        });
-                    </script>
-                    <div id="msmaflink-9aPEh">リンク</div>
-                    <!-- MoshimoAffiliateEasyLink END -->
+<!-- START MoshimoAffiliateEasyLink -->
+<script type="text/javascript">
+(function(b,c,f,g,a,d,e){b.MoshimoAffiliateObject=a;
+b[a]=b[a]||function(){arguments.currentScript=c.currentScript
+||c.scripts[c.scripts.length-2];(b[a].q=b[a].q||[]).push(arguments)};
+c.getElementById(a)||(d=c.createElement(f),d.src=g,
+d.id=a,e=c.getElementsByTagName("body")[0],e.appendChild(d))})
+(window,document,"script","//dn.msmstatic.com/site/cardlink/bundle.js?20220329","msmaflink");
+msmaflink({"n":"ポケモンカードゲーム パラダイムトリガー BOX","b":"","t":"","d":"https:\/\/thumbnail.image.rakuten.co.jp","c_p":"","p":["\/@0_mall\/fullahead\/cabinet\/07535276\/07986105\/pk-rakuten-box029.jpg"],"u":{"u":"https:\/\/item.rakuten.co.jp\/fullahead\/pk-rakuten-box029\/","t":"rakuten","r_v":""},"v":"2.1","b_l":[{"id":1,"u_tx":"楽天市場で見る","u_bc":"#f76956","u_url":"https:\/\/item.rakuten.co.jp\/fullahead\/pk-rakuten-box029\/","a_id":3588805,"p_id":54,"pl_id":27059,"pc_id":54,"s_n":"rakuten","u_so":1},{"id":2,"u_tx":"Yahoo!ショッピングで見る","u_bc":"#66a7ff","u_url":"https:\/\/shopping.yahoo.co.jp\/search?first=1\u0026p=%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%82%AB%E3%83%BC%E3%83%89%E3%82%B2%E3%83%BC%E3%83%A0%20%E3%83%91%E3%83%A9%E3%83%80%E3%82%A4%E3%83%A0%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC%20BOX","a_id":3588816,"p_id":1225,"pl_id":27061,"pc_id":1925,"s_n":"yahoo","u_so":2}],"eid":"IkmkG","s":"s"});
+</script>
+<div id="msmaflink-IkmkG">リンク</div>
+<!-- MoshimoAffiliateEasyLink END -->
                 </div>
             </div>
             <div class="col" id="ad_moshimo_scarlet">
@@ -378,65 +350,6 @@
                         });
                     </script>
                     <div id="msmaflink-ldHQG">リンク</div>
-                    <!-- MoshimoAffiliateEasyLink END -->
-                </div>
-            </div>
-            <div class="col" id="ad_moshimo_lostabyss">
-                <div class="text-center mt-4">
-                    <!-- START MoshimoAffiliateEasyLink -->
-                    <script type="text/javascript">
-                        (function(b, c, f, g, a, d, e) {
-                            b.MoshimoAffiliateObject = a;
-                            b[a] = b[a] || function() {
-                                arguments.currentScript = c.currentScript ||
-                                    c.scripts[c.scripts.length - 2];
-                                (b[a].q = b[a].q || []).push(arguments)
-                            };
-                            c.getElementById(a) || (d = c.createElement(f), d.src = g,
-                                d.id = a, e = c.getElementsByTagName("body")[0], e.appendChild(d))
-                        })
-                        (window, document, "script", "//dn.msmstatic.com/site/cardlink/bundle.js?20220329", "msmaflink");
-                        msmaflink({
-                            "n": "ロストアビス 【BOX（30パック入り）】",
-                            "b": "",
-                            "t": "",
-                            "d": "https:\/\/thumbnail.image.rakuten.co.jp",
-                            "c_p": "",
-                            "p": ["\/@0_mall\/aromacoffee\/cabinet\/09084823\/imgrc0091915974.jpg"],
-                            "u": {
-                                "u": "https:\/\/item.rakuten.co.jp\/aromacoffee\/pm-pmcgrbb\/",
-                                "t": "rakuten",
-                                "r_v": ""
-                            },
-                            "v": "2.1",
-                            "b_l": [{
-                                "id": 1,
-                                "u_tx": "楽天市場で見る",
-                                "u_bc": "#f76956",
-                                "u_url": "https:\/\/item.rakuten.co.jp\/aromacoffee\/pm-pmcgrbb\/",
-                                "a_id": 3588805,
-                                "p_id": 54,
-                                "pl_id": 27059,
-                                "pc_id": 54,
-                                "s_n": "rakuten",
-                                "u_so": 1
-                            }, {
-                                "id": 2,
-                                "u_tx": "Yahoo!ショッピングで見る",
-                                "u_bc": "#66a7ff",
-                                "u_url": "https:\/\/shopping.yahoo.co.jp\/search?first=1\u0026p=%E3%83%AD%E3%82%B9%E3%83%88%E3%82%A2%E3%83%93%E3%82%B9%20%E3%80%90BOX%EF%BC%8830%E3%83%91%E3%83%83%E3%82%AF%E5%85%A5%E3%82%8A%EF%BC%89%E3%80%91",
-                                "a_id": 3588816,
-                                "p_id": 1225,
-                                "pl_id": 27061,
-                                "pc_id": 1925,
-                                "s_n": "yahoo",
-                                "u_so": 2
-                            }],
-                            "eid": "gyaZD",
-                            "s": "xs"
-                        });
-                    </script>
-                    <div id="msmaflink-gyaZD">リンク</div>
                     <!-- MoshimoAffiliateEasyLink END -->
                 </div>
             </div>
