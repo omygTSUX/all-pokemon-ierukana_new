@@ -253,8 +253,8 @@ document.getElementById("button_start").onclick = function () {
         button.setAttribute("data-bs-toggle", "modal");
         button.setAttribute("data-bs-target", "#confirm_modal");
 
-        var button_tweet = document.getElementById("button_tweet");
-        button_tweet.classList.remove('highlight');
+        var dropdownMenuSnsShare = document.getElementById("dropdownMenuSnsShare");
+        dropdownMenuSnsShare.classList.remove('highlight');
 
         remaining_number = number_pokemons;
         setRemainingNumber(remaining_number);
@@ -275,7 +275,7 @@ document.getElementById("button_start").onclick = function () {
     return false;
 }
 
-function beforeUnload(event){
+function beforeUnload(event) {
     event.preventDefault();
     event.returnValue = 'ページを更新するとデータが消えますが続行しますか？';
 }
@@ -470,7 +470,7 @@ document.getElementById("button_confirm").onclick = function () {
     span_num_answers.textContent = num_answers;
     fetchAverageNumAnswers();
     // console.log(!best_num_answers || num_answers > best_num_answers);
-    if(isNaN(best_num_answers)){
+    if (isNaN(best_num_answers)) {
         num_answers = 0;
     }
     if (!best_num_answers || num_answers > best_num_answers) {
@@ -497,8 +497,8 @@ document.getElementById("button_confirm").onclick = function () {
     button.removeAttribute("data-bs-toggle");
     button.removeAttribute("data-bs-target");
 
-    var button_tweet = document.getElementById("button_tweet");
-    button_tweet.classList.add('highlight');
+    var dropdownMenuSnsShare = document.getElementById("dropdownMenuSnsShare");
+    dropdownMenuSnsShare.classList.add('highlight');
 
     var li_pokemons = document.getElementsByClassName('li_pokemon');
     for (li of li_pokemons) {
@@ -576,11 +576,11 @@ function eratta(answer) {
 
 // 正解判定をする関数
 function checkAnswer(answer) {
-    // if (answer == "クリア") {
-    //     remaining_number = 0;
-    //     last_pokemon = "ピカチュウ";
-    //     document.form_answer.reset();
-    // }
+    if (answer == "クリア") {
+        remaining_number = 0;
+        last_pokemon = "ピカチュウ";
+        document.form_answer.reset();
+    }
     var eratta_result = eratta(answer);
     var pokemon = all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1).find((v) => v.name === eratta_result);
     if (pokemon != undefined && !answered_list[pokemon.number - number_start + 1]) {
@@ -642,8 +642,8 @@ document.form_answer.onreset = function () {
         span_clear_time.textContent = toJapaneseHms(toHms(clear_time));
 
         fetchAverageTime();
-        
-        if(isNaN(best_time)){
+
+        if (isNaN(best_time)) {
             clear_time = 35999;
         }
         // 記録がないか、クリアタイムがベストタイムより早い場合
@@ -669,8 +669,8 @@ document.form_answer.onreset = function () {
         button.removeAttribute("data-bs-toggle");
         button.removeAttribute("data-bs-target");
 
-        var button_tweet = document.getElementById("button_tweet");
-        button_tweet.classList.add('highlight');
+        var dropdownMenuSnsShare = document.getElementById("dropdownMenuSnsShare");
+        dropdownMenuSnsShare.classList.add('highlight');
 
         setTimeout("showClearMessage()", 1000);
         // setTimeout("playClearAudio()", 1000);
@@ -703,15 +703,63 @@ function openTweetWindow() {
     window.open(encodeURI(decodeURI(href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1');
     return false;
 }
-document.getElementById("button_tweet").onclick = function () {
-    openTweetWindow();
+
+
+
+// document.getElementById("button_tweet").onclick = function () {
+//     openTweetWindow();
+// }
+// document.getElementById("button_tweet_surrender_modal").onclick = function () {
+//     openTweetWindow();
+// }
+// document.getElementById("button_tweet_clear_modal").onclick = function () {
+//     openTweetWindow();
+// }
+
+// SNS共有ボタンの文言を設定する関数
+function copyResultText(func) {
+    var time = toJapaneseHms(document.getElementById("timer").textContent);
+    var number_answered = number_pokemons - remaining_number;
+    var title = document.title;
+    var url = location.href;
+    var text;
+    if (remaining_number == 0) {
+        text = time + "でポケモン" + number_answered + "/" + number_pokemons + "匹言えた！最後のポケモンは" + last_pokemon + "だった！ - " + title;
+    }
+    else {
+        text = time + "でポケモン" + number_answered + "/" + number_pokemons + "匹言えた！ - " + title;
+    }
+    if (func != "openLine()") {
+        text += " " + url + " #ポケモン全部言えるかな";
+    }
+    navigator.clipboard.writeText(text);
+    setTimeout(func, 500);
+    return false;
 }
-document.getElementById("button_tweet_surrender_modal").onclick = function () {
-    openTweetWindow();
+
+function openFacebook() {
+    window.open("https://www.facebook.com/share.php?u=" + location.href);
 }
-document.getElementById("button_tweet_clear_modal").onclick = function () {
-    openTweetWindow();
+
+// document.getElementById("button_facebook").onclick = function () {
+//     copyResultText("openFacebook()");
+// }
+
+function openLine() {
+    window.open("https://social-plugins.line.me/lineit/share?url=" + location.href);
 }
+
+// document.getElementById("button_line").onclick = function () {
+//     copyResultText("openLine()");
+// }
+
+function openInstagram() {
+    window.open("https://www.instagram.com/");
+}
+
+// document.getElementById("button_instagram").onclick = function () {
+//     copyResultText("openInstagram()");
+// }
 
 // クリアタイムをDBに記録する関数
 function logClearTime(clear_time, player_id) {

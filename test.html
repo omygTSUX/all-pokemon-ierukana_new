@@ -10,6 +10,12 @@
     <meta name="twitter:title" content="ポケモン全部言えるかな？ゲーム">
     <meta name="twitter:description" content="キミは全ポケモン925匹言えるかな？全ポケモン925匹を答えるタイムアタッククイズゲームにチャレンジしよう！">
     <meta name="twitter:image" content="https://all-pokemon-ierukana.com/img/system/tweet_all.png">
+    <meta property="og:url" content="https://all-pokemon-ierukana.com/"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ポケモン全部言えるかな？ゲーム" />
+    <meta property="og:description" content="キミは全ポケモン925匹言えるかな？全ポケモン925匹を答えるタイムアタッククイズゲームにチャレンジしよう！" />
+    <meta property="og:site_name" content="ポケモン全部言えるかな？ゲーム" />
+    <meta property="og:image" content="https://all-pokemon-ierukana.com/img/system/tweet_all.png" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link href="style_raw.css" rel="stylesheet">
@@ -129,12 +135,32 @@
                             <p>
                                 キミは<span id="surrender_time"></span>で<br>ポケモン<span id="num_answers"></span> / 925匹言えたよ！
                             </p>
-                            <p class="small">降参した<span id="num_surrender_players">[通信待機中…]</span>人の平均解答数：<span id="average_num_answers">[通信待機中…]</span> / 925匹
+                            <p class="small">降参した<span id="num_surrender_players">[通信待機中…]</span>人の平均解答数：<span
+                                    id="average_num_answers">[通信待機中…]</span> / 925匹
                             </p>
                             <p id="message_best_num_answers"></p>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" id="button_tweet_surrender_modal" class="btn btn-info btn-sm">結果Tweet</button>
+                        <div class="modal-footer dropup">
+                            <!-- <button type="button" id="button_tweet_surrender_modal"
+                                class="btn btn-info btn-sm">結果Tweet</button> -->
+                                <button class="dropdown_sns btn dropdown-toggle btn-sm text-white" type="button"
+                                id="dropdownMenuSnsShareSurrenderModal" data-bs-toggle="dropdown" aria-expanded="false">
+                                結果をSNSにシェア
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuSnsShareSurrenderModal">
+                                <li class="mb-1"><a rel="nofollow" role="button"
+                                        class="button_tweet btn btn-sm text-white"
+                                        onclick="openTweetWindow();"><img src="./img/system/logo_twitter.png" class="sns_logo"> 結果をTwitterにシェア</a></li>
+                                <li class="mb-1"><a rel="nofollow" role="button"
+                                        class="button_facebook btn btn-sm text-white"
+                                        onclick="copyResultText('openFacebook()');"><img src="./img/system/logo_facebook.png" class="sns_logo"> 結果をコピーしてFacebookにシェア</a></li>
+                                <li class="mb-1"><a rel="nofollow" role="button"
+                                        class="button_line btn btn-sm text-white"
+                                        onclick="copyResultText('openLine()');"><img src="./img/system/logo_line.png" class="sns_logo"> 結果をコピーしてLINEにシェア</a></li>
+                                <li class="mb-1"><a rel="nofollow" role="button"
+                                        class="button_instagram btn btn-sm text-white"
+                                        onclick="copyResultText('openInstagram()');"><img src="./img/system/logo_instagram.png" class="sns_logo"> 結果をコピーしてInstagramにシェア</a></li>
+                            </ul>
                             <button type="button" class="btn btn-secondary btn-sm" data-bs-target="#ad_modal"
                                 data-bs-toggle="modal" data-bs-dismiss="modal">閉じる</button>
                         </div>
@@ -152,12 +178,31 @@
                         <div class="modal-body">
                             <p>クリアおめでとう！<br>キミはまさしく全ポケモンマスターだ！</p>
                             <p class="small">キミのクリアタイム：<span id="clear_time"></span><br>
-                                クリアした<span id="num_clear_players">[通信待機中…]</span>人の平均タイム：<span id="average_time">[通信待機中…]</span>
+                                クリアした<span id="num_clear_players">[通信待機中…]</span>人の平均タイム：<span
+                                    id="average_time">[通信待機中…]</span>
                             </p>
                             <p id="message_ranking"></p>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" id="button_tweet_clear_modal" class="btn btn-info btn-sm">結果Tweet</button>
+                        <div class="modal-footer dropup">
+                            <!-- <button type="button" id="button_tweet_clear_modal" class="btn btn-info btn-sm">結果Tweet</button> -->
+                            <button class="dropdown_sns btn dropdown-toggle btn-sm text-white" type="button"
+                                id="dropdownMenuSnsShareClearModal" data-bs-toggle="dropdown" aria-expanded="false">
+                                結果をSNSにシェア
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuSnsShareClearModal">
+                                <li class="mb-1"><a rel="nofollow" role="button"
+                                        class="button_tweet btn btn-sm text-white"
+                                        onclick="openTweetWindow();"><img src="./img/system/logo_twitter.png" class="sns_logo"> 結果をTwitterにシェア</a></li>
+                                <li class="mb-1"><a rel="nofollow" role="button"
+                                        class="button_facebook btn btn-sm text-white"
+                                        onclick="copyResultText('openFacebook()');"><img src="./img/system/logo_facebook.png" class="sns_logo"> 結果をコピーしてFacebookにシェア</a></li>
+                                <li class="mb-1"><a rel="nofollow" role="button"
+                                        class="button_line btn btn-sm text-white"
+                                        onclick="copyResultText('openLine()');"><img src="./img/system/logo_line.png" class="sns_logo"> 結果をコピーしてLINEにシェア</a></li>
+                                <li class="mb-1"><a rel="nofollow" role="button"
+                                        class="button_instagram btn btn-sm text-white"
+                                        onclick="copyResultText('openInstagram()');"><img src="./img/system/logo_instagram.png" class="sns_logo"> 結果をコピーしてInstagramにシェア</a></li>
+                            </ul>
                             <button type="button" class="btn btn-secondary btn-sm" data-bs-target="#ad_modal"
                                 data-bs-toggle="modal" data-bs-dismiss="modal">閉じる</button>
                         </div>
@@ -187,14 +232,15 @@
             <h1 id="h1" class="mb-0 text-center h2 none_onfocus">
                 全ポケモン925匹言えるかな？
             </h1>
-            <p class="text-center xx-small note mb-0 none_onfocus">※スカーレット・バイオレットのポケモンを含みます</p>
+            <p class="text-center small mb-0 none_onfocus">※作者がネタバレを見たくないので次回更新は未定</p>
             <div class="container mb-2 rounded">
                 <div class="row rounded">
                     <div class="col-6 col-md-auto col-lg-3 border rounded text-center bgcolor_white_alpha fit-content">
                         <p id="timer" class="h4 mb-0">000:00:00</p>
                     </div>
                     <div class="col-6 col-md-auto col-lg-3 border rounded text-center bgcolor_white_alpha fit-content">
-                        <p id="progress" class="xx-small mb-0">現在<span id="span_number_answered" class="h4">???</span>匹 残り<span id="span_remaining_number" class="h4">???</span>匹</p>
+                        <p id="progress" class="xx-small mb-0">現在<span id="span_number_answered" class="h4">???</span>匹
+                            残り<span id="span_remaining_number" class="h4">???</span>匹</p>
                     </div>
                     <div class="col-auto">
                         <form name="form_answer" id="form_answer" autocomplete="off">
@@ -216,9 +262,25 @@
                     <div class="col-auto">
                         <button id="button_menu" class="btn btn-secondary btn-sm xx-small-sp">全画面化</button>
                     </div>
-                    <div class="col-auto rounded">
-                        <a id="button_tweet" rel="nofollow" role="button" class="btn btn-info btn-sm xx-small-sp"
-                            onClick="gtag('event', 'click', {'event_category': 'button_tweet', 'event_label': 'button_tweet'});">結果Tweet</a>
+                    <div class="col-auto">
+                        <button class="dropdown_sns btn dropdown-toggle btn-sm text-white xx-small-sp" type="button"
+                            id="dropdownMenuSnsShare" data-bs-toggle="dropdown" aria-expanded="false">
+                            SNS共有
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuSnsShare">
+                            <li class="mb-1"><a rel="nofollow" role="button"
+                                    class="button_tweet btn btn-sm text-white xx-small-sp"
+                                    onclick="openTweetWindow();"><img src="./img/system/logo_twitter.png" class="sns_logo"> 結果をTwitterにシェア</a></li>
+                            <li class="mb-1"><a rel="nofollow" role="button"
+                                    class="button_facebook btn btn-sm text-white xx-small-sp"
+                                    onclick="copyResultText('openFacebook()');"><img src="./img/system/logo_facebook.png" class="sns_logo"> 結果をコピーしてFacebookにシェア</a></li>
+                            <li class="mb-1"><a rel="nofollow" role="button"
+                                    class="button_line btn btn-sm text-white xx-small-sp"
+                                    onclick="copyResultText('openLine()');"><img src="./img/system/logo_line.png" class="sns_logo"> 結果をコピーしてLINEにシェア</a></li>
+                            <li class="mb-1"><a rel="nofollow" role="button"
+                                    class="button_instagram btn btn-sm text-white xx-small-sp"
+                                    onclick="copyResultText('openInstagram()');"><img src="./img/system/logo_instagram.png" class="sns_logo"> 結果をコピーしてInstagramにシェア</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -246,15 +308,15 @@
                 </div>
             </div>
         </div>
-        <div id="copyright" class="xx-small note">
-            <p class="mb-0">
+        <div id="copyright">
+            <p class="mb-0 xx-small note">
                 「ポケモン全部言えるかな？ゲーム」は、ポケットモンスターの非公式2次創作です。<br>
                 ©2006 Pokémon. ©1995-2006 Nintendo/Creatures Inc./GAME FREAK inc.<br>
                 「Pokémon DP Sound Library」の利用規約に同意し作成されたコンテンツです。
             </p>
-            <div class="text-center xx-small note">
-                <a href="./ranking.html">クリアタイムランキング</a>
-                <a href="./privacypolicy.html">プライバシーポリシー</a>
+            <div class="text-center small note">
+                <a href="./ranking.html">クリアタイムランキング</a>　
+                <a href="./privacypolicy.html">プライバシーポリシー・配信ガイドライン</a>
             </div>
         </div>
     </footer>

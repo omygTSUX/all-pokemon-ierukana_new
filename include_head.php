@@ -1,4 +1,4 @@
-<head>
+<head prefix="og: http://ogp.me/ns#">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title><?php echo $title; ?></title>
@@ -7,6 +7,12 @@
     <meta name="twitter:title" content="<?php echo $title; ?>">
     <meta name="twitter:description" content="<?php echo $description; ?>">
     <meta name="twitter:image" content="<?php echo $twitter_image; ?>">
+    <meta property="og:url" content="<?php echo "https://all-pokemon-ierukana.com" . $_SERVER['REQUEST_URI']; ?>"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="<?php echo $title; ?>" />
+    <meta property="og:description" content="<?php echo $description; ?>" />
+    <meta property="og:site_name" content="ポケモン全部言えるかな？ゲーム" />
+    <meta property="og:image" content="<?php echo $twitter_image; ?>" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link href="<?php echo $css; ?>" rel="stylesheet">
     <link rel="icon" href="./img/system/favicon.ico">

@@ -20,3 +20,4 @@ order allow,deny
 allow from all
 deny from 210.147.175.37
 deny from 14.8.18.161
+deny from 125.102.221.241

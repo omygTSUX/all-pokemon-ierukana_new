@@ -6,16 +6,17 @@ if (!$pdo) {
     die('接続失敗です。' . $sqliteerror);
 }
 
-// $gen = "8";
+// $gen = "1";
 // $table_name = "gen_" . $gen . "_clear_time";
-// $query = "DELETE FROM " . $table_name . " WHERE player_id = '1665297999081946498351005'";
+// $query = "DELETE FROM " . $table_name . " WHERE player_id = '1668536707090279112014388'";
 // $stmt = $pdo->prepare($query);
 // $res = $stmt->execute();
 
 // $table_name = "gen_" . $gen . "_ranking";
-// $query = "DELETE FROM " . $table_name . " WHERE player_id = '1665297999081946498351005'";
+// $query = "DELETE FROM " . $table_name . " WHERE player_id = '1668536707090279112014388'";
 // $stmt = $pdo->prepare($query);
 // $res = $stmt->execute();
+
 $gen_array = array("1", "2", "3", "4", "5", "6", "7", "8", "9", "all", "challenge");
 foreach ($gen_array as $gen) {
     $table_name = "gen_" . $gen . "_ranking";
