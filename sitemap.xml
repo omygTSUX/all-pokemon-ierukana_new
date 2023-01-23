@@ -5,61 +5,66 @@
 <url>
   <loc>https://all-pokemon-ierukana.com/</loc>
   <priority>1.0</priority>
-  <lastmod>2022-10-01T22:45:09+09:00</lastmod>
+  <lastmod>2023-01-16T22:45:09+09:00</lastmod>
 </url>
 <url>
-  <loc>https://all-pokemon-ierukana.com/1-151.html</loc>
+  <loc>https://all-pokemon-ierukana.com/gen01.html</loc>
   <priority>0.8</priority>
-  <lastmod>2022-10-01T22:45:09+09:00</lastmod>
+  <lastmod>2023-01-16T22:45:09+09:00</lastmod>
 </url>
 <url>
-  <loc>https://all-pokemon-ierukana.com/152-251.html</loc>
+  <loc>https://all-pokemon-ierukana.com/gen02.html</loc>
   <priority>0.8</priority>
-  <lastmod>2022-10-01T22:45:09+09:00</lastmod>
+  <lastmod>2023-01-16T22:45:09+09:00</lastmod>
 </url>
 <url>
-  <loc>https://all-pokemon-ierukana.com/252-386.html</loc>
+  <loc>https://all-pokemon-ierukana.com/gen03.html</loc>
   <priority>0.8</priority>
-  <lastmod>2022-10-01T22:45:09+09:00</lastmod>
+  <lastmod>2023-01-16T22:45:09+09:00</lastmod>
 </url>
 <url>
-  <loc>https://all-pokemon-ierukana.com/387-493.html</loc>
+  <loc>https://all-pokemon-ierukana.com/gen04.html</loc>
   <priority>0.8</priority>
-  <lastmod>2022-10-01T22:45:09+09:00</lastmod>
+  <lastmod>2023-01-16T22:45:09+09:00</lastmod>
 </url>
 <url>
-  <loc>https://all-pokemon-ierukana.com/494-649.html</loc>
+  <loc>https://all-pokemon-ierukana.com/gen05.html</loc>
   <priority>0.8</priority>
-  <lastmod>2022-10-01T22:45:09+09:00</lastmod>
+  <lastmod>2023-01-16T22:45:09+09:00</lastmod>
 </url>
 <url>
-  <loc>https://all-pokemon-ierukana.com/650-721.html</loc>
+  <loc>https://all-pokemon-ierukana.com/gen06.html</loc>
   <priority>0.8</priority>
-  <lastmod>2022-10-01T22:45:09+09:00</lastmod>
+  <lastmod>2023-01-16T22:45:09+09:00</lastmod>
 </url>
 <url>
-  <loc>https://all-pokemon-ierukana.com/722-809.html</loc>
+  <loc>https://all-pokemon-ierukana.com/gen07.html</loc>
   <priority>0.8</priority>
-  <lastmod>2022-10-01T22:45:09+09:00</lastmod>
+  <lastmod>2023-01-16T22:45:09+09:00</lastmod>
 </url>
 <url>
-  <loc>https://all-pokemon-ierukana.com/810-905.html</loc>
+  <loc>https://all-pokemon-ierukana.com/gen08.html</loc>
   <priority>0.8</priority>
-  <lastmod>2022-10-01T22:45:09+09:00</lastmod>
+  <lastmod>2023-01-16T22:45:09+09:00</lastmod>
+</url>
+<url>
+  <loc>https://all-pokemon-ierukana.com/gen09.html</loc>
+  <priority>0.8</priority>
+  <lastmod>2023-01-16T22:45:09+09:00</lastmod>
 </url>
 <url>
   <loc>https://all-pokemon-ierukana.com/challengemode.html</loc>
   <priority>0.8</priority>
-  <lastmod>2022-10-01T22:45:09+09:00</lastmod>
+  <lastmod>2023-01-16T22:45:09+09:00</lastmod>
 </url>
 <url>
   <loc>https://all-pokemon-ierukana.com/privacypolicy.html</loc>
   <priority>0.8</priority>
-  <lastmod>2022-10-01T22:45:09+09:00</lastmod>
+  <lastmod>2023-01-16T22:45:09+09:00</lastmod>
 </url>
 <url>
   <loc>https://all-pokemon-ierukana.com/ranking.html</loc>
   <priority>0.8</priority>
-  <lastmod>2022-10-01T22:45:09+09:00</lastmod>
+  <lastmod>2023-01-16T22:45:09+09:00</lastmod>
 </url>
 </urlset>

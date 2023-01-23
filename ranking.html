@@ -39,28 +39,31 @@
         <div class="container mb-1 border rounded pc_only bgcolor_white_alpha">
             <div class="row rounded">
                 <div class="col text-center p-0">
-                    <a class="navi" href="./1-151.html">カントー</a>
+                    <a class="navi" href="./gen01.html">カントー</a>
                 </div>
                 <div class="col text-center p-0">
-                    <a class="navi" href="./152-251.html">ジョウト</a>
+                    <a class="navi" href="./gen02.html">ジョウト</a>
                 </div>
                 <div class="col text-center p-0">
-                    <a class="navi" href="./252-386.html">ホウエン</a>
+                    <a class="navi" href="./gen03.html">ホウエン</a>
                 </div>
                 <div class="col text-center p-0">
-                    <a class="navi" href="./387-493.html">シンオウ</a>
+                    <a class="navi" href="./gen04.html">シンオウ</a>
                 </div>
                 <div class="col text-center p-0">
-                    <a class="navi" href="./494-649.html">イッシュ</a>
+                    <a class="navi" href="./gen05.html">イッシュ</a>
                 </div>
                 <div class="col text-center p-0">
-                    <a class="navi" href="./650-721.html">カロス</a>
+                    <a class="navi" href="./gen06.html">カロス</a>
                 </div>
                 <div class="col text-center p-0">
-                    <a class="navi" href="./722-809.html">アローラ</a>
+                    <a class="navi" href="./gen07.html">アローラ</a>
                 </div>
                 <div class="col text-center p-0">
-                    <a class="navi" href="./810-905.html">ガラル</a>
+                    <a class="navi" href="./gen08.html">ガラル</a>
+                </div>
+                <div class="col text-center p-0">
+                    <a class="navi" href="./gen09.html">パルデア</a>
                 </div>
                 <div class="col text-center p-0">
                     <a class="navi" href="./">全部</a>
@@ -77,14 +80,15 @@
                     他の地方
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item navi" href="./1-151.html">カントー</a></li>
-                    <li><a class="dropdown-item navi" href="./152-251.html">ジョウト</a></li>
-                    <li><a class="dropdown-item navi" href="./252-386.html">ホウエン</a></li>
-                    <li><a class="dropdown-item navi" href="./387-493.html">シンオウ</a></li>
-                    <li><a class="dropdown-item navi" href="./494-649.html">イッシュ</a></li>
-                    <li><a class="dropdown-item navi" href="./650-721.html">カロス</a></li>
-                    <li><a class="dropdown-item navi" href="./722-809.html">アローラ</a></li>
-                    <li><a class="dropdown-item navi" href="./810-905.html">ガラル</a></li>
+                    <li><a class="dropdown-item navi" href="./gen01.html">カントー</a></li>
+                    <li><a class="dropdown-item navi" href="./gen02.html">ジョウト</a></li>
+                    <li><a class="dropdown-item navi" href="./gen03.html">ホウエン</a></li>
+                    <li><a class="dropdown-item navi" href="./gen04.html">シンオウ</a></li>
+                    <li><a class="dropdown-item navi" href="./gen05.html">イッシュ</a></li>
+                    <li><a class="dropdown-item navi" href="./gen06.html">カロス</a></li>
+                    <li><a class="dropdown-item navi" href="./gen07.html">アローラ</a></li>
+                    <li><a class="dropdown-item navi" href="./gen08.html">ガラル</a></li>
+                    <li><a class="dropdown-item navi" href="./gen09.html">パルデア</a></li>
                     <li><a class="dropdown-item navi" href="./">全部</a></li>
                     <li><a class="dropdown-item navi" href="./challengemode.html">むずかし版</a></li>
                 </ul>
@@ -130,16 +134,18 @@
                     <li><button class="dropdown-item" name="カロス" value="6"
                             onClick="selectRegionRanking(this);">カロス</button></li>
                     <li><button class="dropdown-item" name="アローラ" value="7"
-                            onClick="selectRegionRanking(this);">アローラ</button></li>
+                            onClick="selectRegionRanking(this);">アローラ・GO</button></li>
                     <li><button class="dropdown-item" name="ガラル・ヒスイ" value="8"
                             onClick="selectRegionRanking(this);">ガラル・ヒスイ</button></li>
+                    <li><button class="dropdown-item" name="パルデア" value="9"
+                            onClick="selectRegionRanking(this);">パルデア</button></li>
                     <li><button class="dropdown-item" name="全部" value="all"
                             onClick="selectRegionRanking(this);">全部</button></li>
                     <li><button class="dropdown-item" name="むずかし版" value="challenge"
                             onClick="selectRegionRanking(this);">むずかし版</button></li>
                 </ul>
             </div>
-            <label><input type="checkbox" id="checkbox_old_ranking" />リセット前のランキングを見る</label>
+            <label><input type="checkbox" id="checkbox_old_ranking" />パルデア追加前のランキングを見る</label>
             <div id="div_ranking_table" class="w-50 border rounded mx-auto mb-2 overflow-scroll">
                 <table class="table table-hover table-light table-sm">
                     <thead class="table-info fixed">

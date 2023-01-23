@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<?php
+$gen = "challenge";
+$number_start = 1;
+$number_pokemons = 1008;
+$region = "全";
+$title = "ポケモン全部言えるかな？ゲーム(むずかし版)";
+$description = "キミは".$region."ポケモン".$number_pokemons."匹を図鑑番号のヒントなしに言えるかな？".$region."ポケモン".$number_pokemons."匹を答えるタイムアタッククイズゲームのむずかし版にチャレンジしよう！";
+$twitter_image = "https://all-pokemon-ierukana.com/img/system/tweet_challenge.png";
+$css = "style_raw.css?".date('YmdHis');
+$script = "script_challenge.js?".date('YmdHis');
+
+require("include_head.php");
+
+$clear_message = "<p>クリアおめでとう！！！<br>キミはポケモンマスターのチャンピオンだ！</p>";
+$h1 = $region."ポケモン".$number_pokemons."匹言えるかな？(むずかし版)";
+$note = "";
+
+require("include_body.php");
+?>
+</html>

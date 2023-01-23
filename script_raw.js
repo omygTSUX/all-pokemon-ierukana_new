@@ -71,9 +71,15 @@ function getJson() {
 }
 
 // 数字を0埋めする関数
-function padZero(v, digit) {
-    var result = ("00000" + v).slice(-digit);
-    return result;
+function padZero(num, digit) {
+    var num_string = num.toString();
+    if (num_string.length > digit) {
+        return num_string;
+    }
+    else {
+        var result = ("00000" + num_string).slice(-digit);
+        return result;
+    }
 }
 
 // 画面の高さを100vhに調節する関数
@@ -206,7 +212,20 @@ function setPlayerId() {
         player_id = new Date().getTime().toString() + Math.floor(Math.random() * 1000000000000).toString();
         localStorage.setItem("player_id", player_id);
     }
+    var gen_all_best_time = localStorage.getItem("gen_all_best_time");
+    if (!!gen_all_best_time) {
+        if (gen_all_best_time < 3600) {
+            localStorage.setItem("gen_all_best_time", 99999999);
+        }
+    }
+    var gen_challenge_best_time = localStorage.getItem("gen_challenge_best_time");
+    if (!!gen_challenge_best_time) {
+        if (gen_challenge_best_time < 3600) {
+            localStorage.setItem("gen_challenge_best_time", 99999999);
+        }
+    }
 }
+
 
 // HTML読み込み時に自動実行する関数
 window.addEventListener("DOMContentLoaded", function () {
@@ -505,7 +524,7 @@ document.getElementById("button_confirm").onclick = function () {
         var id = li.id.slice(8);
         if (!answered_list_local[id - number_start + 1]) {
             li.classList.add("found", "not_answered");
-            li.innerHTML = "<img src='./img/pokemon/" + padZero(id, 3) + ".png' class='image_pokemon' loading='lazy' title='" + all_pokemon_list[id - 1].name + "'>";
+            li.innerHTML = "<img src='./img/pokemon/" + padZero(id, 3) + ".png?230113' class='image_pokemon' loading='lazy' title='" + all_pokemon_list[id - 1].name + "'>";
         }
     }
 
@@ -576,11 +595,11 @@ function eratta(answer) {
 
 // 正解判定をする関数
 function checkAnswer(answer) {
-    if (answer == "クリア") {
-        remaining_number = 0;
-        last_pokemon = "ピカチュウ";
-        document.form_answer.reset();
-    }
+    // if (answer == "クリア") {
+    //     remaining_number = 0;
+    //     last_pokemon = "ピカチュウ";
+    //     document.form_answer.reset();
+    // }
     var eratta_result = eratta(answer);
     var pokemon = all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1).find((v) => v.name === eratta_result);
     if (pokemon != undefined && !answered_list[pokemon.number - number_start + 1]) {
@@ -593,7 +612,7 @@ function checkAnswer(answer) {
         }
         var li = document.getElementById('pokemon_' + pokemon.number);
         li.classList.add("found");
-        li.innerHTML = "<img src='./img/pokemon/" + padZero(pokemon.number, 3) + ".png' class='image_pokemon' title='" + pokemon.name + "'>";
+        li.innerHTML = "<img src='./img/pokemon/" + padZero(pokemon.number, 3) + ".png?230113' class='image_pokemon' title='" + pokemon.name + "'>";
         if (document.getElementById("checkbox_scroll").checked) {
             li.scrollIntoView({ behavior: "smooth", block: "nearest" });
         }

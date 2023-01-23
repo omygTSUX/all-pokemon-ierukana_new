@@ -59,6 +59,12 @@ body {
     background-size: auto, 100% 100%;
 }
 
+.gen-9 {
+    background-image: url("./img/system/background.png"), url("./img/system/color_gen9.png");
+    background-repeat: repeat, repeat-y;
+    background-size: auto, 100% 100%;
+}
+
 .gen-challenge {
     background-image: url("./img/system/background.png"), url("./img/system/color_genchallenge.png");
     background-repeat: repeat, repeat-y;
@@ -71,7 +77,7 @@ a:visited {
 }
 
 header .col {
-    height: 2.5em;
+    height: 2em;
 }
 
 .navi {
@@ -372,6 +378,10 @@ input[disabled] {
 }
 
 @media screen and (max-width: 1023px) {
+    .navi {
+        font-size: small;
+    }
+
     .li_wrapper {
         width: calc(100% / 18);
     }
@@ -379,7 +389,11 @@ input[disabled] {
 
 @media screen and (max-width: 767px) {
     .navi {
-        font-size: small;
+        font-size: x-small;
+    }
+
+    .navi.navi_challengemode{
+        font-size: xx-small;
     }
 
     .li_wrapper {
@@ -413,10 +427,6 @@ input[disabled] {
 }
 
 @media screen and (max-width: 599px) {
-    .navi {
-        font-size: x-small;
-    }
-
     .li_wrapper {
         width: calc(100% / 13);
     }

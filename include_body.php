@@ -6,34 +6,37 @@
         <div class="container mb-1 border rounded pc_only bgcolor_white_alpha">
             <div class="row rounded">
                 <div class="col text-center p-0">
-                    <a class="navi" href="./1-151.html">カントー</a>
+                    <a class="navi" href="./gen01.html">カントー</a>
                 </div>
                 <div class="col text-center p-0">
-                    <a class="navi" href="./152-251.html">ジョウト</a>
+                    <a class="navi" href="./gen02.html">ジョウト</a>
                 </div>
                 <div class="col text-center p-0">
-                    <a class="navi" href="./252-386.html">ホウエン</a>
+                    <a class="navi" href="./gen03.html">ホウエン</a>
                 </div>
                 <div class="col text-center p-0">
-                    <a class="navi" href="./387-493.html">シンオウ</a>
+                    <a class="navi" href="./gen04.html">シンオウ</a>
                 </div>
                 <div class="col text-center p-0">
-                    <a class="navi" href="./494-649.html">イッシュ</a>
+                    <a class="navi" href="./gen05.html">イッシュ</a>
                 </div>
                 <div class="col text-center p-0">
-                    <a class="navi" href="./650-721.html">カロス</a>
+                    <a class="navi" href="./gen06.html">カロス</a>
                 </div>
                 <div class="col text-center p-0">
-                    <a class="navi" href="./722-809.html">アローラ</a>
+                    <a class="navi" href="./gen07.html">アローラ</a>
                 </div>
                 <div class="col text-center p-0">
-                    <a class="navi" href="./810-905.html">ガラル</a>
+                    <a class="navi" href="./gen08.html">ガラル</a>
+                </div>
+                <div class="col text-center p-0">
+                    <a class="navi" href="./gen09.html">パルデア</a>
                 </div>
                 <div class="col text-center p-0">
                     <a class="navi" href="./">全部</a>
                 </div>
                 <div class="col text-center p-0">
-                    <a class="navi" href="./challengemode.html">むずかし版</a>
+                    <a class="navi note" href="./challengemode.html">むずかし</a>
                 </div>
             </div>
         </div>
@@ -43,14 +46,15 @@
                     他の地方
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item navi" href="./1-151.html">カントー</a></li>
-                    <li><a class="dropdown-item navi" href="./152-251.html">ジョウト</a></li>
-                    <li><a class="dropdown-item navi" href="./252-386.html">ホウエン</a></li>
-                    <li><a class="dropdown-item navi" href="./387-493.html">シンオウ</a></li>
-                    <li><a class="dropdown-item navi" href="./494-649.html">イッシュ</a></li>
-                    <li><a class="dropdown-item navi" href="./650-721.html">カロス</a></li>
-                    <li><a class="dropdown-item navi" href="./722-809.html">アローラ</a></li>
-                    <li><a class="dropdown-item navi" href="./810-905.html">ガラル</a></li>
+                    <li><a class="dropdown-item navi" href="./gen01.html">カントー</a></li>
+                    <li><a class="dropdown-item navi" href="./gen02.html">ジョウト</a></li>
+                    <li><a class="dropdown-item navi" href="./gen03.html">ホウエン</a></li>
+                    <li><a class="dropdown-item navi" href="./gen04.html">シンオウ</a></li>
+                    <li><a class="dropdown-item navi" href="./gen05.html">イッシュ</a></li>
+                    <li><a class="dropdown-item navi" href="./gen06.html">カロス</a></li>
+                    <li><a class="dropdown-item navi" href="./gen07.html">アローラ</a></li>
+                    <li><a class="dropdown-item navi" href="./gen08.html">ガラル</a></li>
+                    <li><a class="dropdown-item navi" href="./gen09.html">パルデア</a></li>
                     <li><a class="dropdown-item navi" href="./">全部</a></li>
                     <li><a class="dropdown-item navi" href="./challengemode.html">むずかし版</a></li>
                 </ul>
@@ -156,9 +160,9 @@
                         </div>
                         <div class="modal-body">
                             <div id="ad_modal_a8" class="text-center">
-                    <!-- admax -->
-                    <script src="https://adm.shinobi.jp/o/f31d936003736ab29994a209ce0ff737"></script>
-                    <!-- admax -->
+                            <a href="https://px.a8.net/svt/ejp?a8mat=3NNEHH+CLOCII+CO4+15XZKH" rel="nofollow">
+                    <img border="0" width="300" height="250" alt="" src="https://www25.a8.net/svt/bgt?aid=221121557762&wid=002&eno=01&mid=s00000001642007045000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=3NNEHH+CLOCII+CO4+15XZKH" alt="">
                             </div>
                         </div>
                     </div>

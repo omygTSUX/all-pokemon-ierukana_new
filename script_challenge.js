@@ -71,9 +71,15 @@ function getJson() {
 }
 
 // 数字を0埋めする関数
-function padZero(v, digit) {
-    var result = ("00000" + v).slice(-digit);
+function padZero(num, digit) {
+    var num_string = num.toString();
+    if(num_string.length > digit){
+        return num_string;
+    }
+    else{
+        var result = ("00000" + num_string).slice(-digit);
     return result;
+}
 }
 
 // 画面の高さを100vhに調節する関数
@@ -206,7 +212,20 @@ function setPlayerId() {
         player_id = new Date().getTime().toString() + Math.floor(Math.random() * 1000000000000).toString();
         localStorage.setItem("player_id", player_id);
     }
+    var gen_all_best_time = localStorage.getItem("gen_all_best_time");
+    if (!!gen_all_best_time) {
+        if (gen_all_best_time < 3600) {
+            localStorage.setItem("gen_all_best_time", 99999999);
 }
+    }
+    var gen_challenge_best_time = localStorage.getItem("gen_challenge_best_time");
+    if (!!gen_challenge_best_time) {
+        if (gen_challenge_best_time < 3600) {
+            localStorage.setItem("gen_challenge_best_time", 99999999);
+        }
+    }
+}
+
 
 // HTML読み込み時に自動実行する関数
 window.addEventListener("DOMContentLoaded", function () {
