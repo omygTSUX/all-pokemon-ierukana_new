@@ -9,8 +9,8 @@
         <div class="mb-5">
             <h2>Cookie(クッキー)について</h2>
             <p class="small">
-                当サイトではCookieやLocalSotrageなどを使用して、ユーザー広告の表示、ソーシャルメディア機能の提供、広告の表示回数やクリック数の測定を行っています。
-                また、ユーザーによるサイトの利用状況についても情報を収集し、ソーシャルメディア(Twitterボタンなど)や広告配信、アクセス解析の各パートナーに提供しています。
+                当サイトではCookieやLocalSotrageなどを使用して、ソーシャルメディア機能の提供、クリック数の測定を行っています。
+                また、ユーザーによるサイトの利用状況についても情報を収集し、ソーシャルメディア(Twitterボタンなど)やアクセス解析の各パートナーに提供しています。
                 各パートナーは、この情報とユーザーが各パートナーに提供した他の情報や、ユーザーが各パートナーのサービスを使用したときに収集した他の情報を組み合わせて使用することがあります。
                 これらのトラッキングに関しては、各社が定めるオプトアウトの方法の他に、OSやブラウザの設定で拒否することが可能です。
                 当サイトのサービスをご利用頂く際は、Cookieの設定についてご理解頂いた上で、ご自身でご判断頂きますようお願いいたします。
@@ -27,22 +27,6 @@
                 <li class="small">Google アナリティクス利用規約<br><a href="https://www.google.com/analytics/terms/jp.html" target="_blank" rel="nofollow noopener noreferrer">https://www.google.com/analytics/terms/jp.html</a></li>
                 <li class="small">Googleプライバシーポリシー<br><a href="https://policies.google.com/privacy" target="_blank" rel="nofollow noopener noreferrer">https://policies.google.com/privacy</a></li>
                 <li class="small">Google アナリティクス オプトアウト アドオン<br><a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="nofollow noopener noreferrer">https://tools.google.com/dlpage/gaoptout</a></li>
-            </ul>
-        </div>
-        <div class="mb-5">
-            <h3>広告について</h3>
-            <p class="small">
-                広告の配信を最適化するため、当サイトでは下記の会社による広告配信サービスを利用しています。
-                これらの会社は、ユーザーに最適な広告を配信するため、CookieやLocalSotrageなどのトラッキング技術を利用してターゲティング広告を配信することがあります。
-                各社のプライバシーポリシーとターゲティング広告無効化については、以下の各ページをご確認ください。
-            </p>
-            <ul>
-                <li class="small">FANCOM<br><a href="https://www.fancs.com/privacy" target="_blank" rel="nofollow noopener noreferrer">https://www.fancs.com/privacy</a>
-                </li>
-                <li class="small">忍者ツールズ<br><a href="https://corp.ninja.co.jp/isplaw/privacy/" target="_blank" rel="nofollow noopener noreferrer">https://corp.ninja.co.jp/isplaw/privacy/</a>
-                </li>
-                <li class="small">もしも<br><a href="https://www.moshimo.co.jp/company/privacy" target="_blank" rel="nofollow noopener noreferrer">https://www.moshimo.co.jp/company/privacy</a>
-                </li>
             </ul>
         </div>
         <div class="mb-5">

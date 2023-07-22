@@ -62,7 +62,7 @@
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="surrender_modal" tabindex="-1" aria-labelledby="surrender_modal_label" data-bs-backdrop="static" aria-hidden="true">
+            <div class="modal fade" id="surrender_modal" tabindex="-1" aria-labelledby="surrender_modal_label" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -87,12 +87,12 @@
                                 <li class="mb-1"><a rel="nofollow" role="button" class="button_line btn btn-sm text-white" onclick="copyResultText('openLine()');"><img src="/img/system/logo_line.png" class="sns_logo"> <?php echo $text_line_share; ?></a></li>
                                 <li class="mb-1"><a rel="nofollow" role="button" class="button_instagram btn btn-sm text-white" onclick="copyResultText('openInstagram()');"><img src="/img/system/logo_instagram.png" class="sns_logo"> <?php echo $text_instagram_share; ?></a></li>
                             </ul>
-                            <button type="button" class="btn btn-secondary btn-sm" data-bs-target="#ad_modal" data-bs-toggle="modal" data-bs-dismiss="modal"><?php echo $text_close; ?></button>
+                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal"><?php echo $text_close; ?></button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="clear_modal" tabindex="-1" aria-labelledby="clear_modal_label" data-bs-backdrop="static" aria-hidden="true">
+            <div class="modal fade" id="clear_modal" tabindex="-1" aria-labelledby="clear_modal_label" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -115,23 +115,7 @@
                                 <li class="mb-1"><a rel="nofollow" role="button" class="button_line btn btn-sm text-white" onclick="copyResultText('openLine()');"><img src="/img/system/logo_line.png" class="sns_logo"> <?php echo $text_line_share; ?></a></li>
                                 <li class="mb-1"><a rel="nofollow" role="button" class="button_instagram btn btn-sm text-white" onclick="copyResultText('openInstagram()');"><img src="/img/system/logo_instagram.png" class="sns_logo"> <?php echo $text_instagram_share; ?></a></li>
                             </ul>
-                            <button type="button" class="btn btn-secondary btn-sm" data-bs-target="#ad_modal" data-bs-toggle="modal" data-bs-dismiss="modal"><?php echo $text_close; ?></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade" id="ad_modal" tabindex="-1" aria-labelledby="ad_modal_label" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <?php echo $text_ad; ?><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div id="ad_modal_a8" class="text-center">
-                                <a href="https://px.a8.net/svt/ejp?a8mat=3NNEHH+CLOCII+CO4+15XZKH" rel="nofollow">
-                                    <img border="0" width="300" height="250" alt="" src="https://www25.a8.net/svt/bgt?aid=221121557762&wid=002&eno=01&mid=s00000001642007045000&mc=1"></a>
-                                <img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=3NNEHH+CLOCII+CO4+15XZKH" alt="">
-                            </div>
+                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal"><?php echo $text_close; ?></button>
                         </div>
                     </div>
                 </div>
@@ -184,5 +168,4 @@
         </ul>
     </main>
     <?php require("include_footer.php"); ?>
-    <?php require("include_ad.php"); ?>
 </body>
