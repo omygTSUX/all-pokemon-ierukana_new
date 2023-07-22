@@ -1,6 +1,16 @@
 <?php
-
-$pdo = new PDO('sqlite:./db/score.db');
+if (isset($_GET['lang'])) {
+    $lang = $_GET['lang'];
+}
+else{
+    $lang = "ja";
+}
+if ($lang == "en-us"){
+    $dsn = "sqlite:".$_SERVER['DOCUMENT_ROOT']."/db/score_english.db";
+}else{
+    $dsn = "sqlite:".$_SERVER['DOCUMENT_ROOT']."/db/score.db";
+}
+$pdo = new PDO($dsn);
 
 if (!$pdo) {
     die('接続失敗です。' . $sqliteerror);
@@ -11,6 +21,7 @@ foreach($gen_array as $gen){
     $stmt = $pdo->prepare($query);
     $res = $stmt->execute();
     $data = $stmt->fetch();
+    var_dump($data);
     $average = round($data[0]);
     $players = $data[1];
     $query = "UPDATE average_num_answers SET average_num_answers = :average, num_players = :players WHERE gen = :gen";
@@ -25,6 +36,7 @@ foreach($gen_array as $gen){
     $stmt = $pdo->prepare($query);
     $res = $stmt->execute();
     $data = $stmt->fetch();
+    var_dump($data);
     $average = round($data[0]);
     $players = $data[1];
     $query = "UPDATE average_clear_time SET average_time = :average, num_players = :players WHERE gen = :gen";

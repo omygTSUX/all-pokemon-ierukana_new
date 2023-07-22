@@ -1,6 +1,10 @@
 <?php
 
-$dsn = 'sqlite:./db/score.db';
+if ($_POST['lang'] == "en-us"){
+    $dsn = "sqlite:".$_SERVER['DOCUMENT_ROOT']."/db/score_english.db";
+}else{
+    $dsn = "sqlite:".$_SERVER['DOCUMENT_ROOT']."/db/score.db";
+}
 try {
     $pdo = new PDO($dsn);
 

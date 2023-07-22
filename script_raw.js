@@ -18,7 +18,11 @@ function createPokemonList(number_pokemons, number_start) {
     var ul = document.getElementById('pokemon_list');
     var dom = "";
     for (var p = 0; p < number_pokemons; p++) {
-        var div = "<div id='pokemon_" + (number_start + p) + "' class='li_pokemon xx-small m-1'>" + padZero(number_start + p, 3) + "</div>";
+        if(gen == "challenge"){
+            var div = "<div id='pokemon_" + (number_start + p) + "' class='li_pokemon xx-small m-1'>???</div>";
+        }else{
+            var div = "<div id='pokemon_" + (number_start + p) + "' class='li_pokemon xx-small m-1'>" + padZero(number_start + p, 3) + "</div>";
+        }
         var li = "<li class='li_wrapper'>" + div + "</li>";
         dom += li;
     }
@@ -63,7 +67,7 @@ function convertCSVtoArray(str) { // 読み込んだCSVデータが文字列と�
 
 function getJson() {
     var req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
-    req.open("get", "all_pokemon.json", true); // アクセスするファイルを指定
+    req.open("get", "all_pokemon.json?230227", true); // アクセスするファイルを指定
     req.send(null); // HTTPリクエストの発行
     req.onload = function () {
         window.all_pokemon_list = JSON.parse(req.responseText);
@@ -118,7 +122,11 @@ function noneHeaderAndFooter() {
     }
     setTimeout("setFillHeight()", 500);
     var button_menu = document.getElementById("button_menu");
-    button_menu.textContent = "メニュー";
+    if (lang == "en-us") {
+        button_menu.textContent = "Menu";
+    } else {
+        button_menu.textContent = "メニュー";
+    }
     button_menu.classList.add('on_focus');
 }
 
@@ -130,7 +138,12 @@ function displayHeaderAndFooter() {
     }
     setTimeout("setFillHeight()", 500);
     var button_menu = document.getElementById("button_menu");
-    button_menu.textContent = "全画面化";
+    if (lang == "en-us") {
+        button_menu.textContent = "Expand";
+    } else {
+        button_menu.textContent = "全画面化";
+    }
+
     button_menu.classList.remove('on_focus');
 }
 
@@ -185,6 +198,16 @@ function toJapaneseHms(hms) {
     var byou = Number(japaneseHms[2]);
 
     return ji + "時間" + hun + "分" + byou + "秒";
+}
+
+// 時間を英語に変換する関数
+function toEnglishHms(hms) {
+    var japaneseHms = hms.split(":");
+    var ji = Number(japaneseHms[0]);
+    var hun = Number(japaneseHms[1]);
+    var byou = Number(japaneseHms[2]);
+
+    return ji + "h" + hun + "m" + byou + "s";
 }
 
 // タイマーを動かす関数
@@ -263,15 +286,19 @@ document.getElementById("button_start").onclick = function () {
         startTimer();
         var input_answer = document.getElementById("input_answer");
         input_answer.removeAttribute("disabled");
-        input_answer.setAttribute("placeholder", "ポケモン名");
         document.getElementById("button_answer").removeAttribute("disabled");
-        button.textContent = "降参";
         button.classList.replace('btn-success', 'btn-danger');
         button.classList.remove("stopped");
         button.classList.remove("initial");
         button.setAttribute("data-bs-toggle", "modal");
         button.setAttribute("data-bs-target", "#confirm_modal");
-
+        if (lang == "en-us") {
+            input_answer.setAttribute("placeholder", "Pokémon Name");
+            button.textContent = "Give Up";
+        } else {
+            input_answer.setAttribute("placeholder", "ポケモン名");
+            button.textContent = "降参";
+        }
         var dropdownMenuSnsShare = document.getElementById("dropdownMenuSnsShare");
         dropdownMenuSnsShare.classList.remove('highlight');
 
@@ -283,7 +310,12 @@ document.getElementById("button_start").onclick = function () {
         for (li of li_pokemons) {
             li.classList.remove("found", "not_answered");
             var id = li.id.slice(8);
-            li.textContent = padZero(id, 3);
+            if(gen == "challenge"){
+                li.textContent = "???";
+            }
+            else{
+                li.textContent = padZero(id, 3);
+            }
         }
 
         noneHeaderAndFooter();
@@ -296,14 +328,18 @@ document.getElementById("button_start").onclick = function () {
 
 function beforeUnload(event) {
     event.preventDefault();
-    event.returnValue = 'ページを更新するとデータが消えますが続行しますか？';
+    if (lang == "en-us") {
+        event.returnValue = "When you refresh the page, the data is lost, do you continue?";
+    } else {
+        event.returnValue = 'ページを更新するとデータが消えますが続行しますか？';
+    }
 }
 
 // 正解音ファイルを読み込む関数
 function getCorrectAudio() {
     window.correctContext = new AudioContext();
     var req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
-    req.open("get", "./sound/nc162468.mp3", true); // アクセスするファイルを指定
+    req.open("get", "sound/nc162468.mp3", true); // アクセスするファイルを指定
     req.responseType = 'arraybuffer';  // XMLHttpRequest Level 2
     req.send(null); // HTTPリクエストの発行
     req.onload = function () {
@@ -345,7 +381,7 @@ function getCorrectAudio() {
 function getIncorrectAudio() {
     window.incorrectContext = new AudioContext();
     var req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
-    req.open("get", "./sound/wall.mp3", true); // アクセスするファイルを指定
+    req.open("get", "sound/wall.mp3", true); // アクセスするファイルを指定
     req.responseType = 'arraybuffer';  // XMLHttpRequest Level 2
     req.send(null); // HTTPリクエストの発行
     req.onload = function () {
@@ -375,7 +411,7 @@ function getIncorrectAudio() {
 function getClearAudio() {
     window.clearContext = new AudioContext();
     var req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
-    req.open("get", "./sound/celebrate_evolution_long.mp3", true); // アクセスするファイルを指定
+    req.open("get", "sound/celebrate_evolution_long.mp3", true); // アクセスするファイルを指定
     req.responseType = 'arraybuffer';  // XMLHttpRequest Level 2
     req.send(null); // HTTPリクエストの発行
     req.onload = function () {
@@ -498,19 +534,35 @@ document.getElementById("button_confirm").onclick = function () {
         localStorage.setItem('gen_' + gen + '_best_num_answers', num_answers);
     }
     var message_best_num_answers = document.getElementById("message_best_num_answers");
-    message_best_num_answers.innerHTML = "キミの最高解答数：" + best_num_answers + " / " + number_pokemons + "匹 <br>" +
+    if (lang == "en-us") {
+        message_best_num_answers.innerHTML = "Your best score is " + best_num_answers + " / " + number_pokemons + " Pokémon. <br>" +
+        "Try again to break the record!<br>" +
+        "<a href='ranking?lang="+lang+"' target='_blank' rel='nofollow noopener'>Click Here</a> to check rankings.";
+    } else {
+        message_best_num_answers.innerHTML = "キミの最高解答数：" + best_num_answers + " / " + number_pokemons + "匹 <br>" +
         "記録更新を目指してまた挑戦してね！<br>" +
-        "ランキングの確認は<a href='./ranking.html' target='_blank' rel='nofollow noopener'>こちら</a>";
+        "ランキングの確認は<a href='ranking' target='_blank' rel='nofollow noopener'>こちら</a>";
+    }
+
 
 
     var input_answer = document.getElementById("input_answer");
     input_answer.setAttribute("disabled", true);
-    input_answer.setAttribute("placeholder", "開始してね");
+    if (lang == "en-us") {
+        input_answer.setAttribute("placeholder", "Press Start");
+
+    }else{
+        input_answer.setAttribute("placeholder", "開始してね");
+    }
 
     document.getElementById("button_answer").setAttribute("disabled", true);
 
     var button = document.getElementById("button_start");
-    button.textContent = "開始";
+    if (lang == "en-us") {
+        button.textContent = "Start";
+    } else {
+        button.textContent = "開始";
+    }
     button.classList.replace('btn-danger', 'btn-success');
     button.classList.add('stopped');
     button.removeAttribute("data-bs-toggle");
@@ -522,13 +574,32 @@ document.getElementById("button_confirm").onclick = function () {
     var li_pokemons = document.getElementsByClassName('li_pokemon');
     for (li of li_pokemons) {
         var id = li.id.slice(8);
-        if (!answered_list_local[id - number_start + 1]) {
-            li.classList.add("found", "not_answered");
-            li.innerHTML = "<img src='./img/pokemon/" + padZero(id, 3) + ".png?230113' class='image_pokemon' loading='lazy' title='" + all_pokemon_list[id - 1].name + "'>";
+        if (gen == "challenge"){
+            if (!answered_list[id - number_start + 1]) {
+                li.classList.add("not_answered");
+            }
+            li.classList.add("found");
+            if(lang == "en-us"){
+                li.innerHTML = "<img src='img/pokemon/" + padZero(id, 3) + ".png' class='image_pokemon' loading='lazy' title='" + all_pokemon_list[id - 1].name_english_raw + "'>";
+            }else{
+                li.innerHTML = "<img src='img/pokemon/" + padZero(id, 3) + ".png' class='image_pokemon' loading='lazy' title='" + all_pokemon_list[id - 1].name + "'>";
+            }
+        }else{
+            if (!answered_list_local[id - number_start + 1]) {
+                li.classList.add("found", "not_answered");
+                if(lang == "en-us"){
+                    li.innerHTML = "<img src='img/pokemon/" + padZero(id, 3) + ".png' class='image_pokemon' loading='lazy' title='" + all_pokemon_list[id - 1].name_english_raw + "'>";
+                }else{
+                    li.innerHTML = "<img src='img/pokemon/" + padZero(id, 3) + ".png' class='image_pokemon' loading='lazy' title='" + all_pokemon_list[id - 1].name + "'>";
+                }
+            }
         }
     }
-
-    var surrender_time = toJapaneseHms(toHms(Math.floor(window.shown_time / 1000)));
+    if(lang == "en-us"){
+        var surrender_time = toEnglishHms(toHms(Math.floor(window.shown_time / 1000)));
+    }else{
+        var surrender_time = toJapaneseHms(toHms(Math.floor(window.shown_time / 1000)));
+    }
     document.getElementById("surrender_time").textContent = surrender_time;
 
     displayHeaderAndFooter();
@@ -593,6 +664,22 @@ function eratta(answer) {
     return eratta_result;
 }
 
+// 英語入力の表記揺れを直す関数
+function eratta_english(answer) {
+    var eratta_result = answer.replace("♂", "male");
+    eratta_result = eratta_result.replace("♀", "female");
+    eratta_result = eratta_result.replace(/[^0-9a-z]/gi, '');
+    eratta_result = eratta_result.toLowerCase();
+
+    // 日本語入力でエラー音を出すために必要
+    if(eratta_result == "" && answer != ""){
+        return answer;
+    }
+    else{
+        return eratta_result;
+    }
+}
+
 // 正解判定をする関数
 function checkAnswer(answer) {
     // if (answer == "クリア") {
@@ -600,8 +687,19 @@ function checkAnswer(answer) {
     //     last_pokemon = "ピカチュウ";
     //     document.form_answer.reset();
     // }
-    var eratta_result = eratta(answer);
-    var pokemon = all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1).find((v) => v.name === eratta_result);
+    if(lang == "en-us"){
+        var eratta_result = eratta_english(answer);
+        if(eratta_result == "nidoran"){
+            checkAnswer("nidoranfemale");
+            checkAnswer("nidoranmale");
+            return;
+        }
+        var pokemon = all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1).find((v) => v.name_english === eratta_result);
+    }else{
+        var eratta_result = eratta(answer);
+        var pokemon = all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1).find((v) => v.name === eratta_result);
+    
+    }
     if (pokemon != undefined && !answered_list[pokemon.number - number_start + 1]) {
         if (document.getElementById("checkbox_audio").checked) {
             // audio.play();
@@ -610,16 +708,30 @@ function checkAnswer(answer) {
             // source.start(0);
             playCorrectAudio();
         }
-        var li = document.getElementById('pokemon_' + pokemon.number);
+        if(gen == "challenge"){
+            var li = document.getElementById('pokemon_' + (number_pokemons - remaining_number + 1));
+        }else{
+            var li = document.getElementById('pokemon_' + pokemon.number);
+        }
         li.classList.add("found");
-        li.innerHTML = "<img src='./img/pokemon/" + padZero(pokemon.number, 3) + ".png?230113' class='image_pokemon' title='" + pokemon.name + "'>";
+        if(lang == "en-us"){
+            li.innerHTML = "<img src='img/pokemon/" + padZero(pokemon.number, 3) + ".png?230113' class='image_pokemon' title='" + pokemon.name_english_raw + "'>";
+        }
+        else{
+            li.innerHTML = "<img src='img/pokemon/" + padZero(pokemon.number, 3) + ".png?230113' class='image_pokemon' title='" + pokemon.name + "'>";
+        }
         if (document.getElementById("checkbox_scroll").checked) {
             li.scrollIntoView({ behavior: "smooth", block: "nearest" });
         }
         answered_list[pokemon.number - number_start + 1] = true;
         remaining_number--;
         setRemainingNumber(remaining_number);
-        window.last_pokemon = pokemon.name;
+        if(lang == "en-us"){
+            window.last_pokemon = pokemon.name_english_raw;
+        }
+        else{
+            window.last_pokemon = pokemon.name;
+        }
         document.form_answer.reset();
     }
     else {
@@ -658,7 +770,11 @@ document.form_answer.onreset = function () {
         var clear_time = Math.floor(window.shown_time / 1000);
 
         var span_clear_time = document.getElementById("clear_time");
-        span_clear_time.textContent = toJapaneseHms(toHms(clear_time));
+        if(lang == "en-us"){
+            span_clear_time.textContent = toEnglishHms(toHms(clear_time));
+        }else{
+            span_clear_time.textContent = toJapaneseHms(toHms(clear_time));
+        }
 
         fetchAverageTime();
 
@@ -677,12 +793,22 @@ document.form_answer.onreset = function () {
 
         var input_answer = document.getElementById("input_answer");
         input_answer.setAttribute("disabled", true);
-        input_answer.setAttribute("placeholder", "開始してね");
+        if (lang == "en-us") {
+            input_answer.setAttribute("placeholder", "Press Start");
+    
+        }else{
+            input_answer.setAttribute("placeholder", "開始してね");
+        }
 
         document.getElementById("button_answer").setAttribute("disabled", true);
 
         var button = document.getElementById("button_start");
-        button.textContent = "開始";
+        if (lang == "en-us") {
+            button.textContent = "Start";
+        }else{
+            button.textContent = "開始";
+        }
+
         button.classList.replace('btn-danger', 'btn-success');
         button.classList.add('stopped');
         button.removeAttribute("data-bs-toggle");
@@ -708,17 +834,29 @@ function showClearMessage() {
 
 // ツイートボタンの文言を設定する関数
 function openTweetWindow() {
-    var time = toJapaneseHms(document.getElementById("timer").textContent);
+    if(lang == "en-us"){
+        var time = toEnglishHms(document.getElementById("timer").textContent);
+    }else{
+        var time = toJapaneseHms(document.getElementById("timer").textContent);
+    }
     var number_answered = number_pokemons - remaining_number;
     var title = document.title;
     var url = location.href;
     var href;
     if (remaining_number == 0) {
-        href = "https://twitter.com/share?text=" + time + "でポケモン" + number_answered + "/" + number_pokemons + "匹言えた！最後のポケモンは" + last_pokemon + "だった！ - " + title + "&url=" + url + "&hashtags=ポケモン全部言えるかな";
+        if (lang == "en-us") {
+            href = "https://twitter.com/share?text=" + "I could guess " + number_answered + " / " + number_pokemons + " Pokémon in " + time + "! The last Pokémon was " + last_pokemon + "! - " + title + "&url=" + url + "&hashtags=CanYouNameAllthePokemon";
+        }else{
+            href = "https://twitter.com/share?text=" + time + "でポケモン" + number_answered + "/" + number_pokemons + "匹言えた！最後のポケモンは" + last_pokemon + "だった！ - " + title + "&url=" + url + "&hashtags=ポケモン全部言えるかな";
+        }
+    }else{
+        if (lang == "en-us") {
+            href = "https://twitter.com/share?text=" + "I could guess " + number_answered + " / " + number_pokemons + " Pokémon in " + time + "! - " + title + "&url=" + url + "&hashtags=CanYouNameAllthePokemon";
+        }else{
+            href = "https://twitter.com/share?text=" + time + "でポケモン" + number_answered + "/" + number_pokemons + "匹言えた！ - " + title + "&url=" + url + "&hashtags=ポケモン全部言えるかな";
+        }
     }
-    else {
-        href = "https://twitter.com/share?text=" + time + "でポケモン" + number_answered + "/" + number_pokemons + "匹言えた！ - " + title + "&url=" + url + "&hashtags=ポケモン全部言えるかな";
-    }
+
     window.open(encodeURI(decodeURI(href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1');
     return false;
 }
@@ -737,20 +875,39 @@ function openTweetWindow() {
 
 // SNS共有ボタンの文言を設定する関数
 function copyResultText(func) {
-    var time = toJapaneseHms(document.getElementById("timer").textContent);
+    if(lang == "en-us"){
+        var time = toEnglishHms(document.getElementById("timer").textContent);
+    }else{
+        var time = toJapaneseHms(document.getElementById("timer").textContent);
+    }
     var number_answered = number_pokemons - remaining_number;
     var title = document.title;
     var url = location.href;
     var text;
     if (remaining_number == 0) {
-        text = time + "でポケモン" + number_answered + "/" + number_pokemons + "匹言えた！最後のポケモンは" + last_pokemon + "だった！ - " + title;
-    }
-    else {
-        text = time + "でポケモン" + number_answered + "/" + number_pokemons + "匹言えた！ - " + title;
+        if (lang == "en-us") {
+            text = "I could guess " + number_answered + " / " + number_pokemons + " Pokémon in " + time + "! The last Pokémon was " + last_pokemon + "! - " + title;
+        }
+        else{
+            text = time + "でポケモン" + number_answered + "/" + number_pokemons + "匹言えた！最後のポケモンは" + last_pokemon + "だった！ - " + title;
+        }
+    }else{
+        if (lang == "en-us") {
+            text = "I could guess " + number_answered + " / " + number_pokemons + " Pokémon in " + time + "! - " + title;
+        }
+        else{
+            text = time + "でポケモン" + number_answered + "/" + number_pokemons + "匹言えた！ - " + title;
+        }
     }
     if (func != "openLine()") {
-        text += " " + url + " #ポケモン全部言えるかな";
+        if (lang == "en-us") {
+            text += " " + url + " #CanYouNameAllthePokemon";
+        }
+        else{
+            text += " " + url + " #ポケモン全部言えるかな";
+        }
     }
+
     navigator.clipboard.writeText(text);
     setTimeout(func, 500);
     return false;
@@ -782,7 +939,7 @@ function openInstagram() {
 
 // クリアタイムをDBに記録する関数
 function logClearTime(clear_time, player_id) {
-    var data = "clear_time=" + clear_time + "&gen=" + gen + "&last_pokemon=" + last_pokemon + "&player_id=" + player_id;
+    var data = "clear_time=" + clear_time + "&gen=" + gen + "&last_pokemon=" + last_pokemon + "&player_id=" + player_id + "&lang=" + lang;
     var request = new XMLHttpRequest();
     request.open('post', "sqlite_update_clear_time.php", true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -805,7 +962,7 @@ function logClearTime(clear_time, player_id) {
 
 // 平均タイムをDBから取得する関数
 function fetchAverageTime() {
-    var data = "gen=" + gen;
+    var data = "gen=" + gen + "&lang=" + lang;
     var request = new XMLHttpRequest();
     request.open('post', "sqlite_fetch_average_time.php", true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -816,7 +973,11 @@ function fetchAverageTime() {
         var num_players = res["num_players"];
         var average_time = res["average_time"];
         if (!isNaN(average_time)) {
-            average_time = toJapaneseHms(toHms(average_time));
+            if (lang == "en-us"){
+                average_time = toEnglishHms(toHms(average_time));
+            }else{
+                average_time = toJapaneseHms(toHms(average_time));
+            }
         }
 
         var span_num_clear_players = document.getElementById("num_clear_players");
@@ -829,7 +990,7 @@ function fetchAverageTime() {
 // 解答数をDBに記録する関数
 function logNumOfAnswers(num_answers) {
     var player_id = localStorage.getItem("player_id");
-    var data = "num_answers=" + num_answers + "&gen=" + gen + "&player_id=" + player_id;
+    var data = "num_answers=" + num_answers + "&gen=" + gen + "&player_id=" + player_id + "&lang=" + lang;
     var request = new XMLHttpRequest();
     request.open('post', "sqlite_update_num_answers.php", true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -851,7 +1012,7 @@ function logNumOfAnswers(num_answers) {
 
 // 平均解答数をDBから取得する関数
 function fetchAverageNumAnswers() {
-    var data = "gen=" + gen;
+    var data = "gen=" + gen + "&lang=" + lang;
     var request = new XMLHttpRequest();
     request.open('post', "sqlite_fetch_average_num_answers.php", true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -870,7 +1031,7 @@ function fetchAverageNumAnswers() {
 }
 
 function fetchRanking(clear_time, player_id, best_time) {
-    var data = "clear_time=" + clear_time + "&gen=" + gen + "&player_id=" + player_id;
+    var data = "clear_time=" + clear_time + "&gen=" + gen + "&player_id=" + player_id + "&lang=" + lang;
     var request = new XMLHttpRequest();
     request.open('post', "sqlite_fetch_ranking.php", true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -887,17 +1048,32 @@ function setRankInMessage(player_rank, best_time) {
     // console.log(player_rank);
     var message_ranking = document.getElementById("message_ranking");
     if (!isNaN(player_rank)) {
-        message_ranking.innerHTML = "おめでとう！" + player_rank + "位にランクインしたよ！<br>"
+        if(lang == "en-us"){
+            message_ranking.innerHTML = "Congratulations! You are ranked #" + player_rank + "!<br>"
+            + "Enter your name (max. 12 characters)" +
+            "<form name='form_ranking' id='form_ranking' autocomplete='off' onsubmit='sendRankingName(); return false;'>" +
+            "<input type='text' id='input_ranking' class='form-control-sm' maxlength='12' required>" +
+            "<input type='submit' id='button_ranking' value='Send' class='btn btn-primary btn-sm'>" +
+            "</form>";
+        }else{
+            message_ranking.innerHTML = "おめでとう！" + player_rank + "位にランクインしたよ！<br>"
             + "名前を入力してね(12文字以内)" +
             "<form name='form_ranking' id='form_ranking' autocomplete='off' onsubmit='sendRankingName(); return false;'>" +
             "<input type='text' id='input_ranking' class='form-control-sm' maxlength='12' required>" +
             "<input type='submit' id='button_ranking' value='送信' class='btn btn-primary btn-sm'>" +
             "</form>";
+        }
     }
     else {
-        message_ranking.innerHTML = "キミのベストタイム：" + toJapaneseHms(toHms(best_time)) + "<br>" +
+        if(lang == "en-us"){
+            message_ranking.innerHTML = "Your best time: " + toEnglishHms(toHms(best_time)) + "<br>" +
+            "Try again to break the record!<br>" +
+            "<a href='ranking?lang="+lang+"' target='_blank' rel='nofollow noopener'>Click Here</a> to check rankings.";
+        }else{
+            message_ranking.innerHTML = "キミのベストタイム：" + toJapaneseHms(toHms(best_time)) + "<br>" +
             "記録更新を目指してまた挑戦してね！<br>" +
-            "ランキングの確認は<a href='./ranking.html' target='_blank' rel='nofollow noopener'>こちら</a>";
+            "ランキングの確認は<a href='ranking' target='_blank' rel='nofollow noopener'>こちら</a>";
+        }
     }
 }
 
@@ -911,15 +1087,20 @@ function sendRankingName() {
     var name = input_ranking.value;
     // console.log(name);
 
-    var data = "clear_time=" + clear_time + "&gen=" + gen + "&name=" + name + "&player_id=" + player_id;
+    var data = "clear_time=" + clear_time + "&gen=" + gen + "&name=" + name + "&player_id=" + player_id + "&lang=" + lang;
     var request = new XMLHttpRequest();
     request.open('post', "sqlite_update_ranking.php", true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     request.send(data);
     request.onload = function () {
         var message_ranking = document.getElementById("message_ranking");
-        message_ranking.innerHTML = "名前をランキングに登録したよ！<br>" +
-            "ランキングの確認は<a href='./ranking.html' target='_blank' rel='nofollow noopener'>こちら</a>";
+        if(lang == "en-us"){
+            message_ranking.innerHTML = "Your name has been registered!<br>" +
+            "<a href='ranking?lang="+lang+"' target='_blank' rel='nofollow noopener'>Click Here</a> to check rankings.";
+        }else{
+            message_ranking.innerHTML = "名前をランキングに登録したよ！<br>" +
+            "ランキングの確認は<a href='ranking' target='_blank' rel='nofollow noopener'>こちら</a>";
+        }
     }
 
     return false;

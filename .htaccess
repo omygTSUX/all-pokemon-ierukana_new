@@ -2,15 +2,16 @@
 RewriteEngine On
 
 # リダイレクト
-RewriteRule ^1-151.html$ https://all-pokemon-ierukana.com/gen01.html [R=301,L]
-RewriteRule ^152-251.html$ https://all-pokemon-ierukana.com/gen02.html [R=301,L]
-RewriteRule ^252-386.html$ https://all-pokemon-ierukana.com/gen03.html [R=301,L]
-RewriteRule ^387-493.html$ https://all-pokemon-ierukana.com/gen04.html [R=301,L]
-RewriteRule ^494-649.html$ https://all-pokemon-ierukana.com/gen05.html [R=301,L]
-RewriteRule ^650-721.html$ https://all-pokemon-ierukana.com/gen06.html [R=301,L]
-RewriteRule ^722-809.html$ https://all-pokemon-ierukana.com/gen07.html [R=301,L]
-RewriteRule ^810-905.html$ https://all-pokemon-ierukana.com/gen08.html [R=301,L]
-RewriteRule ^810-.html$ https://all-pokemon-ierukana.com/gen08.html [R=301,L]
+RewriteRule ^1-151.html$ https://all-pokemon-ierukana.com/gen01 [R=301,L]
+RewriteRule ^152-251.html$ https://all-pokemon-ierukana.com/gen02 [R=301,L]
+RewriteRule ^252-386.html$ https://all-pokemon-ierukana.com/gen03 [R=301,L]
+RewriteRule ^387-493.html$ https://all-pokemon-ierukana.com/gen04 [R=301,L]
+RewriteRule ^494-649.html$ https://all-pokemon-ierukana.com/gen05 [R=301,L]
+RewriteRule ^650-721.html$ https://all-pokemon-ierukana.com/gen06 [R=301,L]
+RewriteRule ^722-809.html$ https://all-pokemon-ierukana.com/gen07 [R=301,L]
+RewriteRule ^810-905.html$ https://all-pokemon-ierukana.com/gen08 [R=301,L]
+RewriteRule ^810-.html$ https://all-pokemon-ierukana.com/gen08 [R=301,L]
+RewriteRule ^index(.*)$ https://all-pokemon-ierukana.com/$1 [R=301,L]
 
 #RewriteRule ^$ https://all-pokemon-ierukana.com/nazonobasho.html [R=302,L]
 #RewriteRule ^challengemode.html$ https://all-pokemon-ierukana.com/nazonobasho.html [R=302,L]
@@ -23,6 +24,22 @@ RewriteRule ^(.*) https://all-pokemon-ierukana.com/$1 [R=301,L]
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
+# 拡張子なしに統一
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteCond %{REQUEST_FILENAME}\.html -f
+# RewriteRule ^(.*)$ $1.html 
+ 
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteCond %{REQUEST_FILENAME}\.php -f
+# RewriteRule ^(.*)$ $1.php
+
+RewriteCond %{THE_REQUEST} \.(php|html)(.*)\ HTTP
+RewriteCond %{REQUEST_METHOD} GET
+RewriteRule ^(.*)\.(php|html)(.*)$ https://all-pokemon-ierukana.com/$1 [R=301,L]
+
+RewriteCond %{QUERY_STRING} lang=ja
+RewriteRule ^(.*)$ /$1? [R=301,L]
+
 # phpを動作させる
 AddHandler php8.1-script .html
 
@@ -32,3 +49,4 @@ allow from all
 deny from 210.147.175.37
 deny from 14.8.18.161
 deny from 125.102.221.241
+deny from 92.202.230.31

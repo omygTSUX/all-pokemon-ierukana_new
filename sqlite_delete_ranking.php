@@ -1,6 +1,17 @@
 <?php
+if (isset($_GET['lang'])) {
+    $lang = $_GET['lang'];
+}
+else{
+    $lang = "ja";
+}
+if ($lang == "en-us"){
+    $dsn = "sqlite:".$_SERVER['DOCUMENT_ROOT']."/db/score_english.db";
+}else{
+    $dsn = "sqlite:".$_SERVER['DOCUMENT_ROOT']."/db/score.db";
+}
 
-$pdo = new PDO('sqlite:./db/score.db');
+$pdo = new PDO($dsn);
 
 if (!$pdo) {
     die('接続失敗です。' . $sqliteerror);

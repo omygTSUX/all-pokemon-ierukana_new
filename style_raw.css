@@ -1,72 +1,65 @@
-/* html{
-    height: -webkit-fill-available;
-} */
-
 body {
-    /* background-image: url("./img/system/nc68656.png"); */
-    /* background-color:rgba(255, 210, 251, 0.5);
-    background-blend-mode:lighten; */
-    background-image: url("./img/system/background.png");
+    background-image: url("/img/system/background.png");
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
 }
 
 .gen-1 {
-    background-image: url("./img/system/background.png"), url("./img/system/color_gen1.png");
+    background-image: url("/img/system/background.png"), url("/img/system/color_gen1.png");
     background-repeat: repeat, repeat-y;
     background-size: auto, 100% 100%;
 }
 
 .gen-2 {
-    background-image: url("./img/system/background.png"), url("./img/system/color_gen2.png");
+    background-image: url("/img/system/background.png"), url("/img/system/color_gen2.png");
     background-repeat: repeat, repeat-y;
     background-size: auto, 100% 100%;
 }
 
 .gen-3 {
-    background-image: url("./img/system/background.png"), url("./img/system/color_gen3.png");
+    background-image: url("/img/system/background.png"), url("/img/system/color_gen3.png");
     background-repeat: repeat, repeat-y;
     background-size: auto, 100% 100%;
 }
 
 .gen-4 {
-    background-image: url("./img/system/background.png"), url("./img/system/color_gen4.png");
+    background-image: url("/img/system/background.png"), url("/img/system/color_gen4.png");
     background-repeat: repeat, repeat-y;
     background-size: auto, 100% 100%;
 }
 
 .gen-5 {
-    background-image: url("./img/system/background.png"), url("./img/system/color_gen5.png");
+    background-image: url("/img/system/background.png"), url("/img/system/color_gen5.png");
     background-repeat: repeat, repeat-y;
     background-size: auto, 100% 100%;
 }
 
 .gen-6 {
-    background-image: url("./img/system/background.png"), url("./img/system/color_gen6.png");
+    background-image: url("/img/system/background.png"), url("/img/system/color_gen6.png");
     background-repeat: repeat, repeat-y;
     background-size: auto, 100% 100%;
 }
 
 .gen-7 {
-    background-image: url("./img/system/background.png"), url("./img/system/color_gen7.png");
+    background-image: url("/img/system/background.png"), url("/img/system/color_gen7.png");
     background-repeat: repeat, repeat-y;
     background-size: auto, 100% 100%;
 }
 
 .gen-8 {
-    background-image: url("./img/system/background.png"), url("./img/system/color_gen8.png");
+    background-image: url("/img/system/background.png"), url("/img/system/color_gen8.png");
     background-repeat: repeat, repeat-y;
     background-size: auto, 100% 100%;
 }
 
 .gen-9 {
-    background-image: url("./img/system/background.png"), url("./img/system/color_gen9.png");
+    background-image: url("/img/system/background.png"), url("/img/system/color_gen9.png");
     background-repeat: repeat, repeat-y;
     background-size: auto, 100% 100%;
 }
 
 .gen-challenge {
-    background-image: url("./img/system/background.png"), url("./img/system/color_genchallenge.png");
+    background-image: url("/img/system/background.png"), url("/img/system/color_genchallenge.png");
     background-repeat: repeat, repeat-y;
     background-size: auto, 100% 100%;
 }
@@ -84,8 +77,8 @@ header .col {
     vertical-align: middle;
 }
 
-.dropdown-wrapper {
-    width: 6em;
+.dropdown-wrapper{
+    width: fit-content;
 }
 
 .dropdown-wrapper>* {
@@ -99,26 +92,29 @@ header .col {
     font-family: monospace, sans-serif;
 }
 
+.wrap{
+    display: inline-block;
+}
+
 #input_answer{
     width: 7em;
 }
 
-#input_ranking {
-    width: 14em;
+#input_answer:lang(en-us){
+    width: 9em;
+}
+
+#input_answer::placeholder {
+    text-align: center;
 }
 
 #input_answer:focus::placeholder {
     color: transparent;
 }
 
-/* #button_tweet {
-    color: #ffffff;
-    box-shadow: none;
+#input_ranking {
+    width: 14em;
 }
-
-#button_tweet.highlight {
-    animation: 1.5s ease-in-out infinite running expansion_tweet;
-} */
 
 #dropdownMenuSnsShare {
     color: #ffffff;
@@ -143,14 +139,6 @@ header .col {
     }
 }
 
-/* #button_tweet_surrender_modal {
-    color: #ffffff;
-}
-
-#button_tweet_clear_modal {
-    color: #ffffff;
-} */
-
 .initial {
     animation: 1.5s ease-in-out infinite running expansion_start;
 }
@@ -169,10 +157,6 @@ header .col {
     }
 }
 
-.col-auto {
-    padding-right: 6px;
-}
-
 .xx-small {
     font-size: xx-small;
 }
@@ -188,7 +172,6 @@ footer {
 #copyright {
     margin: 0 auto;
     transform-origin: left;
-    /* text-align: center; */
     width: max-content;
     position: absolute;
     left: 50%;
@@ -210,7 +193,6 @@ input[disabled] {
 
 #pokemon_list {
     position: relative;
-    /* max-height: 80vh; */
     max-height: calc(var(--pokemon_list_height));
     overflow: scroll;
 }
@@ -240,21 +222,9 @@ input[disabled] {
     background-blend-mode: lighten;
 }
 
-/* .li_pokemon > img{
-    display: none;
-} */
-
 .found {
     background-image: none;
 }
-
-/* .found > span{
-    display: none;
-}
-
-.found > img{
-    display: unset;
-} */
 
 .image_pokemon {
     width: 100%;
@@ -285,24 +255,12 @@ input[disabled] {
     min-height: 0;
 }
 
-/* #dummy{
-    width: 100%;
-}
-
-#dummy > img{
-    width: 100%;
-} */
-
-/* .ad_none {
-    display: none;
-} */
-
 #button_menu {
     display: none;
 }
 
 #dropdown-wrapper-ranking {
-    width: 8em;
+    width: 9em;
 }
 
 #dropdown-wrapper-ranking>* {
@@ -427,8 +385,20 @@ input[disabled] {
 }
 
 @media screen and (max-width: 599px) {
+    .pc_only {
+        display: none;
+    }
+
+    .sp_only {
+        display: block;
+    }
+
     .li_wrapper {
         width: calc(100% / 13);
+    }
+
+    #h1:lang(en-us){
+        font-size: x-large;
     }
 }
 
@@ -449,6 +419,10 @@ input[disabled] {
         font-size: large;
     }
 
+    #h1:lang(en-us){
+        font-size: medium;
+    }
+
     #timer {
         font-size: medium;
     }
@@ -461,13 +435,16 @@ input[disabled] {
         font-size: medium;
     }
 
-    .col-auto {
-        padding-left: 6px;
-        padding-right: 4px;
-    }
-
     .xx-small-sp {
         font-size: xx-small;
+    }
+
+    #input_answer{
+        width: 9em;
+    }
+
+    #input_answer:lang(en-us) {
+        width: 11em;
     }
 
     .ad_ranking_top_pc{

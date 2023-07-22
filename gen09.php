@@ -1,22 +1,45 @@
-<!DOCTYPE html>
-<html lang="ja">
 <?php
 $gen = "9";
 $number_start = 906;
-$number_pokemons = 103;
-$region = "パルデア";
-$title = "第".$gen."世代".$region."ポケモン".$number_pokemons."匹言えるかな？ゲーム";
-$description = "キミは第".$gen."世代".$region."ポケモン".$number_pokemons."匹言えるかな？第".$gen."世代".$region."ポケモン".$number_pokemons."匹を答えるタイムアタッククイズゲームにチャレンジしよう！";
-$twitter_image = "https://all-pokemon-ierukana.com/img/system/tweet_9.png";
-$css = "style_raw.css?".date('YmdHis');
-$script = "script_raw.js?".date('YmdHis');
+$number_pokemons = 110;
+if ($_SERVER['SERVER_NAME'] == "all-pokemon-ierukana.com") {
+    $css = "style.css?" . date('YmdHis');
+    $script = "script.js?" . date('YmdHis');
+} else {
+    $css = "style_raw.css?" . date('YmdHis');
+    $script = "script_raw.js?" . date('YmdHis');
+}
+if (isset($_GET['lang'])) {
+    $lang = $_GET['lang'];
+}
+else{
+    $lang = "ja";
+}
 
+if ($lang == "en-us") {
+    $region = "Paldea";
+    $title = "Can You Name the $number_pokemons $region Pokémon? Quiz";
+    $description = "Can you name the $number_pokemons $region Pokémon？ Let's challenge the time attack quiz game to name the " . $number_pokemons ." ". $region . " Pokémon!";
+    $twitter_image = "https://all-pokemon-ierukana.com/img/system/tweet_9.png";
+    $clear_message = "<p>Congratulations!<br>You are a master of " . $region . " Pokémon!</p>";
+    $h1 = "Can You Name the ".$number_pokemons." <ruby>".$region."<rt>Gen.".$gen."</rt></ruby> Pokémon?";
+    $note = "";
+} else {
+    $region = "パルデア";
+    $title = "第".$gen."世代".$region."ポケモン".$number_pokemons."匹言えるかな？ゲーム";
+    $description = "キミは第".$gen."世代".$region."ポケモン".$number_pokemons."匹言えるかな？第".$gen."世代".$region."ポケモン".$number_pokemons."匹を答えるタイムアタッククイズゲームにチャレンジしよう！";
+    $twitter_image = "https://all-pokemon-ierukana.com/img/system/tweet_9.png";
+    $clear_message = "<p>クリアおめでとう！<br>キミは".$region."ポケモンマスターだ！</p>";
+    $h1 = "<ruby>".$region."<rt>第".$gen."世代</rt></ruby>ポケモン".$number_pokemons."匹言えるかな？";
+    $note = "";
+}
+?>
+
+<!DOCTYPE html>
+<html lang="<?php echo $lang ?>">
+<?php
 require("include_head.php");
-
-$clear_message = "<p>クリアおめでとう！<br>キミは".$region."ポケモンマスターだ！</p>";
-$h1 = "<ruby>".$region."<rt>第".$gen."世代</rt></ruby>ポケモン".$number_pokemons."匹言えるかな？";
-$note = "";
-
 require("include_body.php");
 ?>
+
 </html>

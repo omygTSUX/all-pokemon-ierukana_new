@@ -2,9 +2,9 @@ function selectRegionRanking(region){
     var current_region = document.getElementById("dropdownMenuButtonRanking");
     current_region.textContent = region.name;
 
-    var data = "clear_time=99999999&player_id=0&gen=" + region.value;
+    var data = "clear_time=99999999&player_id=0&gen=" + region.value + "&lang=" + lang;
     var request = new XMLHttpRequest();
-    if(document.getElementById("checkbox_old_ranking").checked){
+    if(lang=="ja" && document.getElementById("checkbox_old_ranking").checked){
         request.open('post', "sqlite_fetch_old_ranking.php", true);
     }
     else{
