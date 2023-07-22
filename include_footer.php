@@ -9,7 +9,9 @@
     $text_sound = "効果音";
     $text_scroll = "自動スクロール";
     $text_author = "バグ報告は作者へ：@omygTSUX";
-    $text_copyright = "「ポケモン全部言えるかな？ゲーム」は、ポケットモンスターの非公式2次創作です。";
+    $text_copyright = "「ポケモン全部言えるかな？ゲーム」は、ポケットモンスターの非公式2次創作です。<br>
+    <a href='https://www.pokemon.co.jp/' target='_blank' rel='noopener noreferrer'>株式会社ポケモン</a>他、企業様とは一切関係ありません。<br>
+    ポケットモンスター・ポケモン・Pok&#233;monは<a href='https://www.nintendo.co.jp/' target='_blank' rel='noopener noreferrer'>任天堂</a>・<a href='https://www.creatures.co.jp/' target='_blank' rel='noopener noreferrer'>クリーチャーズ</a>・<a href='https://www.gamefreak.co.jp/' target='_blank' rel='noopener noreferrer'>ゲームフリーク</a>の登録商標です。";
     $text_ranking = "クリアタイムランキング";
     $text_privacypolicy = "プライバシーポリシー・配信ガイドライン";
 }
