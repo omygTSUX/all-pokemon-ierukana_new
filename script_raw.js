@@ -339,7 +339,7 @@ function beforeUnload(event) {
 function getCorrectAudio() {
     window.correctContext = new AudioContext();
     var req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
-    req.open("get", "sound/nc162468.mp3", true); // アクセスするファイルを指定
+    req.open("get", "sound/select.mp3", true); // アクセスするファイルを指定
     req.responseType = 'arraybuffer';  // XMLHttpRequest Level 2
     req.send(null); // HTTPリクエストの発行
     req.onload = function () {
