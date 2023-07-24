@@ -10,7 +10,7 @@
             <h2>Cookie</h2>
             <p class="small">
                 This site uses cookies and LocalSotrage to provide social media features.
-                We also collect information about how users use the site and provide this information to our social media (e.g., Twitter buttons), ad serving, and access analysis partners.
+                We also collect information about how users use the site and provide this information to our social media (e.g., X (Twitter) buttons), access analysis partners.
                 Each partner may combine this information with other information you provide to them and other information they collect when you use their services.
                 For these tracking, in addition to the opt-out methods provided by each company, it is possible to reject this information through your operating system or browser settings.
                 We ask that you please familiarize yourself with cookie settings before using the services on this site.

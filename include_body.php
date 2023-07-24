@@ -5,7 +5,7 @@
     $text_result_surrender = "You could guess <span id='num_answers'>[Communicating...]</span> / $number_pokemons Pokémon in <span id='surrender_time'>[Communicating...]</span>!";
     $text_average_surrender = "The average score for the <span id='num_surrender_players'>[Communicating...]</span> gave up people is <span id='average_num_answers'>[Communicating...]</span> / $number_pokemons Pokémon.";
     $text_sns_share = "Share your result to SNS";
-    $text_twitter_share = "Share your result to Twitter";
+    $text_twitter_share = "Share your result to X (Twitter)";
     $text_facebook_share = "Copy & Share your result to Facebook";
     $text_line_share = "Copy & Share your result to LINE";
     $text_instagram_share = "Copy & Share your result to Instagram";
@@ -26,7 +26,7 @@
     $text_result_surrender = "キミは<span id='surrender_time'></span>で<br>ポケモン <span id='num_answers'></span> / $number_pokemons 匹言えたよ！";
     $text_average_surrender = "降参した<span id='num_surrender_players'>[通信待機中…]</span>人の平均解答数：<span id='average_num_answers'>[通信待機中…]</span> / $number_pokemons 匹";
     $text_sns_share = "結果をSNSにシェア";
-    $text_twitter_share = "結果をTwitterにシェア";
+    $text_twitter_share = "結果をX(Twitter)にシェア";
     $text_facebook_share = "結果をコピーしてFacebookにシェア";
     $text_line_share = "結果をコピーしてLINEにシェア";
     $text_instagram_share = "結果をコピーしてInstagramにシェア";
@@ -82,7 +82,7 @@
                                 <?php echo $text_sns_share; ?>
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuSnsShareSurrenderModal">
-                                <li class="mb-1"><a rel="nofollow" role="button" class="button_tweet btn btn-sm text-white" onclick="openTweetWindow();"><img src="/img/system/logo_twitter.png" class="sns_logo"> <?php echo $text_twitter_share; ?></a></li>
+                                <li class="mb-1"><a rel="nofollow" role="button" class="button_tweet btn btn-sm text-white" onclick="openTweetWindow();"><img src="/img/system/logo_X.png" class="sns_logo"> <?php echo $text_twitter_share; ?></a></li>
                                 <li class="mb-1"><a rel="nofollow" role="button" class="button_facebook btn btn-sm text-white" onclick="copyResultText('openFacebook()');"><img src="/img/system/logo_facebook.png" class="sns_logo"> <?php echo $text_facebook_share; ?></a></li>
                                 <li class="mb-1"><a rel="nofollow" role="button" class="button_line btn btn-sm text-white" onclick="copyResultText('openLine()');"><img src="/img/system/logo_line.png" class="sns_logo"> <?php echo $text_line_share; ?></a></li>
                                 <li class="mb-1"><a rel="nofollow" role="button" class="button_instagram btn btn-sm text-white" onclick="copyResultText('openInstagram()');"><img src="/img/system/logo_instagram.png" class="sns_logo"> <?php echo $text_instagram_share; ?></a></li>
@@ -110,7 +110,7 @@
                                 <?php echo $text_sns_share; ?>
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuSnsShareClearModal">
-                                <li class="mb-1"><a rel="nofollow" role="button" class="button_tweet btn btn-sm text-white" onclick="openTweetWindow();"><img src="/img/system/logo_twitter.png" class="sns_logo"> <?php echo $text_twitter_share; ?></a></li>
+                                <li class="mb-1"><a rel="nofollow" role="button" class="button_tweet btn btn-sm text-white" onclick="openTweetWindow();"><img src="/img/system/logo_X.png" class="sns_logo"> <?php echo $text_twitter_share; ?></a></li>
                                 <li class="mb-1"><a rel="nofollow" role="button" class="button_facebook btn btn-sm text-white" onclick="copyResultText('openFacebook()');"><img src="/img/system/logo_facebook.png" class="sns_logo"> <?php echo $text_facebook_share; ?></a></li>
                                 <li class="mb-1"><a rel="nofollow" role="button" class="button_line btn btn-sm text-white" onclick="copyResultText('openLine()');"><img src="/img/system/logo_line.png" class="sns_logo"> <?php echo $text_line_share; ?></a></li>
                                 <li class="mb-1"><a rel="nofollow" role="button" class="button_instagram btn btn-sm text-white" onclick="copyResultText('openInstagram()');"><img src="/img/system/logo_instagram.png" class="sns_logo"> <?php echo $text_instagram_share; ?></a></li>
@@ -155,7 +155,7 @@
                             <?php echo $text_sns_share_short; ?>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuSnsShare">
-                            <li class="mb-1"><a rel="nofollow" role="button" class="button_tweet btn btn-sm text-white" onclick="openTweetWindow();"><img src="/img/system/logo_twitter.png" class="sns_logo"> <?php echo $text_twitter_share; ?></a></li>
+                            <li class="mb-1"><a rel="nofollow" role="button" class="button_tweet btn btn-sm text-white" onclick="openTweetWindow();"><img src="/img/system/logo_X.png" class="sns_logo"> <?php echo $text_twitter_share; ?></a></li>
                             <li class="mb-1"><a rel="nofollow" role="button" class="button_facebook btn btn-sm text-white" onclick="copyResultText('openFacebook()');"><img src="/img/system/logo_facebook.png" class="sns_logo"> <?php echo $text_facebook_share; ?></a></li>
                             <li class="mb-1"><a rel="nofollow" role="button" class="button_line btn btn-sm text-white" onclick="copyResultText('openLine()');"><img src="/img/system/logo_line.png" class="sns_logo"> <?php echo $text_line_share; ?></a></li>
                             <li class="mb-1"><a rel="nofollow" role="button" class="button_instagram btn btn-sm text-white" onclick="copyResultText('openInstagram()');"><img src="/img/system/logo_instagram.png" class="sns_logo"> <?php echo $text_instagram_share; ?></a></li>
