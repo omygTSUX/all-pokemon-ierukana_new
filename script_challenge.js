@@ -63,7 +63,7 @@ function convertCSVtoArray(str) { // 読み込んだCSVデータが文字列と�
 
 function getJson() {
     var req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
-    req.open("get", "all_pokemon.json", true); // アクセスするファイルを指定
+    req.open("get", "all_pokemon.json?240123", true); // アクセスするファイルを指定
     req.send(null); // HTTPリクエストの発行
     req.onload = function () {
         window.all_pokemon_list = JSON.parse(req.responseText);
@@ -526,7 +526,7 @@ document.getElementById("button_confirm").onclick = function () {
             li.classList.add("not_answered");
         }
         li.classList.add("found");
-        li.innerHTML = "<img src='./img/pokemon/" + padZero(id, 3) + ".png' class='image_pokemon' loading='lazy' title='" + all_pokemon_list[id - 1].name + "'>";
+        li.innerHTML = "<img src='./img/pokemon/" + padZero(id, 3) + ".png?240123' class='image_pokemon' loading='lazy' title='" + all_pokemon_list[id - 1].name + "'>";
     }
 
     var surrender_time = toJapaneseHms(toHms(Math.floor(window.shown_time / 1000)));
@@ -613,7 +613,7 @@ function checkAnswer(answer) {
         }
         var li = document.getElementById('pokemon_' + (number_pokemons - remaining_number + 1));
         li.classList.add("found");
-        li.innerHTML = "<img src='./img/pokemon/" + padZero(pokemon.number, 3) + ".png' class='image_pokemon' title='" + pokemon.name + "'>";
+        li.innerHTML = "<img src='./img/pokemon/" + padZero(pokemon.number, 3) + ".png?240123' class='image_pokemon' title='" + pokemon.name + "'>";
         if (document.getElementById("checkbox_scroll").checked) {
             li.scrollIntoView({ behavior: "smooth", block: "nearest" });
         }

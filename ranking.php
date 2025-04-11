@@ -1,7 +1,7 @@
 <?php
 $gen = "all";
 $number_start = 1;
-$number_pokemons = 1008;
+$number_pokemons = 1020;
 if ($_SERVER['SERVER_NAME'] == "all-pokemon-ierukana.com") {
     $css = "style.css?" . date('YmdHis');
     $script = "script_ranking.js?" . date('YmdHis');

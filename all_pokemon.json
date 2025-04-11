@@ -4010,7 +4010,7 @@
     {
         "number": "669",
         "name": "フラベベ",
-        "name_english": "flabébé",
+        "name_english": "flabebe",
         "name_english_raw": "Flabébé"
     },
     {
@@ -6061,32 +6061,92 @@
     },
     {
         "number": "1011",
-        "name": "オーガポン",
-        "name_english": "ogrepawn",
-        "name_english_raw": "Ogrepawn"
+        "name": "カミッチュ",
+        "name_english": "dipplin",
+        "name_english_raw": "Dipplin"
     },
     {
         "number": "1012",
+        "name": "チャデス",
+        "name_english": "poltchageist",
+        "name_english_raw": "Poltchageist"
+    },
+    {
+        "number": "1013",
+        "name": "ヤバソチャ",
+        "name_english": "sinistcha",
+        "name_english_raw": "Sinistcha"
+    },
+    {
+        "number": "1014",
         "name": "イイネイヌ",
         "name_english": "okidogi",
         "name_english_raw": "Okidogi"
     },
     {
-        "number": "1013",
+        "number": "1015",
         "name": "マシマシラ",
         "name_english": "munkidori",
         "name_english_raw": "Munkidori"
     },
     {
-        "number": "1014",
+        "number": "1016",
         "name": "キチキギス",
         "name_english": "fezandipiti",
         "name_english_raw": "Fezandipiti"
     },
     {
-        "number": "1015",
+        "number": "1017",
+        "name": "オーガポン",
+        "name_english": "ogerpon",
+        "name_english_raw": "Ogerpon"
+    },
+    {
+        "number": "1018",
+        "name": "ブリジュラス",
+        "name_english": "archaludon",
+        "name_english_raw": "Archaludon"
+    },
+    {
+        "number": "1019",
+        "name": "カミツオロチ",
+        "name_english": "hydrapple",
+        "name_english_raw": "Hydrapple"
+    },
+    {
+        "number": "1020",
+        "name": "ウガツホムラ",
+        "name_english": "gougingfire",
+        "name_english_raw": "Gouging Fire"
+    },
+    {
+        "number": "1021",
+        "name": "タケルライコ",
+        "name_english": "ragingbolt",
+        "name_english_raw": "Raging Bolt"
+    },
+    {
+        "number": "1022",
+        "name": "テツノイワオ",
+        "name_english": "ironboulder",
+        "name_english_raw": "Iron Boulder"
+    },
+    {
+        "number": "1023",
+        "name": "テツノカシラ",
+        "name_english": "ironcrown",
+        "name_english_raw": "Iron Crown"
+    },
+    {
+        "number": "1024",
         "name": "テラパゴス",
-        "name_english": "terrapagos",
-        "name_english_raw": "Terrapagos"
+        "name_english": "terapagos",
+        "name_english_raw": "Terapagos"
+    },
+    {
+        "number": "1025",
+        "name": "モモワロウ",
+        "name_english": "pecharunt",
+        "name_english_raw": "Pecharunt"
     }
 ]

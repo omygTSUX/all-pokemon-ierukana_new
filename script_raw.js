@@ -67,7 +67,7 @@ function convertCSVtoArray(str) { // 読み込んだCSVデータが文字列と�
 
 function getJson() {
     var req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
-    req.open("get", "all_pokemon.json?230227", true); // アクセスするファイルを指定
+    req.open("get", "all_pokemon.json?240123", true); // アクセスするファイルを指定
     req.send(null); // HTTPリクエストの発行
     req.onload = function () {
         window.all_pokemon_list = JSON.parse(req.responseText);
@@ -580,17 +580,17 @@ document.getElementById("button_confirm").onclick = function () {
             }
             li.classList.add("found");
             if(lang == "en-us"){
-                li.innerHTML = "<img src='img/pokemon/" + padZero(id, 3) + ".png' class='image_pokemon' loading='lazy' title='" + all_pokemon_list[id - 1].name_english_raw + "'>";
+                li.innerHTML = "<img src='img/pokemon/" + padZero(id, 3) + ".png?240123' class='image_pokemon' loading='lazy' title='" + all_pokemon_list[id - 1].name_english_raw + "'>";
             }else{
-                li.innerHTML = "<img src='img/pokemon/" + padZero(id, 3) + ".png' class='image_pokemon' loading='lazy' title='" + all_pokemon_list[id - 1].name + "'>";
+                li.innerHTML = "<img src='img/pokemon/" + padZero(id, 3) + ".png?240123' class='image_pokemon' loading='lazy' title='" + all_pokemon_list[id - 1].name + "'>";
             }
         }else{
             if (!answered_list_local[id - number_start + 1]) {
                 li.classList.add("found", "not_answered");
                 if(lang == "en-us"){
-                    li.innerHTML = "<img src='img/pokemon/" + padZero(id, 3) + ".png' class='image_pokemon' loading='lazy' title='" + all_pokemon_list[id - 1].name_english_raw + "'>";
+                    li.innerHTML = "<img src='img/pokemon/" + padZero(id, 3) + ".png?240123' class='image_pokemon' loading='lazy' title='" + all_pokemon_list[id - 1].name_english_raw + "'>";
                 }else{
-                    li.innerHTML = "<img src='img/pokemon/" + padZero(id, 3) + ".png' class='image_pokemon' loading='lazy' title='" + all_pokemon_list[id - 1].name + "'>";
+                    li.innerHTML = "<img src='img/pokemon/" + padZero(id, 3) + ".png?240123' class='image_pokemon' loading='lazy' title='" + all_pokemon_list[id - 1].name + "'>";
                 }
             }
         }
@@ -715,10 +715,10 @@ function checkAnswer(answer) {
         }
         li.classList.add("found");
         if(lang == "en-us"){
-            li.innerHTML = "<img src='img/pokemon/" + padZero(pokemon.number, 3) + ".png?230113' class='image_pokemon' title='" + pokemon.name_english_raw + "'>";
+            li.innerHTML = "<img src='img/pokemon/" + padZero(pokemon.number, 3) + ".png?240123' class='image_pokemon' title='" + pokemon.name_english_raw + "'>";
         }
         else{
-            li.innerHTML = "<img src='img/pokemon/" + padZero(pokemon.number, 3) + ".png?230113' class='image_pokemon' title='" + pokemon.name + "'>";
+            li.innerHTML = "<img src='img/pokemon/" + padZero(pokemon.number, 3) + ".png?240123' class='image_pokemon' title='" + pokemon.name + "'>";
         }
         if (document.getElementById("checkbox_scroll").checked) {
             li.scrollIntoView({ behavior: "smooth", block: "nearest" });

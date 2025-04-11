@@ -21,6 +21,23 @@
     <main>
         <div class="text-center mb-4">
             <h1><?php echo $text_h1; ?></h1>
+            <div class="mb-2">
+                <div class="ad_ranking_top_pc">
+                <a href="https://px.a8.net/svt/ejp?a8mat=3TFE2B+987X3U+348+6CHB5" rel="nofollow">
+<img border="0" width="728" height="90" alt="" src="https://www29.a8.net/svt/bgt?aid=230825459558&wid=002&eno=01&mid=s00000000404001066000&mc=1"></a>
+<img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=3TFE2B+987X3U+348+6CHB5" alt="">
+                </div>
+                <div class="ad_ranking_top_tb">
+                <a href="https://px.a8.net/svt/ejp?a8mat=3TFE2B+987X3U+348+62MDD" rel="nofollow">
+<img border="0" width="468" height="60" alt="" src="https://www25.a8.net/svt/bgt?aid=230825459558&wid=002&eno=01&mid=s00000000404001020000&mc=1"></a>
+<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=3TFE2B+987X3U+348+62MDD" alt="">
+                </div>
+                <div class="ad_ranking_top_sp">
+                <a href="https://px.a8.net/svt/ejp?a8mat=3TFE2B+987X3U+348+6ARKX" rel="nofollow">
+<img border="0" width="234" height="60" alt="" src="https://www20.a8.net/svt/bgt?aid=230825459558&wid=002&eno=01&mid=s00000000404001058000&mc=1"></a>
+<img border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=3TFE2B+987X3U+348+6ARKX" alt="">
+                </div>
+            </div>
             <div id="dropdown-wrapper-ranking" class="bgcolor_white_alpha mx-auto mb-2">
                 <button class="btn dropdown-toggle btn-sm border rounded" type="button" id="dropdownMenuButtonRanking"
                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -101,7 +118,13 @@
                     </tbody>
                 </table>
             </div>
+            <div class="ad_ranking_top">
+                <!-- admax -->
+                <script src="https://adm.shinobi.jp/o/9601f0462b232d84ab47f373e61557f0"></script>
+                <!-- admax -->
+            </div>
         </div>
     </main>
     <?php require($_SERVER['DOCUMENT_ROOT']."/include_footer.php"); ?>
+    <?php require($_SERVER['DOCUMENT_ROOT']."/include_ad.php"); ?>
 </body>

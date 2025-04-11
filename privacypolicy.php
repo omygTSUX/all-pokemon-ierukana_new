@@ -1,7 +1,7 @@
 <?php
 $gen = "all";
 $number_start = 1;
-$number_pokemons = 1008;
+$number_pokemons = 1020;
 if ($_SERVER['SERVER_NAME'] == "all-pokemon-ierukana.com") {
     $css = "style.css?" . date('YmdHis');
     $script = "";
@@ -44,6 +44,7 @@ require("include_head.php");
     }
     ?>
     <?php require("include_footer.php"); ?>
+    <?php require("include_ad.php"); ?>
 </body>
 
 </html>
