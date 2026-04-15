@@ -58,6 +58,12 @@ body {
     background-size: auto, 100% 100%;
 }
 
+.gen-10 {
+    background-image: url("/img/system/background.png"), url("/img/system/color_gen10.png");
+    background-repeat: repeat, repeat-y;
+    background-size: auto, 100% 100%;
+}
+
 .gen-challenge {
     background-image: url("/img/system/background.png"), url("/img/system/color_genchallenge.png");
     background-repeat: repeat, repeat-y;

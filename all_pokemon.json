@@ -6148,5 +6148,23 @@
         "name": "モモワロウ",
         "name_english": "pecharunt",
         "name_english_raw": "Pecharunt"
+    },
+    {
+        "number": "1026",
+        "name": "ハブロウ",
+        "name_english": "browt",
+        "name_english_raw": "Browt"
+    },
+    {
+        "number": "1027",
+        "name": "ポムケン",
+        "name_english": "pombon",
+        "name_english_raw": "Pombon"
+    },
+    {
+        "number": "1028",
+        "name": "ミオリー",
+        "name_english": "gecqua",
+        "name_english_raw": "Gecqua"
     }
 ]

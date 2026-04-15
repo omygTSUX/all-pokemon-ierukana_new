@@ -78,6 +78,7 @@ if ($lang == "en-us") {
                     <li><a class="dropdown-item navi" href="gen07?lang=<?php echo $lang; ?>"><?php echo $region_array["7"]; ?></a></li>
                     <li><a class="dropdown-item navi" href="gen08?lang=<?php echo $lang; ?>"><?php echo $region_array["8"]; ?></a></li>
                     <li><a class="dropdown-item navi" href="gen09?lang=<?php echo $lang; ?>"><?php echo $region_array["9"]; ?></a></li>
+                    <li><a class="dropdown-item navi" href="gen09?lang=<?php echo $lang; ?>"><?php echo $region_array["10"]; ?></a></li>
                     <li><a class="dropdown-item navi" href="/?lang=<?php echo $lang; ?>"><?php echo $region_array["all"]; ?></a></li>
                     <li><a class="dropdown-item navi" href="challengemode?lang=<?php echo $lang; ?>"><?php echo $region_array["challenge"]; ?></a></li>
                 </ul>
