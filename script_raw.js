@@ -67,7 +67,7 @@ function convertCSVtoArray(str) { // 読み込んだCSVデータが文字列と�
 
 function getJson() {
     var req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
-    req.open("get", "all_pokemon.json?240123", true); // アクセスするファイルを指定
+    req.open("get", "all_pokemon.json?260903", true); // アクセスするファイルを指定
     req.send(null); // HTTPリクエストの発行
     req.onload = function () {
         window.all_pokemon_list = JSON.parse(req.responseText);
@@ -584,7 +584,12 @@ document.getElementById("button_confirm").onclick = function () {
             }else{
                 li.innerHTML = "<img src='img/pokemon/" + padZero(id, 3) + ".png?240123' class='image_pokemon' loading='lazy' title='" + all_pokemon_list[id - 1].name + "'>";
             }
-        }else{
+        }
+        else{
+            if(gen == "oishi"){
+                var pokemon = all_pokemon_list.slice(number_start - 1, number_start + number_pokemons - 1).find((v) => v.number_oishi == id);
+                id = pokemon.number;
+            }
             if (!answered_list_local[id - number_start + 1]) {
                 li.classList.add("found", "not_answered");
                 if(lang == "en-us"){
@@ -666,16 +671,19 @@ function eratta(answer) {
 
 // 英語入力の表記揺れを直す関数
 function eratta_english(answer) {
-    var eratta_result = answer.replace("♂", "male");
-    eratta_result = eratta_result.replace("♀", "female");
-    eratta_result = eratta_result.replace(/[^0-9a-z]/gi, '');
-    eratta_result = eratta_result.toLowerCase();
+    var eratta_result = answer
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace("♂", "male")
+        .replace("♀", "female")
+        .replace(/[^0-9a-z]/gi, '')
+        .toLowerCase();
 
     // 日本語入力でエラー音を出すために必要
-    if(eratta_result == "" && answer != ""){
+    if (eratta_result == "" && answer != "") {
         return answer;
     }
-    else{
+    else {
         return eratta_result;
     }
 }
@@ -701,38 +709,55 @@ function checkAnswer(answer) {
     
     }
     if (pokemon != undefined && !answered_list[pokemon.number - number_start + 1]) {
-        if (document.getElementById("checkbox_audio").checked) {
-            // audio.play();
-            // audioElement.play();
-            // Start audio
-            // source.start(0);
-            playCorrectAudio();
-        }
-        if(gen == "challenge"){
-            var li = document.getElementById('pokemon_' + (number_pokemons - remaining_number + 1));
-        }else{
-            var li = document.getElementById('pokemon_' + pokemon.number);
-        }
-        li.classList.add("found");
-        if(lang == "en-us"){
-            li.innerHTML = "<img src='img/pokemon/" + padZero(pokemon.number, 3) + ".png?240123' class='image_pokemon' title='" + pokemon.name_english_raw + "'>";
+        if(gen == "oishi" && pokemon.number_oishi != number_pokemons - remaining_number + 1){
+            if (eratta_result != "") {
+                if (document.getElementById("checkbox_audio").checked) {
+                    // audio.play();
+                    // audioElement.play();
+                    // Start audio
+                    // source.start(0);
+                    playIncorrectAudio();
+                }
+            }
         }
         else{
-            li.innerHTML = "<img src='img/pokemon/" + padZero(pokemon.number, 3) + ".png?240123' class='image_pokemon' title='" + pokemon.name + "'>";
+            if (document.getElementById("checkbox_audio").checked) {
+                // audio.play();
+                // audioElement.play();
+                // Start audio
+                // source.start(0);
+                playCorrectAudio();
+            } 
+        
+            if(gen == "challenge"){
+                var li = document.getElementById('pokemon_' + (number_pokemons - remaining_number + 1));
+            }else if(gen == "oishi"){
+                var li = document.getElementById('pokemon_' + pokemon.number_oishi);
+            }
+            else{
+                var li = document.getElementById('pokemon_' + pokemon.number);
+            }
+            li.classList.add("found");
+            if(lang == "en-us"){
+                li.innerHTML = "<img src='img/pokemon/" + padZero(pokemon.number, 3) + ".png?240123' class='image_pokemon' title='" + pokemon.name_english_raw + "'>";
+            }
+            else{
+                li.innerHTML = "<img src='img/pokemon/" + padZero(pokemon.number, 3) + ".png?240123' class='image_pokemon' title='" + pokemon.name + "'>";
+            }
+            if (document.getElementById("checkbox_scroll").checked) {
+                li.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            }
+            answered_list[pokemon.number - number_start + 1] = true;
+            remaining_number--;
+            setRemainingNumber(remaining_number);
+            if(lang == "en-us"){
+                window.last_pokemon = pokemon.name_english_raw;
+            }
+            else{
+                window.last_pokemon = pokemon.name;
+            }
+            document.form_answer.reset();
         }
-        if (document.getElementById("checkbox_scroll").checked) {
-            li.scrollIntoView({ behavior: "smooth", block: "nearest" });
-        }
-        answered_list[pokemon.number - number_start + 1] = true;
-        remaining_number--;
-        setRemainingNumber(remaining_number);
-        if(lang == "en-us"){
-            window.last_pokemon = pokemon.name_english_raw;
-        }
-        else{
-            window.last_pokemon = pokemon.name;
-        }
-        document.form_answer.reset();
     }
     else {
         if (eratta_result != "") {

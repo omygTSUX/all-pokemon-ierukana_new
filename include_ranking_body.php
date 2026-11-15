@@ -1,7 +1,7 @@
 <?php if ($lang == "en-us") {
     $text_h1 = "Clear Time Ranking";
     $text_select_region = "Select Region";
-    $ranking_region_array = array(1 => "Kanto", 2 => "Johto", 3 => "Hoenn", 4 => "Sinnoh", 5 => "Unova", 6 => "Kalos", 7 => "Alola / Go", 8 => "Galar / Hisui", 9 => "Paldea", "all" => "All", "challenge" => "Challenge");
+    $ranking_region_array = array(1 => "Kanto", 2 => "Johto", 3 => "Hoenn", 4 => "Sinnoh", 5 => "Unova", 6 => "Kalos", 7 => "Alola / Go", 8 => "Galar / Hisui", 9 => "Paldea", "all" => "All", "challenge" => "Challenge", "oishi" => "Oishi");
     $text_th_rank = "Rank";
     $text_th_name = "Name";
     $text_th_time = "Time";
@@ -9,7 +9,7 @@
 } else {
     $text_h1 = "クリアタイムランキング";
     $text_select_region = "地方を選んでね";
-    $ranking_region_array = array(1 => "カントー", 2 => "ジョウト", 3 => "ホウエン", 4 => "シンオウ", 5 => "イッシュ", 6 => "カロス", 7 => "アローラ・GO", 8 => "ガラル・ヒスイ", 9 => "パルデア", "all" => "全部", "challenge" => "むずかし版");
+    $ranking_region_array = array(1 => "カントー", 2 => "ジョウト", 3 => "ホウエン", 4 => "シンオウ", 5 => "イッシュ", 6 => "カロス", 7 => "アローラ・GO", 8 => "ガラル・ヒスイ", 9 => "パルデア", "all" => "全部", "challenge" => "むずかし版", "oishi" => "オーイシ");
     $text_th_rank = "順位";
     $text_th_name = "名前";
     $text_th_time = "タイム";
@@ -66,6 +66,8 @@
                             onClick="selectRegionRanking(this);"><?php echo $ranking_region_array["all"]; ?></button></li>
                     <li><button class="dropdown-item" name="<?php echo $ranking_region_array["challenge"]; ?>" value="challenge"
                             onClick="selectRegionRanking(this);"><?php echo $ranking_region_array["challenge"]; ?></button></li>
+                    <li><button class="dropdown-item" name="<?php echo $ranking_region_array["oishi"]; ?>" value="oishi"
+                            onClick="selectRegionRanking(this);"><?php echo $ranking_region_array["oishi"]; ?></button></li>
                 </ul>
             </div>
             <?php 

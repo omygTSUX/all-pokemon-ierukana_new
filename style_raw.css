@@ -70,6 +70,12 @@ body {
     background-size: auto, 100% 100%;
 }
 
+.gen-oishi {
+    background-image: url("/img/system/background.png"), url("/img/system/color_genoishi.png");
+    background-repeat: repeat, repeat;
+    background-size: auto, auto;
+}
+
 a,
 a:visited {
     color: #000000;

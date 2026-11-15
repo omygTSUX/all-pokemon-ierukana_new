@@ -1,10 +1,10 @@
 <?php
 if ($lang == "en-us") {
-    $region_array = array(1 => "Kanto", 2 => "Johto", 3 => "Hoenn", 4 => "Sinnoh", 5 => "Unova", 6 => "Kalos", 7 => "Alola / Go", 8 => "Galar / Hisui", 9 => "Paldea", "all" => "All", "challenge" => "Challenge");
+    $region_array = array(1 => "Kanto", 2 => "Johto", 3 => "Hoenn", 4 => "Sinnoh", 5 => "Unova", 6 => "Kalos", 7 => "Alola / Go", 8 => "Galar / Hisui", 9 => "Paldea", "all" => "All", "challenge" => "Challenge", "oishi" => "Oishi");
     $text_other_regions = "Other Regions";
 
 } else {
-    $region_array = array(1 => "カントー", 2 => "ジョウト", 3 => "ホウエン", 4 => "シンオウ", 5 => "イッシュ", 6 => "カロス", 7 => "アローラ・GO", 8 => "ガラル・ヒスイ", 9 => "パルデア", "all" => "全部", "challenge" => "むずかし版");
+    $region_array = array(1 => "カントー", 2 => "ジョウト", 3 => "ホウエン", 4 => "シンオウ", 5 => "イッシュ", 6 => "カロス", 7 => "アローラ・GO", 8 => "ガラル・ヒスイ", 9 => "パルデア", "all" => "全部", "challenge" => "むずかし版", "oishi" => "オーイシ");
     $text_other_regions = "他の地方";
 }
 ?>
@@ -78,9 +78,9 @@ if ($lang == "en-us") {
                     <li><a class="dropdown-item navi" href="gen07?lang=<?php echo $lang; ?>"><?php echo $region_array["7"]; ?></a></li>
                     <li><a class="dropdown-item navi" href="gen08?lang=<?php echo $lang; ?>"><?php echo $region_array["8"]; ?></a></li>
                     <li><a class="dropdown-item navi" href="gen09?lang=<?php echo $lang; ?>"><?php echo $region_array["9"]; ?></a></li>
-                    <li><a class="dropdown-item navi" href="gen09?lang=<?php echo $lang; ?>"><?php echo $region_array["10"]; ?></a></li>
                     <li><a class="dropdown-item navi" href="/?lang=<?php echo $lang; ?>"><?php echo $region_array["all"]; ?></a></li>
                     <li><a class="dropdown-item navi" href="challengemode?lang=<?php echo $lang; ?>"><?php echo $region_array["challenge"]; ?></a></li>
+                    <li><a class="dropdown-item navi" href="oishi?lang=<?php echo $lang; ?>"><?php echo $region_array["oishi"]; ?></a></li>
                 </ul>
             </div>
         </div>

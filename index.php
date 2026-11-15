@@ -18,7 +18,7 @@ if (isset($_GET['lang'])) {
 if ($lang == "en-us") {
     $region = "all";
     $title = "Can You Name All the Pokémon? Quiz";
-    $description = "Can you name " . $region . " the " . $number_pokemons . " Pokémon？ Let's challenge the time attack quiz game to name " . $region . " the " . $number_pokemons . " Pokémon!";
+    $description = "Can you name " . $region . " the " . $number_pokemons . " Pokémon? Let's challenge the time attack quiz game to name " . $region . " the " . $number_pokemons . " Pokémon!";
     $twitter_image = "https://all-pokemon-ierukana.com/img/system/tweet_all.png";
     $clear_message = "<p>Congratulations!<br>You are truly a master of " . $region . " the Pokémon!</p>";
     $h1 = "Can You Name " . ucfirst($region) . " the " . $number_pokemons . " Pokémon?";

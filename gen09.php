@@ -19,7 +19,7 @@ else{
 if ($lang == "en-us") {
     $region = "Paldea・WW";
     $title = "Can You Name the $number_pokemons $region Pokémon? Quiz";
-    $description = "Can you name the $number_pokemons $region Pokémon？ Let's challenge the time attack quiz game to name the " . $number_pokemons ." ". $region . " Pokémon!";
+    $description = "Can you name the $number_pokemons $region Pokémon? Let's challenge the time attack quiz game to name the " . $number_pokemons ." ". $region . " Pokémon!";
     $twitter_image = "https://all-pokemon-ierukana.com/img/system/tweet_9.png";
     $clear_message = "<p>Congratulations!<br>You are a master of " . $region . " Pokémon!</p>";
     $h1 = "Can You Name the ".$number_pokemons." <ruby>".$region."<rt>Gen.".$gen."</rt></ruby> Pokémon?";
